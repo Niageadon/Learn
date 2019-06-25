@@ -38,7 +38,7 @@ work = makeLogging(work, log);
 work(1);
 work(2);
 
-for (var i = 0; i < log.length; i++) {
+for (let i = 0; i < log.length; i++) {
   alert( 'Лог:' + log[i] );
 }
 
