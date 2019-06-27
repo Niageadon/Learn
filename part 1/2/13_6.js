@@ -5,7 +5,7 @@
 */
 
 function getAnswer(value){
-  return ((14 <= value) && (value<= 90))
+  return ((14 <= value) && (value <= 90))
 }
 
 console.log(getAnswer(14));
