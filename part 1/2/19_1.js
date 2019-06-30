@@ -41,7 +41,7 @@ console.group('рекурсия');
 console.log( second(5));
 console.log('Можно ли при помощи рекурсии посчитать sumTo(100000)?');
 console.log(' -Нет, максимальное число вложенных вызово ограничено числом меньшим "100000"');
-console.groupEnd()
+console.groupEnd();
 
 let third = function (n) {
   return n*(n + 1)/2
@@ -55,4 +55,4 @@ console.group('Скорость');
 console.log('1 - по формуле');
 console.log('2 - в цикле');
 console.log('3 - рекурсия');
-console.groupEnd()
+console.groupEnd();
