@@ -1,17 +1,32 @@
 /*
-Мини-задача на синтаксис объектов. Напишите код, по строке на каждое действие.
+Создайте функцию isEmpty(obj), которая возвращает true, если в объекте нет свойств и false – если хоть одно свойство есть.
 
-Создайте пустой объект user.
-Добавьте свойство name со значением Вася.
-Добавьте свойство surname со значением Петров.
-Поменяйте значение name на Сергей.
-Удалите свойство name из объекта.
-*/
+Работать должно так:
 
-let user = {};
-user.name = 'Вася';
-user.surname = 'Петров';
-user.surname = 'Сергей';
-delete user.surname;
+function isEmpty(obj) {
+  //
+}
 
-console.log(user);
+var schedule = {};
+
+alert( isEmpty(schedule) ); // true
+
+schedule["8:30"] = "подъём";
+
+alert( isEmpty(schedule) ); // false*/
+
+function isEmpty(obj) {
+  let counter = 0;
+  for (let i in obj) {
+    return false;
+  }
+  return true
+}
+
+let schedule = {};
+
+alert( isEmpty(schedule) ); // true
+
+schedule["8:30"] = "подъём";
+
+alert( isEmpty(schedule) ); // false
