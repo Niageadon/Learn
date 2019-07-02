@@ -5,31 +5,27 @@
 */
 
 function randomInteger(minValue, maxValue){
-  let answer = {value: 0, index: 0};
-  let value;
-  for (let i = minValue; i <= maxValue; i++){
-    value = Math.random();
-    if (answer.value < value) {
-      answer.value = value;
-      answer.index = i;
-    }
+  return  Math.round(minValue + Math.random() * (maxValue - minValue))
+}
+
+function stat(fun, startValue, endValue) {
+  let answer = {value: 0, 1: 0, 2: 0, 3: 0, 4: 0};
+  for(let i = 0; i < 1000; i++) {
+    answer.value = fun(startValue, endValue);
+    answer[answer.value]++;
   }
-  return answer.index
-  //return  Math.round(minValue + Math.random() * (maxValue - minValue))
+  console.log('Статистика по ответам: ', answer);
 }
 
+stat(randomInteger,1, 4);
+console.log('Как видно выше, простое округление Math.round работает так, что вероятность для первого и последного значений вдвое меньше чем для иных.');
+console.log('Реализуем ту же функцию, используя Math.floor');
+console.log('--------------------------------------------------------------');
 
-
-var time = performance.now();
-for(let i = 0; i<1000; i++){
-  randomInteger(1, 3333);
+function randomInt(minValue, maxValue){
+  let value = minValue + (Math.random() * (maxValue + 1 - minValue));
+  return  Math.floor(value);
 }
-time = performance.now() - time;
-console.log(time)
 
-var time1 = performance.now();
-for(let i = 0; i<1000; i++){
-  randomInteger1(1, 3333);
-}
-time1 = performance.now() - time1;
-console.log(time1)
+stat(randomInt,1, 4);
+console.log('Результат корректный');
