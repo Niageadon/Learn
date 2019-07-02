@@ -14,6 +14,6 @@ P.S. В кодировке Unicode существует специальный �
 */
 
 function truncate(str, maxlength){
-  return str.slice(0, maxlength - 3) + '...'
+  return (str.length > maxlength)? str.slice(0, maxlength - 3) + '...': str
 }
-console.log(truncate('hey boba',6));
+console.log(truncate('hey boba',11));
