@@ -15,4 +15,4 @@ function checkSpam(str){
   }
   return false
 }
-console.log(checkSpam('dsxxxXXX'))
+console.log(checkSpam('dsxxxXXX'));
