@@ -9,9 +9,9 @@ checkSpam("innocent rabbit") == false
 */
 
 function checkSpam(str){
-  let spam = ['viagra', 'XXX'];
+  let spam = ['viagra', 'xxx'];
   for(let i of spam){
-    if (str.indexOf(i) !== -1) return true
+    if (str.toLowerCase().indexOf(i) !== -1) return true
   }
   return false
 }
