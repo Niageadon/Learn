@@ -34,4 +34,4 @@ function getMax(obj) {
   return (maxValue === null)?  'нет сотрудников': {maxValue, name};
 }
 
-console.log(getMax(salaries))
+console.log(getMax(salaries));
