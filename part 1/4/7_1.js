@@ -7,7 +7,7 @@
 */
 
 let goods = [];
-for(let i = 0; i < Math.ceil(Math.random()*100); i++){
+for(let i = 0; i < Math.ceil(Math.random() * 100); i++){
   goods.push(Math.random().toFixed(1));
 }
 
