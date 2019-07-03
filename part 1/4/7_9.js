@@ -22,34 +22,17 @@ let arr = [-1, 2, 3, -9, 11, 2, -1, 14, -2, 100];
 function getMax(){
   let answer = 0;
   let temp = 0;
-
   for (let i = 0; i < arr.length; i++){
-    temp = Math.max(arr[i]+ temp, temp);
-
+    temp += arr[i];
+    answer = Math.max(answer, temp);
+    if (temp < 0) temp = 0;
   }
-  answer = Math.max(answer, temp);
   return answer
 }
 
-function getMaxSubSum(arr) {
-  var maxSum = 0,
-    partialSum = 0;
-  for (var i = 0; i < arr.length; i++) {
-    partialSum += arr[i];
-    maxSum = Math.max(maxSum, partialSum);
-    if (partialSum < 0) partialSum = 0;
-  }
-  return maxSum;
-}
 
 let time = performance.now();
 // некий код
 console.log(getMax(arr));
 time = performance.now() - time;
 console.log('Время выполнения = ', time);
-
-let time1 = performance.now();
-// некий код
-console.log(getMaxSubSum(arr));
-time1 = performance.now() - time1;
-console.log('Время выполнения = ', time1);
