@@ -1,0 +1,59 @@
+[33mcommit 8d7745ffcc3471286f17b065fe2bf043123df716[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Niageadon <46082748+Niageadon@users.noreply.github.com>
+Date:   Mon Jul 1 15:51:52 2019 +0300
+
+    transfer
+
+[1mdiff --git a/part 1/4/2_8.js b/part 1/4/2_8.js[m
+[1mnew file mode 100644[m
+[1mindex 0000000..3f2a273[m
+[1m--- /dev/null[m
+[1m+++ b/part 1/4/2_8.js[m	
+[36m@@ -0,0 +1,35 @@[m
+[32m+[m[32m/*[m
+[32m+[m[32mНапишите функцию randomInteger(min, max) для генерации случайного целого числа между min и max, включая min,max как возможные значения.[m
+[32m+[m
+[32m+[m[32mЛюбое число из интервала min..max должно иметь одинаковую вероятность.[m
+[32m+[m[32m*/[m
+[32m+[m
+[32m+[m[32mfunction randomInteger(minValue, maxValue){[m
+[32m+[m[32m  let answer = {value: 0, index: 0};[m
+[32m+[m[32m  let value;[m
+[32m+[m[32m  for (let i = minValue; i <= maxValue; i++){[m
+[32m+[m[32m    value = Math.random();[m
+[32m+[m[32m    if (answer.value < value) {[m
+[32m+[m[32m      answer.value = value;[m
+[32m+[m[32m      answer.index = i;[m
+[32m+[m[32m    }[m
+[32m+[m[32m  }[m
+[32m+[m[32m  return answer.index[m
+[32m+[m[32m  //return  Math.round(minValue + Math.random() * (maxValue - minValue))[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m
+[32m+[m[32mvar time = performance.now();[m
+[32m+[m[32mfor(let i = 0; i<1000; i++){[m
+[32m+[m[32m  randomInteger(1, 3333);[m
+[32m+[m[32m}[m
+[32m+[m[32mtime = performance.now() - time;[m
+[32m+[m[32mconsole.log(time)[m
+[32m+[m
+[32m+[m[32mvar time1 = performance.now();[m
+[32m+[m[32mfor(let i = 0; i<1000; i++){[m
+[32m+[m[32m  randomInteger1(1, 3333);[m
+[32m+[m[32m}[m
+[32m+[m[32mtime1 = performance.now() - time1;[m
+[32m+[m[32mconsole.log(time1)[m
+[1mdiff --git a/part 1/4/index.html b/part 1/4/index.html[m
+[1mindex 67fd07e..f201893 100644[m
+[1m--- a/part 1/4/index.html[m	
+[1m+++ b/part 1/4/index.html[m	
+[36m@@ -5,6 +5,6 @@[m
+   <title>Title</title>[m
+ </head>[m
+ <body>[m
+[31m-  <script src="2_7.js"></script>[m
+[32m+[m[32m  <script src="2_8.js"></script>[m
+ </body>[m
+ </html>[m
