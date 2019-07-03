@@ -24,11 +24,9 @@ function isNumeric(n) {
 */
 
 function multiplyNumeric(obj) {
-  let answer = {};
   for (let i in obj){
-    answer[i] = (isNumeric(obj[i]))?  obj[i] * 2: obj[i];
+     if (isNumeric(obj[i])) obj[i] = obj[i] * 2;
   }
-  return answer
 }
 
 function isNumeric(n) {
@@ -41,6 +39,7 @@ let menu = {
   title: "My menu"
 };
 
-console.log(multiplyNumeric(menu));
+multiplyNumeric(menu)
+console.log(menu);
 
 
