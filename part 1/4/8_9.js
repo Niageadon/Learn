@@ -90,3 +90,4 @@ getTime(printReverseList, list);
 getTime(printReverseList1, list);
 
 console.log('Функции вывода результата закоментированы');
+console.log('Как видно из резальтатов, для данной задачи рекурсивный подход более эффективен');
