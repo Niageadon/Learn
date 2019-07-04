@@ -39,20 +39,54 @@ list.next = { value: 2 };
 list.next.next = { value: 3 };
 list.next.next.next = { value: 4 };
 
+function getTime(fun, argument){
+  let time = performance.now();
+  console.log(fun)
+  for(let i = 0; i < 10000; i++){
+    fun(argument);
+  }
+  time = performance.now() - time;
+  console.log('Время выполнения функции = ' , time);
+}
 function printList(list){
+  // решение, используя цикл
   let temp = list;
-  while(temp){
-    console.log(temp.value);
+  while(temp.next){
+    //console.log(temp.value);
     temp = temp.next;
   }
 }
-
 function printList1(list){
-  let temp = list;
-  while (temp.next) {
-    console.log(temp.value);
-    //if (list.next) printList1(list.next)
+  // решение, основанное на рекурсию
+  //console.log(list.value);
+  if (list.next) {
+    printList1(list.next)
   }
 }
-//printList(list);
-printList1(list);
+function printReverseList(list){
+  if (list.next) {
+    printReverseList(list.next)
+  }
+  //console.log(list.value);
+}
+function printReverseList1(list){
+  let temp = list;
+  let arr = [list.value];
+  while(temp.next){
+    //console.log(temp.value);
+    temp = temp.next;
+    arr.push(temp.value)
+
+  }
+  for (let i = arr.length - 1; i >= 0; i--){
+    //console.log(arr[i])
+  }
+}
+
+
+getTime(printList, list);
+getTime(printList1, list);
+getTime(printReverseList, list);
+getTime(printReverseList1, list);
+
+console.log('Функции вывода результата закоментированы');

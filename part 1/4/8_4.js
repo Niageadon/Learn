@@ -20,11 +20,6 @@ function filterRangeInPlace(arr, a, b){
 }
 arr = [5, 3, 8, 1];
 
-let time = performance.now();
 // некий код
 filterRangeInPlace(arr, 1, 4);
-for (let i = 0; i < 1000; i++){
-  time = performance.now() - time;
-}
-console.log('Время выполнения = ', time);
 console.log(arr);
