@@ -16,4 +16,21 @@ alert( aclean(arr) ); // "воз,киборг,корсет" или "ЗОВ,гр�
 
 let arr = ["воз", "киборг", "корсет", "ЗОВ", "гробик", "костер", "сектор"];
 
+function aclean(arr){
+  let word;
+  for (let i = 0; i < arr.length; i++){
+    word = arr[i].toLowerCase().split('').sort();
+    for (let j = 0; j < arr.length - i; j++){
+      if (arr[i+1]){
+        console.log(arr[i+1].toLowerCase().split('').sort().join(''), word.join(''));
+        if (arr[i+1].toLowerCase().split('').sort().join('') === word.join('')){
+          arr.splice(i+1, 1);
+          i--;
+        }
+      }
+    }
+  }
+}
 
+aclean(arr);
+console.log(arr);
