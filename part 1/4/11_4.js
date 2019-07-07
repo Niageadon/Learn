@@ -10,9 +10,13 @@ alert( getDateAgo(date, 2) ); // 31, (31 декабря 2014)
 alert( getDateAgo(date, 365) ); // 2, (2 января 2014)
 P.S. Важная деталь: в процессе вычислений функция не должна менять переданный ей объект date.
 * * * */
-let date = new Date(2012, 1, 1);
+let date = new Date(2015, 0, 2);
 
 function getDateAgo(date, days) {
-  return new Date(date.getFullYear(), date.getMonth(), date.getDay() - days)
+  let d = new Date(date);         // копируем дату
+  d.setDate(d.getDate() - days);  // устанавливаем смещение по дням
+  return d.getDate()
 }
-console.log(getDateAgo(date, 3))
+console.log(getDateAgo(date, 1));
+console.log(getDateAgo(date, 2));
+console.log(getDateAgo(date, 365));
