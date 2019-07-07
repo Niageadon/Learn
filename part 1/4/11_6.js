@@ -10,7 +10,6 @@ getSecondsToday() == 36000 // (3600 * 10)
 function getSecondsToday() {
   let currentTime = new Date(); // нулевой день следующего месяца = последний день текущего
   let temp = new Date();
-  console.log((+temp)/60/60 )
   temp.setHours(0);
   temp.setMinutes(0);
   temp.setSeconds(0);
