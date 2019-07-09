@@ -54,3 +54,13 @@ var users = [{
   age: 18
 }];
 
+function byField(mode) {
+  return function sort(a, b) {
+    return a[mode] > b[mode]? 1: -1
+  }
+}
+
+console.log(users);
+users.sort(byField('age'));
+console.log(users);
+
