@@ -32,5 +32,7 @@ obj.go();            // (1) object
 (obj.go)();          // (2) object
 
 (method = obj.go)();      // (3) undefined
-console.log(method)
+console.log('this - контекст выполнения. Тут его нету, потому - undef')
 (obj.go || obj.stop)(); // (4) undefined
+console.log('Аналогично, конктекст в такой записи не передаётся.')
+
