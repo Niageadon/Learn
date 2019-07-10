@@ -18,14 +18,33 @@ alert( filter(arr, inArray([1, 2, 10])) ); // 1,2
 
 function filter(arr, fun){
   let result = [];
- for (let i = 0; i < arr.length; i++){
+  for (let i = 0; i < arr.length; i++){
      if(fun(arr[i])) result.push(arr[i])
   }
- return result
+  return result
 }
 
-a = filter([1,2,3,4,5,6], function(a) {
-  return a % 2 === 0
-})
+function inBetween(a, b){
+  return function (value) {
+    return (value => a) && (value <= b)
+  }
+}
+function inArray(arr){
+  return function (value) {
+    for (let i = 0; i< arr.length; i++){
+      if (arr[i] === value) return true
+    }
+    return false
+  }
+}
 
-console.log(a)
+let a = filter([1,2,3,4,5,6], function(a) {
+  return a % 2 === 0
+});
+console.log(a);
+
+let b = filter([1,2,3,4,5,6], inBetween(1, 2));
+console.log(b);
+
+let c = filter([1,2,3,4,5,6], inArray([1,3,5]));
+console.log(c);
