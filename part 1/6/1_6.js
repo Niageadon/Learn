@@ -27,8 +27,8 @@ let calculator = {
   mul: function () {
     return (this.a && this.b)? this.a * this.b: 'Значения не определены'
   }
-}
+};
 
 calculator.read();
-console.log(calculator.sum())
-console.log(calculator.mul())
+console.log(calculator.sum());
+console.log(calculator.mul());
