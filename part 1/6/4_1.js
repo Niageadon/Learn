@@ -29,24 +29,28 @@ alert( vasya.fullName ); // Василий Сидоров
 function User(fullName) {
   this.fullName = fullName;
   //this.firstName = 1;
+  Object.defineProperties(this,  {
+    firstName:{
+      get: function() {
+        return this.fullName.split(' ')[0];
+      },
+      set: function(value) {
+        this.fullName = value + ' ' + this.fullName.split(' ')[1] ;
+      }
+    },
+    secondName:{
+      get: function() {
+        return this.fullName.split(' ')[1];
+      },
+      set: function(value) {
+        this.fullName = this.fullName.split(' ')[0] + ' ' + value;
+      }
+    }
+  });
+
 }
 
 var vasya = new User("Василий Попкин");
 console.log(vasya);
-Object.defineProperty(vasya, "firstName ", {
-  get: function() {
-    console.log(this.fullName);
-    var split = this.fullName.split(' ');
-    this.firstName = split[0];
-    this.surname = split[1];
-    return this.firstName//this.firstName;
-  },
-
-  set: function(value) {
-    var split = this.fullName.split(' ');
-
-  }
-});
-
 
 console.log(vasya.firstName)
