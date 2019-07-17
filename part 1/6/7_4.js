@@ -30,4 +30,4 @@ var bound = sayHi.bind({
 
 alert( bound.test ); // что выведет? почему?
 
-console.log('Мы передаём новый контекст, в котором нету поля "test", результат - undefined');
+console.log('Мы привязываем новый контекст, в котором нету поля "test", результат - undefined');
