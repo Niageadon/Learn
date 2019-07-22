@@ -1,56 +1,44 @@
-/*done В решении на сайте условие по "Публичный метод getFood() возвращает еду в виде массива, добавление или удаление элементов из
- которого не должно влиять на свойство food холодильника." не выполнено
+/*done
 
 
- Создайте класс для холодильника Fridge(power), наследующий от Machine, с приватным свойством food и методами addFood(...), getFood():
+ Добавьте в холодильник методы:
 
-Приватное свойство food хранит массив еды.
-Публичный метод addFood(item) добавляет в массив food новую еду, доступен вызов с несколькими аргументами addFood(item1, item2...) для добавления нескольких элементов сразу.
-Если холодильник выключен, то добавить еду нельзя, будет ошибка.
-Максимальное количество еды ограничено power/100, где power – мощность холодильника, указывается в конструкторе. При попытке добавить больше – будет ошибка
-Публичный метод getFood() возвращает еду в виде массива, добавление или удаление элементов из которого не должно влиять на свойство food холодильника.
+Публичный метод filterFood(func), который возвращает всю еду, для которой func(item) == true
+Публичный метод removeFood(item), который удаляет еду item из холодильника.
 Код для проверки:
 
-var fridge = new Fridge(200);
-fridge.addFood("котлета"); // ошибка, холодильник выключен
-Ещё код для проверки:
-
-// создать холодильник мощностью 500 (не более 5 еды)
 var fridge = new Fridge(500);
 fridge.enable();
-fridge.addFood("котлета");
-fridge.addFood("сок", "зелень");
-fridge.addFood("варенье", "пирог", "торт"); // ошибка, слишком много еды
-Код использования холодильника без ошибок:
+fridge.addFood({
+  title: "котлета",
+  calories: 100
+});
+fridge.addFood({
+  title: "сок",
+  calories: 30
+});
+fridge.addFood({
+  title: "зелень",
+  calories: 10
+});
+fridge.addFood({
+  title: "варенье",
+  calories: 150
+});
 
-var fridge = new Fridge(500);
-fridge.enable();
-fridge.addFood("котлета");
-fridge.addFood("сок", "варенье");
+fridge.removeFood("нет такой еды"); // без эффекта
+alert( fridge.getFood().length ); // 4
 
-var fridgeFood = fridge.getFood();
-alert( fridgeFood ); // котлета, сок, варенье
+var dietItems = fridge.filterFood(function(item) {
+  return item.calories < 50;
+});
 
-// добавление элементов не влияет на еду в холодильнике
-fridgeFood.push("вилка", "ложка");
+dietItems.forEach(function(item) {
+  alert( item.title ); // сок, зелень
+  fridge.removeFood(item);
+});
 
-alert( fridge.getFood() ); // внутри по-прежнему: котлета, сок, варенье
-Исходный код класса Machine, от которого нужно наследовать:
-
-function Machine(power) {
-  this._power = power;
-  this._enabled = false;
-
-  var self = this;
-
-  this.enable = function() {
-    self._enabled = true;
-  };
-
-  this.disable = function() {
-    self._enabled = false;
-  };
-}
+alert( fridge.getFood().length ); // 2
 
 *
 */
