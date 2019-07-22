@@ -1,4 +1,4 @@
-/*
+/* on work
  Напишите функцию formatDate(date), которая возвращает дату в формате dd.mm.yy.
 
 Ее первый аргумент должен содержать дату в одном из видов:
@@ -27,16 +27,18 @@ function formatDate(date) {
   else if (typeof date === 'string'){dateType = 'String'}
   else if (typeof date === 'number'){ dateType = 'Number'}
   else if (Array.isArray(date)){ dateType = 'Array'}
+  console.log(dateType)
 
   switch (dateType) {
     case "Date":{
     }
     case "String":{
-      let split = date.split('-');
+      console.log('hey',date)
+      let split = date.split("-");
       return split[2] + '.' + split[1] + '.' + split[0].slice(2,4);
     }
     case "Number":{
-    let d = new Date(date);
+    let d = new Date(0, 0, 0,0 ,0 , date);
     return (d)
     }
     case "Array":{}
