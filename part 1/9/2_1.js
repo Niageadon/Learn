@@ -36,14 +36,6 @@ Rabbit.prototype = {};
 alert( rabbit.eats );
 А если код будет такой? (заменена одна строка):
 
-
-
-
-
-
-
-
-
 function Rabbit(name) {}
 Rabbit.prototype = {
   eats: true
@@ -55,13 +47,6 @@ Rabbit.prototype.eats = false;
 
 alert( rabbit.eats );
 А такой? (заменена одна строка)
-
-
-
-
-
-
-
 
 
 function Rabbit(name) {}
@@ -77,13 +62,6 @@ alert( rabbit.eats );
 И последний вариант:
 
 
-
-
-
-
-
-
-
 function Rabbit(name) {}
 Rabbit.prototype = {
   eats: true
@@ -97,8 +75,12 @@ alert( rabbit.eats );
 
 
 
-*
+
 */
 
 
-console.log('');
+console.log('1 - true. Свойство наследуется от прототипа.');
+console.log('2 - true. Своство не изменится, т.к. свойство prototype работает только для оператора new.');
+console.log('3 - false. Ссылка на объект у __proto__ и prototype одна и та же.');
+console.log('4 - true. Delete удаляет собственное свойство, а мы берется оно из прототипа.');
+console.log('4 - undefined. Свойство из прототипа удалено.');
