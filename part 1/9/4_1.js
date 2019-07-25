@@ -74,5 +74,7 @@ CoffeeMachine.prototype.setWaterAmount = function(amount) {
 };
 
 var coffeeMachine = new CoffeeMachine(10000);
+console.log(coffeeMachine);
+
 coffeeMachine.setWaterAmount(50);
 coffeeMachine.run();
