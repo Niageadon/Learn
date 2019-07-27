@@ -10,8 +10,6 @@ function f(a, b) {
 
 f.defer(1000)(1, 2); // выведет 3 через 1 секунду.
 То есть, должны корректно передаваться аргументы.
-
-
 */
 
 Function.prototype.defer = function (ms) {
