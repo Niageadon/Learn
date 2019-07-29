@@ -35,11 +35,8 @@ Menu.prototype.showState = function() {
     console.log('alert', this._stateAsString());
 };
 
-
-
-
 function AnimatingMenu() {
-    Menu.apply(this, arguments);
+    //Menu.apply(this, arguments);
     let open = this.open;
     let close = this.close;
     let timer;
@@ -68,8 +65,11 @@ AnimatingMenu.prototype = Object.create(Menu.prototype);
 AnimatingMenu.prototype.STATE_ANIMATING = 3;
 ///////
 // использование..
+let bo = new Menu();
+console.log(bo)
 
 let menu = new AnimatingMenu();
+console.log(menu)
 menu.showState(); // закрыто
 
 menu.open();
