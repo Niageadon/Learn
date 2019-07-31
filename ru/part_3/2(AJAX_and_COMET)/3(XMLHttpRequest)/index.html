@@ -1,42 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
-  <img id="plane" src="https://js.cx/clipart/flyjet.jpg" alt="" class="container min">
-</body>
-</html>
+<!--
+Создайте код, который загрузит файл phones.json из текущей директории и выведет все названия телефонов из него в виде списка.
 
-<style>
-  .container{
-    transition-duration: .3s;
-  }
-  .min{
-    width: 40px;
-    height: 24px;
-  }
-  .max{
-    width: 400px;
-    height: 240px;
-  }
-</style>
+Демо результата:
+-->
+
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+<button onclick="loadPhones()" id="button">Загрузить1 phones.json!</button>
 
 <script>
-  /*
-  Реализуйте анимацию, как в демке ниже (клик на картинку):
-  Изображение растёт при клике с 40x24px до 400x240px .
-  Продолжительность анимации: 3 секунды.
-  По окончании вывести «Готово!».
-  Если в процессе анимации были дополнительные клики – они не должны ничего «сломать».
-  * */
-  plane.onclick = function() {
-    this.classList.remove('min');
-    this.classList.add('max')
-  };
-  plane.addEventListener('transitionend', function() {
-    alert('Готово!');
-  });
+  function loadPhones() {
 
+    var xhr = new XMLHttpRequest();
+
+    xhr.open('GET', 'http://localhost:8080/', true);
+
+    xhr.onreadystatechange = function()   {
+      if (xhr.readyState != 4) return;
+
+      button.innerHTML = 'Готово!';
+
+      if (xhr.status != 200) {
+        // обработать ошибку
+        alert(xhr.status + ': ' + xhr.statusText);
+      } else {
+        // вывести результат
+        console.log(xhr.responseText);
+      }
+
+    }
+
+    xhr.send();
+
+    button.innerHTML = 'Загружаю...';
+    button.disabled = true;
+  }
 </script>
+
+</body>
+
+</html>
