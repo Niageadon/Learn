@@ -15,16 +15,17 @@
 
 <button onclick="loadPhones()" id="button">Загрузить1 phones.json!</button>
 
+<table id="table"></table>
+
 <script>
   function loadPhones() {
-
+    let phones = [];
     var xhr = new XMLHttpRequest();
 
-    xhr.open('GET', 'http://localhost:8080/', true);
+    xhr.open('GET', 'phones.json', true);
 
     xhr.onreadystatechange = function()   {
       if (xhr.readyState != 4) return;
-
       button.innerHTML = 'Готово!';
 
       if (xhr.status != 200) {
@@ -32,9 +33,13 @@
         alert(xhr.status + ': ' + xhr.statusText);
       } else {
         // вывести результат
-        console.log(xhr.responseText);
+        JSON.parse(xhr.responseText).forEach((item)=>{
+         let element = document.createElement('div');
+          element.innerHTML = item.name;
+          document.body.appendChild(element);
+        })
+        button.style.display = 'none';
       }
-
     }
 
     xhr.send();
