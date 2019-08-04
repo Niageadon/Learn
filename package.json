@@ -1,0 +1,23 @@
+{
+  "name": "learn.javascript.ru",
+  "version": "1.0.0",
+  "description": "learn js",
+  "main": "8080",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ru/part_3/2(AJAX_and_COMET)/3(XMLHttpRequest)/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Niageadon/learn.javascript.ru.git"
+  },
+  "author": "niageadon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Niageadon/learn.javascript.ru/issues"
+  },
+  "homepage": "https://github.com/Niageadon/learn.javascript.ru#readme",
+  "dependencies": {
+    "node-static": "^0.7.11"
+  }
+}
