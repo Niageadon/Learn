@@ -1,0 +1,22 @@
+<!--TODO: прежде нужно разобраться с промисами-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<button onclick="getUser()">get user info</button>
+</body>
+</html>
+
+<script>
+  let userBase = ['jorgef', 'microsoft', 'elmish'];
+
+
+  async function getUser() {
+      await fetch('https://api.github.com/users/Niageadon').then((answer)=>{
+        console.log(answer.json());
+      })
+  }
+</script>
