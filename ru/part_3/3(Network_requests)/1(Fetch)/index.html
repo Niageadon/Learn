@@ -7,7 +7,6 @@
 </head>
 <body>
 <button onclick="getUser()">get user info</button>
-  <script src="1.js"></script>
 </body>
 </html>
 
@@ -17,9 +16,7 @@
 
   async function getUser() {
       await fetch('https://api.github.com/users/Niageadon').then((answer)=>{
-        answer.json();
-      }).then((data)=>{
-        return data
+        console.log(answer.json());
       })
   }
 </script>
