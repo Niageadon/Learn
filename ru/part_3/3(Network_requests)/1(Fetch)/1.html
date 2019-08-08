@@ -23,17 +23,17 @@
 
 <script>
   let userBase = ['jorgef', 'microsoft', 'elmish'];
-  getUser(userBase);
+  getUser(userBase).then(res => console.log(res));
 
   async function getUser(users) {
-    let answer;
-    let userNames = [];
-    for(let i = 0; i < users.length; i++){
-      userNames.push('https://api.github.com/users/' + users[i]);
-      //
+    let request = users.map(name => fetch('https://api.github.com/users/' + name));
+    let response;
+    try {
+      response = await Promise.all(request)
+    }catch (e) {
+      response = e;
     }
-    await Promise.all(fetch(...userNames))
-    console.log(userNames)
+    return response;
   }
   
 
