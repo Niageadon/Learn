@@ -1,4 +1,4 @@
-/* TODO
+/*
 
 У нас есть массив объектов, который нужно отсортировать:
 
@@ -23,8 +23,11 @@ users.sort(byField('age'));
 Напишите функцию byField, которая может быть использована для этого.
 
 * */
-function byField() {
-    return (type) => {}
+function byField(type) {
+    return function (a, b) {
+        console.log(a[type] , b[type] ,type);
+        return (a[type] > b[type])? 1 : -1
+    }
 }
 
 
@@ -33,4 +36,6 @@ let users = [
     { name: "Pete", age: 18, surname: "Peterson" },
     { name: "Ann", age: 19, surname: "Hathaway" }
 ];
-users.sort(byField('name'));
+//users.sort(byField('name'));
+users.sort(byField('age'));
+console.log(users)
