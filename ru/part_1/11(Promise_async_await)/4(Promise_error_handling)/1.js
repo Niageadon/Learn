@@ -9,8 +9,11 @@ new Promise(function(resolve, reject) {
 }).catch(alert);
 
 * */
-new Promise(function(resolve, reject) {
+  new Promise(function(resolve, reject) {
     setTimeout(() => {
-        throw new Error("Whoops!");
+      throw new Error("Whoops1");
     }, 1000);
-}).catch(alert);
+    throw new Error("Whoops2");
+  }).catch(alert);
+
+console.log('Ошибку обрабатывает ');
