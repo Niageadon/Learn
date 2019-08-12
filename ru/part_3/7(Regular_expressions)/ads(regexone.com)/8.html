@@ -1,10 +1,8 @@
 <!--
-Match	Ana	To be completed
-Match	Bob	To be completed
-Match	Cpc	To be completed
-Skip	aax	To be completed
-Skip	bby	To be completed
-Skip	ccz
+Match	aaaabcc	To be completed
+Match	aabbbbc	To be completed
+Match	aacc	To be completed
+Skip	a
 -->
 
 <!DOCTYPE html>
@@ -19,8 +17,8 @@ Skip	ccz
 </html>
 
 <script>
-  let str = ['Ana', 'Bob', 'Cpc'];
-  let reg = /[A-Z]/;
+  let str = ['aaaabcc', 'aabbbbc', 'aacc'];
+  let reg = /a{2,}/;
   let answer = [];
   answer[0] = str[0].match(reg);
   answer[1] = str[1].match(reg);
