@@ -1,0 +1,27 @@
+<!--
+Capture	Jan 1987	Jan 1987 1987
+Capture	May 1969	May 1969 1969
+Capture	Aug 2011	Aug 2011 2011
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+  let str = ['Jan 1987', 'May 1969', 'Aug 2011', '1987', '1969', '2011'];
+  // $ - конец данных
+  let reg = /(\w+\s(\d+))/;
+  let answer = [];
+  for(let i = 0; i < str.length; i++){
+    answer[i] = str[i].match(reg);
+  }
+  console.log(answer)
+</script>
