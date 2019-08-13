@@ -1,8 +1,10 @@
 <!--
-Match	I love cats	Success
-Match	I love dogs	Success
-Skip	I love logs
-Skip	I love cogs
+Match	3.14529
+Match	-255.34
+Match	128
+Match	1.9e10
+Match	123,340.00
+Skip	720p
 -->
 
 <!DOCTYPE html>
@@ -17,9 +19,9 @@ Skip	I love cogs
 </html>
 
 <script>
-  let str = ['I love cats', 'I love dogs', 'I love logs', 'I love cogs'];
+  let str = ['3.14529\t', '-255.34', '128s', '1.9e10', '123,340.00', '720p'];
   // $ - конец данных
-  let reg = /I love (ca)|(d)/;
+  let reg = /^-?\d*(,\d+)?(.\d+e?\d+)?$/;
   let answer = [];
   for(let i = 0; i < str.length; i++){
     answer[i] = str[i].match(reg);
