@@ -1,0 +1,28 @@
+<!--
+Match	I love cats	Success
+Match	I love dogs	Success
+Skip	I love logs
+Skip	I love cogs
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+  let str = ['I love cats', 'I love dogs', 'I love logs', 'I love cogs'];
+  // $ - конец данных
+  let reg = /I love (ca)|(d)/;
+  let answer = [];
+  for(let i = 0; i < str.length; i++){
+    answer[i] = str[i].match(reg);
+  }
+  console.log(answer)
+</script>
