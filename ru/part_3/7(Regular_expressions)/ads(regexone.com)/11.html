@@ -1,7 +1,7 @@
-<!-- TODO
-Match	Mission: successful	To be completed
-Skip	Last Mission: unsuccessful	To be completed
-Skip	Next Mission: successful upon capture of target
+<!--
+Capture	file_record_transcript.pdf
+Capture	file_07241999.pdf
+Skip	testfile_fake.pdf.tmp
 -->
 
 <!DOCTYPE html>
@@ -16,12 +16,12 @@ Skip	Next Mission: successful upon capture of target
 </html>
 
 <script>
-  let str = ['Mission: successful'];
+  let str = ['file_record_transcript.pdf', 'file_07241999.pdf', 'testfile_fake.pdf.tmp'];
   // $ - конец данных
-  let reg = /Mission: successful$/;
+  let reg = /^(file_(\d+|\w+))\.pdf/;
   let answer = [];
-  answer[0] = str[0].match(reg);
-  //answer[1] = str[1].match(reg);
-  //answer[2] = str[2].match(reg);
+  for(let i = 0; i < str.length; i++){
+    answer[i] = str[i].match(reg);
+  }
   console.log(answer)
 </script>
