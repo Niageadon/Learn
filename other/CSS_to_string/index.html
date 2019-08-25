@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+    <textarea id="input">
+    </textarea>
+    <br/>
+    <button onclick="convertToString(input)">Convert</button>
+    <hr/>
+<div>
+
+</div>
+</body>
+</html>
+
+<script>
+    function convertToString(str){
+        let counter = 0;
+        
+        let input = document.getElementById('input').value;
+        let answer = input.split('\n');
+        for(let i = 0; i < answer.lenght; i++){
+            answer[i] += ' +`';
+        console.log('d',answer[i])
+        }
+        console.log(answer)
+
+
+    }
+</script>
+
+
+<style>
+    textarea{
+        min-width: 500px;
+        min-height: 200px;
+    }
+</style>
