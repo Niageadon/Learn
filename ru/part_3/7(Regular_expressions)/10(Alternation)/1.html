@@ -1,0 +1,27 @@
+<!--
+Существует много языков программирования, например, Java, JavaScript, PHP, C, C++.
+
+Напишите регулярное выражение, которое найдёт их все в строке Java JavaScript PHP C++ C:
+
+let reg = /ваше регулярное выражение/флаги;
+
+alert("Java JavaScript PHP C++ C".match(reg)); // Java JavaScript PHP C++ C
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+
+<script>
+let reg = /\w+\+*/g;
+
+alert("Java JavaScript PHP C++ C".match(reg)); // Java JavaScript PHP C++ C
+</script>
