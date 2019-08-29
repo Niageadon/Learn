@@ -22,8 +22,9 @@ let map = new Map();
 
 map.set("name", "John");
 
-let keys = map.keys();
+let keys = Array.from(map.keys());
 
 // Error: keys.push is not a function
 // Ошибка: keys.push -- это не функция
+console.log('У Map нету метода "push", поэтому будем хранить ключи в масиве.');
 keys.push("more");
