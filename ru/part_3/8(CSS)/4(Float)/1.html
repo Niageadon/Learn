@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    /* ваш стиль */
+  </style>
+</head>
+
+<body>
+
+  <!-- картинки для узлов -->
+
+  <ul>
+    <li class="open">
+
+      <div class="icon"></div>
+      <div class="text">Раздел 1
+      <br>(занимает две строки)</div>
+      <ul>
+
+        <li class="closed">
+          <div class="icon"></div>
+          <div class="text">Раздел 1.1</div>
+        </li>
+
+        <li class="leaf">
+          <div class="icon"></div>
+          <div class="text">Страница 1.2
+            <br>(занимает две строки)</div>
+        </li>
+      </ul>
+    </li>
+    <li class="closed">
+      <div class="icon"></div>
+      <div class="text">Раздел 2
+        <br>(занимает две строки)</div>
+    </li>
+  </ul>
+
+</body>
+
+</html>
+
+<style>
+    ul{
+        list-style: none;
+    }
+    img{
+        cursor: pointer;
+    }
+    .icon{
+        width: 16px;
+        height: 16px;
+        float: left;
+    }
+    .closed .icon{
+        background-image: url(https://js.cx/sprite-tree/plus.gif);
+        cursor: pointer;
+    }
+    .open .icon{
+        background-image: url(https://js.cx/sprite-tree/plus.gif);
+        cursor: pointer;
+    }
+    .leaf .icon{
+        background-image: url(https://js.cx/sprite-tree/article.gif);
+    }
+    .text {
+      margin: 4px 16px;
+    }
+</style>
