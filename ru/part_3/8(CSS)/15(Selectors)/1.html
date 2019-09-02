@@ -1,0 +1,84 @@
+<!--
+HTML-документ:
+
+<input type="checkbox">
+<input type="checkbox" checked>
+<input type="text" id="message">
+
+<h3 id="widget-title">Сообщения:</h3>
+<ul id="messages">
+  <li id="message-1">Сообщение 1</li>
+  <li id="message-2">Сообщение 2</li>
+  <li id="message-3" data-action="delete">Сообщение 3</li>
+  <li id="message-4" data-action="edit do-not-delete">Сообщение 4</li>
+  <li id="message-5" data-action="edit delete">Сообщение 5</li>
+  <li><a href="#">...</a></li>
+</ul>
+
+<a href="http://site.com/list.zip">Ссылка на архив</a>
+<a href="http://site.com/list.pdf">..И на PDF</a>
+Задания:
+
+Выбрать input типа checkbox.
+Выбрать input типа checkbox, НЕ отмеченный.
+Найти все элементы с id=message или message-*.
+Найти все элементы с id=message-*.
+Найти все ссылки с расширением href="...zip".
+Найти все элементы с атрибутом data-action, содержащим delete в списке (через пробел).
+Найти все элементы, у которых ЕСТЬ атрибут data-action, но он НЕ содержит delete в списке (через пробел).
+Выбрать все чётные элементы списка #messages.
+Выбрать один элемент сразу за заголовком h3#widget-title на том же уровне вложенности.
+Выбрать все ссылки, следующие за заголовком h3#widget-title на том же уровне вложенности.
+Выбрать ссылку внутри последнего элемента списка #messages.
+-->
+
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <style>
+  </style>
+
+
+</head>
+
+<body>
+
+    <input type="checkbox">
+    <input type="checkbox" checked>
+    <input type="text" id="message">
+    
+    <h3 id="widget-title">Сообщения:</h3>
+    <ul id="messages">
+      <li id="message-1">Сообщение 1</li>
+      <li id="message-2">Сообщение 2</li>
+      <li id="message-3" data-action="delete">Сообщение 3</li>
+      <li id="message-4" data-action="edit do-not-delete">Сообщение 4</li>
+      <li id="message-5" data-action="edit delete">Сообщение 5</li>
+      <li><a href="#">...</a></li>
+    </ul>
+    
+    <a href="http://site.com/list.zip">Ссылка на архив</a>
+    <a href="http://site.com/list.pdf">..И на PDF</a>
+
+</body>
+
+</html>
+
+<script>
+    function check(selector){
+      let elems = document.querySelectorAll(selector);
+      console.log(selector, elems.length, elems)
+    }
+    check('input[type="checkbox"]'); //Выбрать input типа checkbox.
+    check('input[type="checkbox"]:not(:checked)'); //Выбрать input типа checkbox, НЕ отмеченный.
+    check('[id|="message"]'); //Найти все элементы с id=message или message-*.
+    check('[id^="message-"]'); //Найти все элементы с id=message-*.
+    check('a[href$=".zip"]'); //Найти все ссылки с расширением href="...zip".
+    check('[data-action~="delete"]'); //Найти все элементы с атрибутом data-action, содержащим delete в списке (через пробел).
+    check('[data-action]:not([data-action~="delete"])'); //Найти все элементы, у которых ЕСТЬ атрибут data-action, но он НЕ содержит delete в списке (через пробел).
+    check('#messages li:nth-child(2n)'); //Выбрать все чётные элементы списка #messages.
+    check('h3#widget-title + *'); //Выбрать один элемент сразу за заголовком h3#widget-title на том же уровне вложенности.
+    check('h3#widget-title ~ a'); //Выбрать все ссылки, следующие за заголовком h3#widget-title на том же уровне вложенности.
+    check('#messages li:last-child a'); // Выбрать ссылку внутри последнего элемента списка #messages
+  </script>
