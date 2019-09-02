@@ -1,0 +1,76 @@
+<!--
+Создайте при помощи HTML/CSS форму для логина в модальном окне.
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+</head>
+
+<body>
+
+ <button>try to click</button>
+<div class="modal__container">
+  <div class="modal"></div>
+  <div class="modal__content">
+      <img src="https://js.cx/clipart/key.png" />
+      <h3>Добро пожаловать!</h3>
+      <table>
+        <tbody>
+          <tr>
+            <td>Логин</td>
+            <td>
+                <input type="text" name="browser" value="">
+            </td>
+          </tr>
+          <tr>
+              <td>Пароль</td>
+              <td>
+                  <input type="text" name="browser" value="">
+              </td>
+            </tr>
+        </tbody>
+      </table>
+  </div>
+</div>
+</html>
+
+<style>
+  .modal__container{
+    top: 0;
+    left: 0;
+    position: fixed; ;
+    width: 100%;
+    height: 100%;
+  }
+  .modal{
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute ;
+    background-color: blue;
+    margin: 20px;
+    opacity: 0.5;
+  }
+  .modal__content{
+    width: 300px;
+    height: 200px;
+    left :50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    position: relative;
+    padding: 10px 10px 10px 90px;
+  }
+  .modal__content img{
+    position: absolute ;
+    margin: 10px;
+    left: 0;  
+  }
+  .modal__content input{
+    border: 2px solid  black
+  }
+</style>
