@@ -38,30 +38,34 @@
 
 <head>
   <style>
-    .block {
-    height: 150px;
+    .container{
+      position: relative;
+    }
+    .container :last-child{
+      margin-top: 1em;
+    }
+    .description{
+      margin-left: 5px;
+      position: absolute;
+      z-index: 999;
+      color: red;
+    }
+    input{
+      position: absolute;
+      z-index: 0;
+    }
 
-    border: 1px solid #CCC;
-    background: #eee;
-  }
-
-  .spacer {
-    margin-left: 20%;
-    margin-right: 20%;
-    height: 80%;
-    margin-top: calc(150px * 0.1);
-    margin-bottom: calc(150px * 0.1);
-    border: 1px solid black;
-    background: #FFF;
-  }
   </style>
 </head>
 
 <body>
-
-  <div class="block">
-  <div class="spacer"></div>
-</div>
+  <div class="container">
+      Добро пожаловать
+      <br/>
+      <div class="description">Скажи пароль, друг</div>
+      <input class="input" type="password" pattern="boba"> 
+      <div>.. и заходи</div>
+  </div>
 
 
 </body>
