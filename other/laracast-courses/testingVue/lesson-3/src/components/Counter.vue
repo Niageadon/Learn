@@ -1,7 +1,8 @@
 <template>
     <div>
         <span class="count" v-text="count"></span>
-        <button @click="count++">Increment</button>
+        <button @click="count++" class="inc">Increment</button>
+        <button @click="count--" class="dec">Increment</button>
     </div>
 </template>
 

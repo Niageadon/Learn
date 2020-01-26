@@ -13,12 +13,17 @@ describe ('Counter', () => {
         expect(wrapper.vm.count).toBe(0);
     });
     
-    it ('increments the count when the button is clicked', () => {
+    it ('increments the count when the inc button is clicked', () => {
         expect(wrapper.vm.count).toBe(0);
         
-        wrapper.find('button').trigger('click');
+        wrapper.find('.inc').trigger('click');
         
         expect(wrapper.vm.count).toBe(1);
+    
+        wrapper.find('.dec').trigger('click');
+    
+        expect(wrapper.vm.count).toBe(0);
+    
     });
     
     it ('presents the current count', () => {
