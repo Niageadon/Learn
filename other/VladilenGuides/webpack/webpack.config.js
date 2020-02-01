@@ -1,5 +1,6 @@
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     //mode: 'development', //'production'
@@ -18,6 +19,15 @@ module.exports = {
         new HTMLWebpackPlugin({ //
             template: './src/index.html'
         }),
-        
-    ]
+        new  CleanWebpackPlugin() //удаляет старый хэш
+    ],
+    module: {
+        rules: [
+            {
+	            // Нужны для работы c css файлами
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            }
+        ]
+    },
 }

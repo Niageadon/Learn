@@ -1,5 +1,6 @@
 let clickCount = 0;
 window.addEventListener('click', () => {
-	clickCount++
+	clickCount++;
+	
 	console.log(clickCount)
 });
