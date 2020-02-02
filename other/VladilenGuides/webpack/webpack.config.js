@@ -11,7 +11,7 @@ module.exports = {
     },
     output: {
         filename: '[name].[contenthash].js',
-        // name - имя энтри файла
+        // name - имя энтри файла, берется из entry
         // contenthash - уникальный хэш бандла
         path: path.resolve(__dirname, 'dist')
     },
@@ -27,6 +27,10 @@ module.exports = {
 	            // Нужны для работы c css файлами
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.(svg|png|jpeg)/,
+                use: ['file-loader']
             }
         ]
     },
