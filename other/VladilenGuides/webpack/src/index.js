@@ -2,8 +2,8 @@ import {config} from "./modules/config";
 import service from './modules/service';
 import './modules/helloModule';
 import './styles/styles.css';
-import json from './assets/json'
-import image from './assets/google.svg'
+import json from '@ass/json'
+import image from '@ass/google.svg'
 
 console.log('config', config);
 console.log('json', json);

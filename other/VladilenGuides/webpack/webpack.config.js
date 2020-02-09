@@ -15,6 +15,12 @@ module.exports = {
         // contenthash - уникальный хэш бандла
         path: path.resolve(__dirname, 'dist')
     },
+    resolve: {
+        extensions: ['.js', '.jpg', '.svg', '.json'],
+        alias: {
+            '@ass': path.resolve(__dirname, 'src/assets')
+        }
+    },
     plugins: [
         new HTMLWebpackPlugin({ //
             template: './src/index.html'
