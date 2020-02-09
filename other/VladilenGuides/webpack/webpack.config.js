@@ -26,10 +26,15 @@ module.exports = {
             {
 	            // Нужны для работы c css файлами
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                use: ['style-loader', 'css-loader'] // Порядок запуска лоадеров: справа налево
             },
             {
+                // Для работы с изображениями
                 test: /\.(svg|png|jpeg)/,
+                use: ['file-loader']
+            },
+            {
+                test: /\.(ttf|otf)$/,
                 use: ['file-loader']
             }
         ]
