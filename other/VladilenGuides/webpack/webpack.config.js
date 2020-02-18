@@ -21,6 +21,10 @@ module.exports = {
             '@ass': path.resolve(__dirname, 'src/assets')
         }
     },
+    devServer: {
+        // Плагин webpack-dev-server
+        port: 4000
+    },
     plugins: [
         new HTMLWebpackPlugin({ //
             template: './src/index.html'
