@@ -25,6 +25,12 @@ module.exports = {
         // Плагин webpack-dev-server
         port: 4000
     },
+    optimization: {
+        // Выносит библиотеки в отдельный vendor файл
+        splitChunks: {
+            chunks: 'all'
+        }
+    },
     plugins: [
         new HTMLWebpackPlugin({ //
             template: './src/index.html'

@@ -1,3 +1,4 @@
+import * as _ from 'lodash'
 var path = require('path');
 var webpack = require('webpack');
 var config = {
