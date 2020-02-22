@@ -1,6 +1,7 @@
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const copyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     //mode: 'development', //'production'
@@ -35,7 +36,14 @@ module.exports = {
         new HTMLWebpackPlugin({ //
             template: './src/index.html'
         }),
-        new  CleanWebpackPlugin() //удаляет старый хэш
+        new  CleanWebpackPlugin(),  // Удаляет старый хэш
+        new copyWebpackPlugin([     // Плагин для копирования файлов или папок
+            {
+                from: path.resolve(__dirname, 'src/assets/favicon.ico'),
+                to: path.resolve(__dirname, 'dist')
+            }
+        ]),
+        
     ],
     module: {
         rules: [
