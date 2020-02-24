@@ -2,6 +2,7 @@ const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const copyWebpackPlugin = require('copy-webpack-plugin');
+const miniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
     //mode: 'development', //'production'
@@ -43,14 +44,22 @@ module.exports = {
                 to: path.resolve(__dirname, 'dist')
             }
         ]),
+        new miniCssExtractPlugin({
+            filename: '[name].[contenthash].css'
+        })
         
     ],
     module: {
         rules: [
-            {
+            /*{
 	            // Нужны для работы c css файлами
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader'] // Порядок запуска лоадеров: справа налево
+            },*/
+            {
+	            // Нужны для работы c css файлами
+                test: /\.css$/,
+                use: [miniCssExtractPlugin.loader, 'css-loader'] // Порядок запуска лоадеров: справа налево
             },
             {
                 // Для работы с изображениями
