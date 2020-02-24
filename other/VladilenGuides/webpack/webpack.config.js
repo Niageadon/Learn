@@ -3,6 +3,7 @@ const HTMLWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const copyWebpackPlugin = require('copy-webpack-plugin');
 const miniCssExtractPlugin = require('mini-css-extract-plugin')
+const isDev = process.env.NODE_ENV === 'development'
 
 module.exports = {
     //mode: 'development', //'production'
@@ -25,7 +26,8 @@ module.exports = {
     },
     devServer: {
         // Плагин webpack-dev-server
-        port: 4000
+        port: 4000,
+        hot: isDev
     },
     optimization: {
         // Выносит библиотеки в отдельный vendor файл
@@ -59,7 +61,15 @@ module.exports = {
             {
 	            // Нужны для работы c css файлами
                 test: /\.css$/,
-                use: [miniCssExtractPlugin.loader, 'css-loader'] // Порядок запуска лоадеров: справа налево
+                use: [
+                    {
+                        loader: miniCssExtractPlugin.loader,
+                        options: {
+                            hmr: isDev, // hot module replacement
+                            reloadAll: true
+                        }
+                    },
+                    'css-loader'] // Порядок запуска лоадеров: справа налево
             },
             {
                 // Для работы с изображениями
