@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const copyWebpackPlugin = require('copy-webpack-plugin');
 const miniCssExtractPlugin = require('mini-css-extract-plugin')
 const isDev = process.env.NODE_ENV === 'development'
+const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
     //mode: 'development', //'production'
@@ -37,7 +38,10 @@ module.exports = {
     },
     plugins: [
         new HTMLWebpackPlugin({ //
-            template: './src/index.html'
+            template: './src/index.html',
+            minify: {
+                collapseWhitespace: isProd
+            }
         }),
         new  CleanWebpackPlugin(),  // Удаляет старый хэш
         new copyWebpackPlugin([     // Плагин для копирования файлов или папок
