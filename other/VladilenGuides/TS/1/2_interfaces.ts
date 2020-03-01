@@ -5,10 +5,6 @@ interface program {
 	entity?: [],
 	activities?: object[],
 	notifications?: {
-		first?: {
-			title: string,
-			text: string
-		}
 		finish: {
 			title: string,
 			text: string,
@@ -17,7 +13,7 @@ interface program {
 	}
 }
 
-let learnProgram: program = {
+let course: program = {
 	programId: 11,
 	assignId: 1,
 	progress: 0,
@@ -29,7 +25,42 @@ let learnProgram: program = {
 		}
 	}
 };
-learnProgram.notifications.first = {
-	title: 'hello',
-	text: 'try this course'
-};
+
+const course1 = {} as program;
+
+//_________________________________________________
+interface welcomeProgram extends program {
+	notifications: {
+		finish: {
+			title: string,
+			text: string,
+		},
+		start: {
+			title: string,
+			text: string,
+			url?: string
+		}
+	},
+	showNotification: (notification: object) => void
+}
+const course2: welcomeProgram = {
+	programId: 12,
+	assignId: 2,
+	progress: 0,
+	notifications: {
+		start: {
+			title: 'hello',
+			text: 'click "about"',
+			url: 'google.com'
+		},
+		finish: {
+			title: 'great work',
+			text: 'try another one'
+		},
+	},
+	showNotification(notif = this.notifications): void {
+		console.log(this.notifications.start.title);
+		console.log(this.notifications.start.text);
+	}
+}
+
