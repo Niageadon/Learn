@@ -20,3 +20,7 @@ register = 0xF1;
 // ARRAY
 let dishes: string[] = ['olive', 'borsh', 'kimchi'];
 
+//________________________________________________________
+// TYPES
+type alert = 'success' | 'danger' | 'warning';
+
