@@ -63,4 +63,4 @@ const course2: welcomeProgram = {
 		console.log(this.notifications.start.text);
 	}
 }
-
+course2.showNotification({});
