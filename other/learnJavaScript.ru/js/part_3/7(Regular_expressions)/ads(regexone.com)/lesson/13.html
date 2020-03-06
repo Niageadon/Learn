@@ -1,0 +1,27 @@
+<!--
+Capture	1280x720	1280 720
+Capture	1920x1600	1920 1600
+Capture	1024x768	1024 768
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+  let str = ['1280', '720', '1920', '1600', '1024', '768'];
+  // $ - конец данных
+  let reg = /^(\d+)x(\d+)/;
+  let answer = [];
+  for(let i = 0; i < str.length; i++){
+    answer[i] = str[i].match(reg);
+  }
+  console.log(answer)
+</script>

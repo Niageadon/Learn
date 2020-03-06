@@ -1,0 +1,27 @@
+<!--
+Match	1 file found?	To be completed
+Match	2 files found?	To be completed
+Match	24 files found?	To be completed
+Skip	No files found.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+  let str = ['1 file found?', '2 files found?', '24 files found?'];
+  let reg = /\d{1,}/;
+  let answer = [];
+  answer[0] = str[0].match(reg);
+  answer[1] = str[1].match(reg);
+  answer[2] = str[2].match(reg);
+  console.log(answer)
+</script>

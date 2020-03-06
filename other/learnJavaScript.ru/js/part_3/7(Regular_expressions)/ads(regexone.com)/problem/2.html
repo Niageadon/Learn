@@ -1,0 +1,30 @@
+<!--
+Capture	415-555-1234	  415
+Capture	650-555-2345	  650
+Capture	(416)555-3456	  416
+Capture	202 555 4567	  202
+Capture	4035555678	    403
+Capture	1 416 555 9292	416
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+  let str = ['415-555-1234', '650-555-234', '(416)555-3456', '202 555 4567', '4035555678', '1 416 555 9292'];
+  // $ - конец данных
+  let reg = /(\d{3})/;
+  let answer = [];
+  for(let i = 0; i < str.length; i++){
+    answer[i] = str[i].match(reg);
+  }
+  console.log(answer)
+</script>

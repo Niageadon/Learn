@@ -1,0 +1,69 @@
+<!--
+В задаче Animated circle мы анимировали появление круга.
+
+Давайте представим, что теперь нам нужен не просто круг, а круг с сообщением внутри. И сообщение должно появляться после анимации (когда круг достигнет своих размеров), иначе это будет некрасиво.
+
+В том решении функция showCircle(cx, cy, radius) рисовала круг, но способа узнать, что всё нарисовано, не было.
+
+Поэтому добавим в параметры колбэк: showCircle(cx, cy, radius, callback), который выполним, когда анимация будет завершена. Функция callback добавить в наш круг <div> элемент.
+
+Посмотрите пример:
+
+showCircle(150, 150, 100, div => {
+  div.classList.add('message-ball');
+  div.append("Hello, world!");
+});
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+  function showCircle(cx, cy, radius, callback){
+    let circle = document.createElement('div');
+    circle.className = 'circle';
+    circle.style.top = cy + 'px';
+    circle.style.left = cx + 'px';
+    circle.style.width = 0 + 'px';
+    circle.style.height = 0 + 'px';
+    document.body.append(circle);
+
+    let timer = setTimeout(() => {
+      circle.style.width = radius * 2 + 'px';
+      circle.style.height = radius * 2 + 'px';
+      circle.addEventListener('transitionend', function handler() {
+        circle.removeEventListener('transitionend', handler);
+        callback(circle);
+      });
+    }, 0);
+  }
+
+  showCircle(150, 150, 100, div => {
+    div.classList.add('text');
+    div.append("Hello, world!");
+  });
+</script>
+
+<style>
+  .circle {
+    transition-property: width, height, margin-left, margin-top;
+    transition-duration: 2s;
+    position: fixed;
+    transform: translateX(-50%) translateY(-50%);
+    background-color: red;
+    border-radius: 50%;
+  }
+  .text {
+    font-size: 20px;
+    line-height: 200px;
+    text-align: center;
+  }
+</style>

@@ -1,0 +1,27 @@
+<!--
+Match	1.   abc	To be completed
+Match	2.	abc	To be completed
+Match	3.           abc	To be completed
+Skip	4.abc
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+  let str = ['   abc', '\tabc', '           abc'];
+  let reg = /\d\.\s/;
+  let answer = [];
+  answer[0] = str[0].match(reg);
+  answer[1] = str[1].match(reg);
+  //answer[2] = str[2].match(reg);
+  console.log(answer)
+</script>

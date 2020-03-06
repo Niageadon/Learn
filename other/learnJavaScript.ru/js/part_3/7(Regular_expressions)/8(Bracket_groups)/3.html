@@ -1,0 +1,53 @@
+<!--
+Арифметическое выражение включает два числа и оператор между ними. Например:
+
+1 + 2
+1.2 * 3.4
+-3 / -6
+-2 - 2
+Оператором может быть: "+", "-", "*" или "/".
+
+В выражении могут быть пробелы в начале, в конце или между частями выражения.
+
+Создайте функцию parse(expr), которая принимает выражение и возвращает массив из трёх элементов:
+
+Первое число.
+Оператор.
+Второе число.
+Например:
+
+let [a, op, b] = parse("1.2 * 3.4");
+
+alert(a); // 1.2
+alert(op); // *
+alert(b); // 3.4
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+
+<script>
+let [a, op, b] = parse("1.2 * 3.4");
+
+alert(a); // 1.2
+alert(op); // *
+alert(b); // 3.4
+function parse(expr){
+  let reg = /[-*+/]{1}/;
+  let operator = expr.match(reg);
+  reg = /\d+.?\d+/g;
+  let value = expr.match(reg);
+  console.log([value[0], operator[0], value[1]]);
+  return [value[0], operator[0], value[1]];
+};
+
+</script>

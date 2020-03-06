@@ -1,0 +1,28 @@
+<!--
+  Задача: подогнать элемент по ширине внешнего элемента, чтобы он заполнял всё его пространство. Без привязки к конкретному размеру элемента в пикселях.
+
+Например, мы хотим, чтобы элементы формы ниже были одинакового размера:
+-->
+<style>
+  form {
+    width: 200px;
+    border: 2px solid green;
+  }
+
+
+  form input, form select {
+    display: block;
+    padding-left: 5px;
+    box-sizing: border-box;
+    width: 100%;
+    /* padding для красоты */
+  }
+</style>
+
+<form>
+  <input>
+  <input>
+  <select>
+    <option>опции</option>
+  </select>
+</form>

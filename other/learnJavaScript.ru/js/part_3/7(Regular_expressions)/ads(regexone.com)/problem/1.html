@@ -1,0 +1,29 @@
+<!--
+Match	The quick brown fox jumps over the lazy dog.	To be completed
+Match	There were 614 instances of students getting 90.0% or above.	To be completed
+Match	The FCC had to censor the network for saying &$#*@!.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+  let str = ['Match The quick brown fox jumps over the lazy dog. To be completed',
+    'There were 614 instances of students getting 90.0% or above',
+    'The FCC had to censor the network for saying &$#*@!'];
+  // $ - конец данных
+  let reg = /.*/;
+  let answer = [];
+  for(let i = 0; i < str.length; i++){
+    answer[i] = str[i].match(reg);
+  }
+  console.log(answer)
+</script>
