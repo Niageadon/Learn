@@ -2,10 +2,27 @@ const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const copyWebpackPlugin = require('copy-webpack-plugin');
-const miniCssExtractPlugin = require('mini-css-extract-plugin')
+const miniCssExtractPlugin = require('mini-css-extract-plugin');
+const terserWebpackPlugin = require('terser-webpack-plugin');
+const optimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = process.env.NODE_ENV === 'production'
 
+const optimization = () => {
+    const config = {
+        splitChunks: {
+            // Выносит библиотеки в отдельный vendor файл
+            chunks: 'all'
+        }
+    }
+    if(isProd) {
+        config.minimizer = [
+            new optimizeCssAssetsWebpackPlugin(),   // минификация css файлов
+            new terserWebpackPlugin()               // минификация js-а
+        ]
+    }
+    return config
+}
 module.exports = {
     //mode: 'development', //'production'
     //mode: 'development',
@@ -30,12 +47,7 @@ module.exports = {
         port: 4000,
         hot: isDev
     },
-    optimization: {
-        // Выносит библиотеки в отдельный vendor файл
-        splitChunks: {
-            chunks: 'all'
-        }
-    },
+    optimization: optimization(),
     plugins: [
         new HTMLWebpackPlugin({ //
             template: './src/index.html',
