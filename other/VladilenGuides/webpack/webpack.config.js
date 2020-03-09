@@ -93,12 +93,26 @@ module.exports = {
                     {
                         loader: miniCssExtractPlugin.loader,
                         options: {
-                            hmr: isDev, // hot module replacement
+                            hmr: isDev,
                             reloadAll: true
                         }
                     },
                     'css-loader',
                     'less-loader'
+                ]
+            },
+            {
+                test: /\.s[ac]ss$/,
+                use: [
+                    {
+                        loader: miniCssExtractPlugin.loader,
+                        options: {
+                            hmr: isDev,
+                            reloadAll: true
+                        }
+                    },
+                    'css-loader',
+                    'sass-loader'
                 ]
             },
             {

@@ -5,6 +5,7 @@ import './styles/styles.css';
 import json from '@ass/json'
 import image from '@ass/google.svg'
 import './styles/index.less'
+import './styles/index.scss'
 
 console.log('config', config);
 console.log('json', json);
