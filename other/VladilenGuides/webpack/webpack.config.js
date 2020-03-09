@@ -23,6 +23,21 @@ const optimization = () => {
     }
     return config
 }
+const cssLoaders = (loader) => {
+    const loaders =  [
+        {
+            loader: miniCssExtractPlugin.loader,
+            options: {
+                hmr: isDev, // hot module replacement
+                reloadAll: true
+            }
+        },
+        'css-loader'] // Порядок запуска лоадеров: справа налево
+    if(loader) {
+        loaders.push(loader)
+    }
+    return loaders
+}
 module.exports = {
     //mode: 'development', //'production'
     //mode: 'development',
@@ -77,43 +92,15 @@ module.exports = {
             {
 	            // Нужны для работы c css файлами
                 test: /\.css$/,
-                use: [
-                    {
-                        loader: miniCssExtractPlugin.loader,
-                        options: {
-                            hmr: isDev, // hot module replacement
-                            reloadAll: true
-                        }
-                    },
-                    'css-loader'] // Порядок запуска лоадеров: справа налево
+                use: cssLoaders()
             },
             {
                 test: /\.less$/,
-                use: [
-                    {
-                        loader: miniCssExtractPlugin.loader,
-                        options: {
-                            hmr: isDev,
-                            reloadAll: true
-                        }
-                    },
-                    'css-loader',
-                    'less-loader'
-                ]
+                use: cssLoaders('less-loader')
             },
             {
                 test: /\.s[ac]ss$/,
-                use: [
-                    {
-                        loader: miniCssExtractPlugin.loader,
-                        options: {
-                            hmr: isDev,
-                            reloadAll: true
-                        }
-                    },
-                    'css-loader',
-                    'sass-loader'
-                ]
+                use: cssLoaders('sass-loader')
             },
             {
                 // Для работы с изображениями
