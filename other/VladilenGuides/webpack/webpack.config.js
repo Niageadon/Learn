@@ -88,6 +88,20 @@ module.exports = {
                     'css-loader'] // Порядок запуска лоадеров: справа налево
             },
             {
+                test: /\.less$/,
+                use: [
+                    {
+                        loader: miniCssExtractPlugin.loader,
+                        options: {
+                            hmr: isDev, // hot module replacement
+                            reloadAll: true
+                        }
+                    },
+                    'css-loader',
+                    'less-loader'
+                ]
+            },
+            {
                 // Для работы с изображениями
                 test: /\.(svg|png|jpeg)/,
                 use: ['file-loader']

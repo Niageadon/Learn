@@ -4,6 +4,7 @@ import './modules/helloModule';
 import './styles/styles.css';
 import json from '@ass/json'
 import image from '@ass/google.svg'
+import './styles/index.less'
 
 console.log('config', config);
 console.log('json', json);
