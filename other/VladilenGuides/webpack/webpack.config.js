@@ -42,7 +42,7 @@ module.exports = {
     //mode: 'development', //'production'
     //mode: 'development',
     entry: {
-        main: './src/index.js',
+        main: ['@babel/polyfill', './src/index.js'],
         analytics: './src/analytics/index.js'
     },
     output: {
@@ -114,7 +114,14 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: "babel-loader"
+                loader: {
+                    loader: "babel-loader",
+                    options: {
+                        presets: [
+                        
+                        ]
+                    }
+                }
             }
         ]
     },
