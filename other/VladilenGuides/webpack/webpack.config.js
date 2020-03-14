@@ -110,6 +110,11 @@ module.exports = {
             {
                 test: /\.(ttf|otf)$/,
                 use: ['file-loader']
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: "babel-loader"
             }
         ]
     },
