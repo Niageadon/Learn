@@ -1,6 +1,7 @@
 import {config} from "./modules/config";
 import service from './modules/service';
 import './modules/helloModule';
+import './modules/react.jsx';
 import './styles/styles.css';
 import json from '@ass/json'
 import image from '@ass/google.svg'
