@@ -5,8 +5,37 @@ const copyWebpackPlugin = require('copy-webpack-plugin');
 const miniCssExtractPlugin = require('mini-css-extract-plugin');
 const terserWebpackPlugin = require('terser-webpack-plugin');
 const optimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = process.env.NODE_ENV === 'production'
+
+const getPlugins = () => {
+    const base = [
+        new HTMLWebpackPlugin({ //
+            template: './src/index.html',
+            minify: {
+                collapseWhitespace: isProd
+            }
+        }),
+        new  CleanWebpackPlugin(),  // Удаляет старый хэш
+        new copyWebpackPlugin([     // Плагин для копирования файлов или папок
+            {
+                from: path.resolve(__dirname, 'src/assets/favicon.ico'),
+                to: path.resolve(__dirname, 'dist')
+            }
+        ]),
+        new miniCssExtractPlugin({
+            filename: '[name].[contenthash].css'
+        })
+
+    ]
+
+    if(isProd) {
+        base.push(new BundleAnalyzerPlugin())
+    return base
+    }
+}
 
 const optimization = () => {
     const config = {
@@ -84,25 +113,7 @@ module.exports = {
     },
     devtool: isDev? 'source-map': '',
     optimization: optimization(),
-    plugins: [
-        new HTMLWebpackPlugin({ //
-            template: './src/index.html',
-            minify: {
-                collapseWhitespace: isProd
-            }
-        }),
-        new  CleanWebpackPlugin(),  // Удаляет старый хэш
-        new copyWebpackPlugin([     // Плагин для копирования файлов или папок
-            {
-                from: path.resolve(__dirname, 'src/assets/favicon.ico'),
-                to: path.resolve(__dirname, 'dist')
-            }
-        ]),
-        new miniCssExtractPlugin({
-            filename: '[name].[contenthash].css'
-        })
-        
-    ],
+    plugins: getPlugins(),
     module: {
         rules: [
             /*{

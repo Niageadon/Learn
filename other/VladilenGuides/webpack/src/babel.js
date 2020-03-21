@@ -11,3 +11,7 @@ class User {
 }
 
 console.log('user-id', User.id)
+
+import('lodash').then(_ => {
+	console.log('__', _.random(1, 44, true))
+})
