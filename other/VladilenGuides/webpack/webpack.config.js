@@ -23,6 +23,26 @@ const optimization = () => {
     }
     return config
 }
+
+const getJsLoaders = () => {
+    const loaders= [{
+        loader: "babel-loader",
+        options: {
+            presets: [
+                '@babel/preset-env'
+            ],
+            plugins: [
+                '@babel/plugin-proposal-class-properties'
+            ]
+        }
+    }];
+    if(isDev) {
+        loaders.push('eslint-loader')
+    }
+    
+    return loaders
+}
+
 const cssLoaders = (loader) => {
     const loaders =  [
         {
@@ -115,17 +135,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: {
-                    loader: "babel-loader",
-                    options: {
-                        presets: [
-                            '@babel/preset-env'
-                        ],
-                        plugins: [
-                            '@babel/plugin-proposal-class-properties'
-                        ]
-                    }
-                }
+                use: getJsLoaders()
             },
             {
                 test: /\.ts$/,
