@@ -1,12 +1,12 @@
 import React from 'react'
 
 const Item = ({
-	content
+	label
 }) => {
 	
 	return (
 		<span>
-			{ content }
+			{ label }
 		</span>
 	)
 }

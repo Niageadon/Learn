@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import SearchPanel from './components/SearchPanel.jsx'
 import ListHeader from './components/ListHeader.jsx'
-import Index from './components/TodoList/index'
+import TodoList from './components/TodoList/index'
 
 const App = () => {
 	const val = '<script>alert("hacked")</script>';
@@ -12,7 +12,7 @@ const App = () => {
 			{ val }
 			<ListHeader/>
 			<SearchPanel/>
-			<Index/>
+			<TodoList list={[{label: 'boba'}, {label: 231}]}/>
 		</div>
 	);
 };
