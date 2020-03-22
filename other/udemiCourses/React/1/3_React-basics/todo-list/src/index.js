@@ -1,36 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-
-const TodoList = () => {
-	const items = [
-		'Learn React',
-		'build apps',
-		'get bibas'
-	]
-	
-	return (
-		<ul>
-			<li>Learn React</li>
-		</ul>
-	);
-};
-
-const ListHeader = () => {
-	const style = {
-		fontSize: '24px'
-	}
-	
-	
-	return (
-		<h1 style={ style }>my todo list</h1>
-	);
-};
-
-const SearchPanel = () => {
-	return (
-		<input placeholder="search"/>
-	);
-};
+import SearchPanel from './components/SearchPanel.jsx'
+import ListHeader from './components/ListHeader.jsx'
+import Index from './components/TodoList/index'
 
 const App = () => {
 	const val = '<script>alert("hacked")</script>';
@@ -40,7 +12,7 @@ const App = () => {
 			{ val }
 			<ListHeader/>
 			<SearchPanel/>
-			<TodoList/>
+			<Index/>
 		</div>
 	);
 };
