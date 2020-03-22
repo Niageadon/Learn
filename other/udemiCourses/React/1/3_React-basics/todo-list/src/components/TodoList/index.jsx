@@ -11,7 +11,7 @@ const Index = () => {
 	return (
 		<ul>
 			<li>
-				<Item/>
+				<Item content="biba"/>
 			</li>
 		</ul>
 	);

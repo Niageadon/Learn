@@ -1,9 +1,12 @@
 import React from 'react'
 
-const Item = () => {
+const Item = ({
+	content
+}) => {
+	
 	return (
 		<span>
-			Some text
+			{ content }
 		</span>
 	)
 }
