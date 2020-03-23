@@ -4,9 +4,10 @@ import Item from './item'
 
 const Index = ({ list }) => {
 	const elements = list.map(el => {
+		const { id, ...props } = el
 		return (
-			<li>
-				<Item {...el}/>
+			<li key={el.id}>
+				<Item {...props}/>
 			</li>
 		)
 	})

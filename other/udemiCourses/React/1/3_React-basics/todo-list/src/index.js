@@ -12,7 +12,11 @@ const App = () => {
 			{ val }
 			<ListHeader/>
 			<SearchPanel/>
-			<TodoList list={[{label: 'boba'}, {label: 231}]}/>
+			<TodoList list={[
+				{label: 'boba', id: 1},
+				{label: 231, id: 2},
+				{label: 'biba', id: 3}
+			]}/>
 		</div>
 	);
 };
