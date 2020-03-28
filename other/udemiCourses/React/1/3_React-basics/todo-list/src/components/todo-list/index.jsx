@@ -12,12 +12,6 @@ const Index = ({ list }) => {
 		)
 	})
 	
-	const items = [
-		'Learn React',
-		'build apps',
-		'get bibas'
-	]
-	
 	return (
 		<div className="todoList-container">
 			<ul className="todoList col-sm-4 col">
