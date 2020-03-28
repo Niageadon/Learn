@@ -1,0 +1,17 @@
+
+.todoList{
+    &__item{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        &-controls{
+            display: flex;
+            &-btn{
+                margin: auto 4px auto 4px;
+                min-height: 38px;
+                min-width: 38px;
+            }
+        }
+    }
+}

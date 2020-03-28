@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import SearchPanel from './components/SearchPanel.jsx'
 import ListHeader from './components/ListHeader.jsx'
 import TodoList from './components/TodoList/index'
-
+import './index.scss'
 const App = () => {
 	const val = '<script>alert("hacked")</script>';
 	

@@ -18,6 +18,10 @@
   },
   "homepage": "https://github.com/Niageadon/learn.javascript.ru#readme",
   "dependencies": {
+    "fa-icons": "^0.2.0",
+    "font-awesome": "^4.7.0",
+    "material-components-web": "^5.1.0",
+    "node-sass": "^4.13.1",
     "node-static": "^0.7.11"
   }
 }
