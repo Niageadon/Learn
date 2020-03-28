@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-import SearchPanel from './components/SearchPanel.jsx'
-import ListHeader from './components/ListHeader.jsx'
-import TodoList from './components/TodoList/index'
+import Search from './components/todo-search'
+import Header from './components/todo-header'
+import TodoList from './components/todo-list'
 import './index.scss'
 const App = () => {
 	const val = '<script>alert("hacked")</script>';
@@ -10,8 +10,8 @@ const App = () => {
 	return (
 		<div>
 			{ val }
-			<ListHeader/>
-			<SearchPanel/>
+			<Header/>
+			<Search/>
 			<TodoList list={[
 				{label: 'boba', id: 1},
 				{label: 231, id: 2},

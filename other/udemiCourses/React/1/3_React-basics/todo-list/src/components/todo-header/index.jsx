@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ListHeader = () => {
+const Index = () => {
 	const style = {
 		fontSize: '24px'
 	}
@@ -10,4 +10,4 @@ const ListHeader = () => {
 	);
 };
 
-export default ListHeader
+export default Index
