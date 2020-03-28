@@ -14,7 +14,7 @@ const Index = ({ list }) => {
 	
 	return (
 		<div className="todoList-container">
-			<ul className="todoList col-sm-4 col">
+			<ul className="todoList col">
 				{elements}
 			</ul>
 		</div>

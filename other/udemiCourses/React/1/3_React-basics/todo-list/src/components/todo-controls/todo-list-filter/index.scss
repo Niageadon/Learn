@@ -1,0 +1,10 @@
+.todoList{
+    &__controls{
+        &__filter{
+            &-container{
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+}

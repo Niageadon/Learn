@@ -1,0 +1,14 @@
+$tablet: 487px;
+$pc: 1200px;
+
+.todoList{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    @media (min-width: $tablet) {
+        width: 80%;
+    }
+    @media (min-width: $pc) {
+        width: 70%;
+    }
+}
