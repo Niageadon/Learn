@@ -8,15 +8,22 @@ export default class Item extends React.Component {
 		isImportant: false
 	}
 	onLabelClick = () => {
-		this.setState({
-			isDone: !this.state.isDone
-		})
- 		console.log(this.state.isDone)
+		this.setState(
+			({isDone}) => {
+				return{
+					isDone: !isDone
+				}
+			}
+		)
 	}
 	setImportance = () => {
-		this.setState({
-			isImportant: !this.state.isImportant
-		})
+		this.setState(
+			({isImportant}) => {
+				return{
+					isImportant: !isImportant
+				}
+			}
+		)
 	}
 	
 	render() {
