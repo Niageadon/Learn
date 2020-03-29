@@ -2,12 +2,15 @@ import React from 'react'
 import Item from './item'
 import './index.scss'
 
-const Index = ({ list }) => {
+const Index = ({ list, onDelete }) => {
 	const elements = list.map(el => {
 		const { id, ...props } = el
 		return (
-			<li key={el.id} className="list-group-item">
-				<Item {...props}/>
+			<li key={id} className="list-group-item">
+				<Item
+					{...props}
+					onDelete={() => onDelete(id)}
+				/>
 			</li>
 		)
 	})

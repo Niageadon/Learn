@@ -27,7 +27,7 @@ export default class Item extends React.Component {
 	}
 	
 	render() {
-		const { label } = this.props;
+		const { label, onDelete } = this.props;
 		let { isDone, isImportant } = this.state;
 		let style = 'todoList__item'
 		if(isDone) {
@@ -46,7 +46,7 @@ export default class Item extends React.Component {
 					<button onClick={this.setImportance} type="button" className="todoList__item-controls-btn btn btn-outline-success">
 						<i className="fa fa-exclamation"></i>
 					</button>
-					<button type="button" className="todoList__item-controls-btn btn btn-outline-danger">
+					<button onClick={onDelete} type="button" className="todoList__item-controls-btn btn btn-outline-danger">
 						<i className="fa fa-trash"></i>
 					</button>
 				</div>

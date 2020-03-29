@@ -6,19 +6,20 @@ import TodoList from './components/todo-list'
 import './index.scss'
 
 const App = () => {
-	const val = '<script>alert("hacked")</script>';
+	let list = [
+		{label: 'boba', id: 1},
+		{label: 231, id: 2},
+		{label: 'biba', id: 3}
+	]
 	
 	return (
 		<div className="todoList">
-			{ val }
 			<Header/>
 			<Controls/>
 			
-			<TodoList list={[
-				{label: 'boba', id: 1},
-				{label: 231, id: 2},
-				{label: 'biba', id: 3}
-			]}/>
+			<TodoList
+				onDelete={(id) => {console.log(id)}}
+				list={ list }/>
 		</div>
 	);
 };
