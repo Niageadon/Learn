@@ -13,8 +13,19 @@
                 min-width: 38px;
             }
         }
-        .done{
-            text-decoration: line-through;
+        &-label{
+
+        }
+        &.done{
+            .todoList__item-label{
+                text-decoration: line-through;
+            }
+        }
+        &.important{
+            .todoList__item-label{
+                font-weight: bold;
+                color: navy;
+            }
         }
     }
 }
