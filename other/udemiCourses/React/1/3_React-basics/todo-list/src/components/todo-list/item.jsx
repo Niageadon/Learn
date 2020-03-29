@@ -2,16 +2,25 @@ import React from 'react'
 import './item.scss'
 
 export default class Item extends React.Component {
+	
+	state = {
+		isDone: false,
+		isImportant: false
+	}
 	onLabelClick = () => {
-		console.log(22)
+		this.setState({
+			isDone: !this.state.isDone
+		})
+ 		console.log(this.state.isDone)
 	}
 	
 	render() {
-		const {label} = this.props
+		const { label } = this.props;
+		let { isDone } = this.state;
 		
 		return (
 			<span className="todoList__item">
-				<span onClick={ this.onLabelClick }>
+				<span className={ isDone? 'done': ''} onClick={ this.onLabelClick }>
 					{label}
 				</span>
 				<div className="todoList__item-controls">
