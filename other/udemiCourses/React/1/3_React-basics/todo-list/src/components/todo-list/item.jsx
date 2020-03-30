@@ -5,7 +5,7 @@ export default class Item extends React.Component {
 	
 	state = {
 		isDone: false,
-		isImportant: false
+		isImportant: this.props.important
 	}
 	onLabelClick = () => {
 		this.setState(
