@@ -41,6 +41,25 @@ export default  class App extends React.Component {
 			}
 		})
 	}
+	toggleImportant = (id) => {
+		console.log(11, id)
+		this.setState(({list}) => {
+			const index = list.findIndex(el => el.id === id);
+			let item = Object.assign({}, list[index])
+			console.log(item)
+			item.important = !item.important;
+			
+			const before = list.slice(0, index);
+			const after = list.slice(index + 1);
+			return {
+				list: [...before, item, ...after]
+			}
+		})
+	}
+	toggleDone = (id) => {
+		console.log(22, id)
+	
+	}
 	
 	render() {
 		return (
@@ -50,6 +69,8 @@ export default  class App extends React.Component {
 				
 				<TodoList
 					onDelete={(id) => this.deleteItem(id)}
+					toggleImportant={this.toggleImportant}
+					toggleDone={this.toggleDone}
 					list={ this.state.list }
 				/>
 				<TodoAdd addItem={this.addItem}/>

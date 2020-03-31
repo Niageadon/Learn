@@ -5,7 +5,6 @@ export default class TodoAdd extends React.Component{
 	render() {
 		
 		const {addItem} = this.props
-		console.log(addItem)
 		return (
 			<div className="todoList__controls__add">
 				<button onClick={() => addItem('111222')} className="todoList__controls__add-btn btn btn-outline-secondary">

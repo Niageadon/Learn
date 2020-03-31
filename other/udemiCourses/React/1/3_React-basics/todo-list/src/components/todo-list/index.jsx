@@ -2,7 +2,7 @@ import React from 'react'
 import Item from './item'
 import './index.scss'
 
-const Index = ({ list, onDelete }) => {
+const Index = ({ list, onDelete, toggleDone, toggleImportant }) => {
 	const elements = list.map(el => {
 		const { id, ...props } = el
 		return (
@@ -10,6 +10,8 @@ const Index = ({ list, onDelete }) => {
 				<Item
 					{...props}
 					onDelete={() => onDelete(id)}
+					toggleDone={() => toggleDone(id)}
+					toggleImportant={() => toggleImportant(id)}
 				/>
 			</li>
 		)
