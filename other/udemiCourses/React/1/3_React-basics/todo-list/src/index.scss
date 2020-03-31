@@ -5,6 +5,8 @@ $pc: 1200px;
     display: flex;
     flex-direction: column;
     width: 100%;
+    margin: auto;
+    align-items: center;
     @media (min-width: $tablet) {
         width: 80%;
     }
