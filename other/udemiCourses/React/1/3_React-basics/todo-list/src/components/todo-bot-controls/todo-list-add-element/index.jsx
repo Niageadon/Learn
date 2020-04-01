@@ -12,12 +12,15 @@ export default class TodoAdd extends React.Component{
 		const {addItem} = this.props
 		event.preventDefault()
 		addItem(this.state.label)
+		this.setState({label: ''})
+		
 	}
 	
 	render() {
 		return (
 			<form className="todoList__controls__add" onSubmit={this.submitForm}>
 				<input type="text"
+			        value={this.state.label}
 					className="form-control"
 					placeholder="Enter label"
 					onChange={this.changeLabel}/>
