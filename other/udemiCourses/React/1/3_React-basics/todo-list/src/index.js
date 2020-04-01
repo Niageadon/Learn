@@ -30,6 +30,7 @@ export default  class App extends React.Component {
 		})
 	}
 	addItem = (label) => {
+		console.log(11)
 		const newItem = {
 			id: this.nextId++,
 			label,

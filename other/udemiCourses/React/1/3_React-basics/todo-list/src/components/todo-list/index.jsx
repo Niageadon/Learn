@@ -19,7 +19,7 @@ const Index = ({ list, onDelete, toggleDone, toggleImportant }) => {
 	
 	return (
 		<div className="todoList-container">
-			<ul className="todoList col">
+			<ul className="col">
 				{elements}
 			</ul>
 		</div>
