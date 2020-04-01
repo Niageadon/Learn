@@ -10,9 +10,9 @@ export default  class App extends React.Component {
 	nextId = 4;
 	state = {
 		list: [
-			{label: 'boba', id: 1, important: true},
-			{label: 231, id: 2, important: false},
-			{label: 'biba', id: 3, important: true}
+			{label: 'boba', id: 1, important: true, done: false},
+			{label: 231, id: 2, important: false, done: false},
+			{label: 'biba', id: 3, important: true, done: false}
 		],
 	}
 	deleteItem(id) {
@@ -33,7 +33,8 @@ export default  class App extends React.Component {
 		const newItem = {
 			id: this.nextId++,
 			label,
-			important: false
+			important: false,
+			done: false
 		}
 		this.setState(({list}) => {
 			return{
@@ -42,7 +43,6 @@ export default  class App extends React.Component {
 		})
 	}
 	toggleImportant = (id) => {
-		console.log(11, id)
 		this.setState(({list}) => {
 			const index = list.findIndex(el => el.id === id);
 			let item = Object.assign({}, list[index])
@@ -57,8 +57,18 @@ export default  class App extends React.Component {
 		})
 	}
 	toggleDone = (id) => {
-		console.log(22, id)
-	
+		this.setState(({list}) => {
+			const index = list.findIndex(el => el.id === id);
+			let item = Object.assign({}, list[index])
+			console.log(item)
+			item.done = !item.done;
+			
+			const before = list.slice(0, index);
+			const after = list.slice(index + 1);
+			return {
+				list: [...before, item, ...after]
+			}
+		})
 	}
 	
 	render() {

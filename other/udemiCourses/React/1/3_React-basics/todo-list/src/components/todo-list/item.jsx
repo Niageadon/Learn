@@ -3,20 +3,14 @@ import './item.scss'
 
 export default class Item extends React.Component {
 	
-	state = {
-		isDone: false,
-		isImportant: this.props.important
-	}
-	
 	
 	render() {
-		const { label, onDelete, toggleImportant, toggleDone } = this.props;
-		let { isDone, isImportant } = this.state;
+		const { label, done, important, onDelete, toggleImportant, toggleDone } = this.props;
 		let style = 'todoList__item'
-		if(isDone) {
+		if(done) {
 			style += ' done'
 		}
-		if(isImportant) {
+		if(important) {
 			style += ' important'
 		}
 		
