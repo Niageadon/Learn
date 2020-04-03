@@ -14,7 +14,8 @@ export default  class App extends React.Component {
 			{label: 231, id: 2, important: false, done: false},
 			{label: 'biba', id: 3, important: true, done: false}
 		],
-		searchTerm: ''
+		searchTerm: '',
+		showType: ''
 	}
 	deleteItem(id) {
 		this.setState(({list}) => {
@@ -64,7 +65,6 @@ export default  class App extends React.Component {
 			let item = Object.assign({}, list[index])
 			console.log(item)
 			item.done = !item.done;
-			
 			const before = list.slice(0, index);
 			const after = list.slice(index + 1);
 			return {
@@ -75,14 +75,35 @@ export default  class App extends React.Component {
 	searchItems = (term) => {
 		this.setState({searchTerm: term})
 	}
+	onFilterChange = (showType) => {
+		this.setState({
+			showType
+		})
+	}
 	
 	render() {
-		const filtererList = this.state.list.filter(el => String(el.label).includes(this.state.searchTerm))
+		let filtererList = this.state.list.filter(el => String(el.label).includes(this.state.searchTerm))
+		if(this.state.showType) {
+			switch (this.state.showType) {
+				case 'active': {
+					filtererList = filtererList.filter(el => !el.done);
+					break;
+				}
+				case 'done': {
+					filtererList = filtererList.filter(el => el.done);
+					break;
+				}
+				case 'important': {
+					filtererList = filtererList.filter(el => el.important);
+					break;
+				}
+			}
+		}
 		
 		return (
 			<div className="todoList">
 				<Header/>
-				<Controls onSearchChange={this.searchItems} />
+				<Controls filter={this.state.showType} onFilterChange={this.onFilterChange} onSearchChange={this.searchItems} />
 				
 				<TodoList
 					onDelete={(id) => this.deleteItem(id)}
