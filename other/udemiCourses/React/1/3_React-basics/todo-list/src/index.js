@@ -14,6 +14,7 @@ export default  class App extends React.Component {
 			{label: 231, id: 2, important: false, done: false},
 			{label: 'biba', id: 3, important: true, done: false}
 		],
+		searchTerm: ''
 	}
 	deleteItem(id) {
 		this.setState(({list}) => {
@@ -71,18 +72,23 @@ export default  class App extends React.Component {
 			}
 		})
 	}
+	searchItems = (term) => {
+		this.setState({searchTerm: term})
+	}
 	
 	render() {
+		const filtererList = this.state.list.filter(el => String(el.label).includes(this.state.searchTerm))
+		
 		return (
 			<div className="todoList">
 				<Header/>
-				<Controls/>
+				<Controls onSearchChange={this.searchItems} />
 				
 				<TodoList
 					onDelete={(id) => this.deleteItem(id)}
 					toggleImportant={this.toggleImportant}
 					toggleDone={this.toggleDone}
-					list={ this.state.list }
+					list={ filtererList }
 				/>
 				<TodoAdd addItem={this.addItem}/>
 			</div>
