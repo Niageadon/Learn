@@ -16,18 +16,16 @@ export default class RandomPlanet extends React.Component{
 		this.getPlanet()
 	}
 	
+	onPlanetLoaded(planet, planetId) {
+		console.log(planet)
+		this.setState({planetId, ...planet})
+	}
 	getPlanet() {
 		const planetId = Math.ceil(Math.random() * 19);
+		//this.setState({planetId})
 		Swapi.getPlanet(planetId)
 			.then(planet => {
-				this.setState({
-					planetId,
-					name: planet.name,
-					population: planet.population,
-					rotationPeriod: planet.rotation_period,
-					diameter: planet.diameter
-				})
-				console.log(this.state)
+				this.onPlanetLoaded(planet, planetId)
 			})
 	}
 	

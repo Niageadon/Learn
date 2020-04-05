@@ -1,3 +1,34 @@
+class Planet {
+	constructor(planet) {
+		{
+			this.name = planet.name;
+			this.population = planet.population;
+			this.rotationPeriod = planet.rotation_period;
+			this.diameter =  planet.diameter;
+		}
+	}
+}
+class Person {
+	constructor(person) {
+		this.name = person.name;
+		this.gender = person.gender;
+		this.birthYear = person.birthYear;
+		this.eyeColor = person.eyeColor ;
+	}
+}
+class Starship {
+	constructor(starship) {
+		this.name = starship.name;
+		this.model = starship.model;
+		this.manufacturer = starship.manufacturer;
+		this.costInCredits = starship.costInCredits;
+		this.lenght = starship.lenght;
+		this.crew = starship.crew;
+		this.passengers = starship.passengers;
+		this.cargoCapacity = starship.cargoCapacity;
+	}
+}
+
 class Swapi {
 	baseUrl = 'https://swapi.co/api'
 	fetchData = async(url) => {
@@ -15,23 +46,23 @@ class Swapi {
 	async getAllPeople() {
 		const res = await this.fetchData('/people');
 		console.log(res)
-		return res.results;
+		return res.results.map(el => new Person(el));
 	}
 	async getPerson(id) {
-		return await this.fetchData(`/people/${id}`)
+		return new Person(await this.fetchData(`/people/${id}`))
 	}
 	async getAllPlanets() {
 		const res = await this.fetchData('/planets');
 		console.log(res)
-		return res.results;
+		return res.results.map(el => new Planet(el));
 	}
 	async getPlanet(id) {
-		return await this.fetchData(`/planets/${id}`)
+		return new Planet(await this.fetchData(`/planets/${id}`))
 	}
 	async getAllStarships() {
 		const res = await this.fetchData('/starships');
 		console.log(res)
-		return res.results;
+		return res.results.map(el => new Starship(el));
 	}
 	async getStarship(id) {
 		return await this.fetchData(`/starships/${id}`)
