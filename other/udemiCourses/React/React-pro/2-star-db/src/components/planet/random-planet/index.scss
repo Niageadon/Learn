@@ -1,0 +1,30 @@
+.random-planet{
+    width: fit-content;
+    &-wrapper{
+        border-radius: 11px;
+        padding: 20px;
+        display: flex;
+        img{
+            width: 200px;
+            height: 200px;
+            border-radius: 12px;
+            background-color: red;
+        }
+    }
+    &-info{
+        margin-left: 16px;
+
+        &-label{
+            margin-left: 16px;
+            border-top: 1px solid white;
+            list-style-type: none;
+            span{
+                margin-right: 8px;
+            }
+        }
+
+    }
+
+
+
+}
