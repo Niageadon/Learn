@@ -1,6 +1,7 @@
 import React from 'react'
 import './index.scss'
 import Swapi from '../../../services/Swapi'
+import Preloader from '../../preloader'
 export default class RandomPlanet extends React.Component{
 
 	
@@ -36,6 +37,7 @@ export default class RandomPlanet extends React.Component{
 		
 		return(
 			<div className="random-planet-wrapper bg-dark">
+				<Preloader/>
 				<img src={`https://starwars-visualguide.com/assets/img/planets/${this.state.planetId}.jpg`}/>
 				<div className="random-planet-info">
 					<h3>{name || 'Planet name'}</h3>
