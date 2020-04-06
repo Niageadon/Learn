@@ -10,10 +10,12 @@ class Planet {
 }
 class Person {
 	constructor(person) {
+		console.log(person)
 		this.name = person.name;
 		this.gender = person.gender;
-		this.birthYear = person.birthYear;
-		this.eyeColor = person.eyeColor ;
+		this.birthYear = person.birth_year;
+		this.eyeColor = person.eye_color ;
+		this.id = getIdFromLink(person.url)
 	}
 }
 class Starship {
@@ -68,6 +70,13 @@ class Swapi {
 		return await this.fetchData(`/starships/${id}`)
 	}
 }
+
+const getIdFromLink = (link) => {
+	const reg = /\/([0-9]*)\/$/;
+	return link.match(reg)[1]
+}
+
+
 const swapi = new Swapi();
 export default swapi;
 

@@ -4,7 +4,7 @@ import Swapi from '../../../services/Swapi'
 import Preloader from '../../preloader'
 export default class RandomPlanet extends React.Component{
 
-	
+
 	state = {
 		planetId: null,
 		planet: {},
@@ -14,10 +14,13 @@ export default class RandomPlanet extends React.Component{
 		super();
 		this.getPlanet()
 	}
-	
+
 	onPlanetLoaded(planet, planetId) {
 		console.log(planet)
 		this.setState({planetId, planet, loading: false})
+	}
+	onLoadError(err) {
+
 	}
 	getPlanet() {
 		const planetId = Math.ceil(Math.random() * 19);
@@ -26,14 +29,17 @@ export default class RandomPlanet extends React.Component{
 			.then(planet => {
 				this.onPlanetLoaded(planet, planetId)
 			})
+			.catch(er => {
+				this.onLoadError(er)
+			})
 	}
-	
+
 	render() {
 		//this.getPlanet()
 		const {name, population, rotationPeriod, diameter} = this.state.planet
 		const {loading} = this.state
-		
-		
+
+
 		if(loading) {
 			return (
 				<div className="random-planet-wrapper bg-dark">
