@@ -1,3 +1,5 @@
+// Single Responsibility Principle
+
 class News {
 	constructor({title, text}) {
 		this.title = title;
