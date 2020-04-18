@@ -1,0 +1,24 @@
+<!--
+Если elem – произвольный узел DOM-элемента…
+
+Правда, что elem.lastChild.nextSibling всегда равен null?
+Правда, что elem.children[0].previousSibling всегда равен null ?
+-->
+
+<!DOCTYPE html>
+<html>
+<body>
+<div>Пользователи:</div>
+<ul>
+  <li>Джон</li>
+  <li>Пит</li>
+</ul>
+</body>
+</html>
+
+<script>
+    const div = document.body.firstChild;
+    const ul = document.body.children[1];
+    const li = ul.lastChild;
+    console.log(div, ul, li)
+</script>

@@ -1,0 +1,32 @@
+<!--
+Запилить свой debounce
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+	<input type="text" oninput="onInput()">
+</body>
+</html>
+
+<script>
+
+	const debounce = function(func, delay) {
+		let timer;
+		return function() {
+			clearTimeout(timer)
+			timer = setTimeout(() => {
+				func()
+			}, delay)
+		}
+	}
+	const doBusinessLogic = () => {
+		console.log(123)
+	}
+	const onInput = debounce(doBusinessLogic, 1111)
+
+</script>
