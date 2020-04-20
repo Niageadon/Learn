@@ -1,3 +1,8 @@
+const Key = {
+    right: 39,
+    left: 37
+}
+
 let game = {
     width: 640,
     stx: null,
@@ -19,36 +24,14 @@ let game = {
     },
     setEvents() {
         window.addEventListener('keydown', event => {
-            const left = 37;
-            const right = 39;
-            if(event.keyCode === left) {
-                this.platform.dx = this.platform.dx - this.platform.velocity
-                console.log(this.platform.dx)
-            } else if(event.keyCode === right) {
-                this.platform.dx += this.platform.velocity
-                console.log(this.platform.dx)
-            }
-            //this.render();
+            this.platform.push(event.keyCode)
         })
         window.addEventListener('keyup', event => {
             this.platform.dx = 0;
             //this.render();
         })
     },
-    movePlatform() {
-        const minPosX = 0;
-        const maxPosX = 640 - 100;
-        if(this.platform.dx) {
-            this.platform.x += this.platform.dx;
-            if(this.platform.x <= minPosX) {
-                this.platform.x = minPosX;
-            }
-            if(this.platform.x >= maxPosX) {
-                this.platform.x = maxPosX;
-            }
-            this.platform.dx = 0;
-        }
-    },
+    
     preload() {
         return new Promise(resolve => {
             let index = 0;
@@ -81,7 +64,7 @@ let game = {
     },
     run() {
         window.requestAnimationFrame(() => {
-            this.movePlatform();
+            this.platform.move();
             this.render()
             this.run();
         });
@@ -113,11 +96,34 @@ game.ball = {
     height: 20
 };
 game.platform = {
+    width: 100,
     step: 1,
     velocity: 3,
     dx:  0,
     x: 280,
-    y: 300
+    y: 300,
+    push(direction) {
+        if(direction === Key.right) {
+            this.dx += this.velocity
+        } else if(direction === Key.left) {
+            this.dx -= this.velocity
+        }
+    },
+    move() {
+        const minPosX = 0;
+        const maxPosX = 640 - 100;
+        if(this.dx) {
+            this.x += this.dx;
+            if(this.x <= minPosX) {
+                this.x = minPosX;
+            }
+            if(this.x >= maxPosX) {
+                this.x = maxPosX;
+            }
+            game.ball.x = this.x + this.width / 2 - game.ball.width / 2
+            this.dx = 0;
+        }
+    },
 };
 
 window.addEventListener("load", () => {
