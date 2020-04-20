@@ -15,6 +15,39 @@ let game = {
     
     init() {
         this.ctx = document.getElementById('mycanvas').getContext('2d');
+        this.setEvents();
+    },
+    setEvents() {
+        window.addEventListener('keydown', event => {
+            const left = 37;
+            const right = 39;
+            if(event.keyCode === left) {
+                this.platform.dx = this.platform.dx - this.platform.velocity
+                console.log(this.platform.dx)
+            } else if(event.keyCode === right) {
+                this.platform.dx += this.platform.velocity
+                console.log(this.platform.dx)
+            }
+            //this.render();
+        })
+        window.addEventListener('keyup', event => {
+            this.platform.dx = 0;
+            //this.render();
+        })
+    },
+    movePlatform() {
+        const minPosX = 0;
+        const maxPosX = 640 - 100;
+        if(this.platform.dx) {
+            this.platform.x += this.platform.dx;
+            if(this.platform.x <= minPosX) {
+                this.platform.x = minPosX;
+            }
+            if(this.platform.x >= maxPosX) {
+                this.platform.x = maxPosX;
+            }
+            this.platform.dx = 0;
+        }
     },
     preload() {
         return new Promise(resolve => {
@@ -34,21 +67,23 @@ let game = {
         
     },
     create() {
-        const blockMargin = 8;
+        const blockMargin = 4;
         for(let row = 0; row < this.rows; row++) {
             let availableWidth = this.width;
     
             for(let col = 0; col < this.cols; col ++) {
                 this.blocks.push({
-                    x: (60 + blockMargin) * col,
-                    y: (20 + blockMargin) * row
+                    x: (60 + blockMargin) * col + 65,
+                    y: (20 + blockMargin) * row + 35
                 })
             }
         }
     },
     run() {
         window.requestAnimationFrame(() => {
+            this.movePlatform();
             this.render()
+            this.run();
         });
     },
     render() {
@@ -78,6 +113,9 @@ game.ball = {
     height: 20
 };
 game.platform = {
+    step: 1,
+    velocity: 3,
+    dx:  0,
     x: 280,
     y: 300
 };
