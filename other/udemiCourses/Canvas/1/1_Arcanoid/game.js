@@ -1,4 +1,5 @@
 const Key = {
+    space: 32,
     right: 39,
     left: 37
 }
@@ -24,10 +25,16 @@ let game = {
     },
     setEvents() {
         window.addEventListener('keydown', event => {
-            this.platform.push(event.keyCode)
+            const keyCode = event.keyCode;
+            if(keyCode === Key.left || keyCode === Key.right) {
+                this.platform.push(event.keyCode)
+            }
+            if(keyCode === Key.space) {
+                this.platform.fire()
+            }
         })
         window.addEventListener('keyup', event => {
-            this.platform.dx = 0;
+            this.platform.stop();
             //this.render();
         })
     },
@@ -62,9 +69,13 @@ let game = {
             }
         }
     },
+    updatePos() {
+        this.platform.move();
+        this.ball.move();
+    },
     run() {
         window.requestAnimationFrame(() => {
-            this.platform.move();
+            this.updatePos();
             this.render()
             this.run();
         });
@@ -92,8 +103,16 @@ let game = {
 game.ball = {
     x: 320,
     y: 280,
+    dx: 0,
+    dy: 0,
+    velocity: 1,
     width: 20,
-    height: 20
+    height: 20,
+
+    move() {
+        this.y -= this.dy;
+        this.x += this.dx;
+    }
 };
 game.platform = {
     width: 100,
@@ -102,12 +121,20 @@ game.platform = {
     dx:  0,
     x: 280,
     y: 300,
+    ball: game.ball,
+    fire() {
+        this.ball.dy = this.ball.velocity;
+        this.ball = null;
+    },
     push(direction) {
         if(direction === Key.right) {
             this.dx += this.velocity
         } else if(direction === Key.left) {
             this.dx -= this.velocity
         }
+    },
+    stop() {
+        this.dx = 0;
     },
     move() {
         const minPosX = 0;
@@ -120,8 +147,11 @@ game.platform = {
             if(this.x >= maxPosX) {
                 this.x = maxPosX;
             }
-            game.ball.x = this.x + this.width / 2 - game.ball.width / 2
-            this.dx = 0;
+            
+            if(this.ball) {
+                this.ball.x = this.x + this.width / 2 - this.ball.width / 2
+            }
+//            this.dx = 0;
         }
     },
 };
