@@ -6,6 +6,7 @@ const Key = {
 
 let game = {
     width: 640,
+    height: 360,
     stx: null,
     platform: null,
     ball: null,
@@ -81,6 +82,8 @@ let game = {
         });
     },
     render() {
+        this.ctx.clearRect(0, 0, this.width, this.height);
+        
         this.ctx.drawImage(this.sprites.background, 0, 0);
         this.ctx.drawImage(this.sprites.ball, 0, 0, this.ball.width, this.ball.height, this.ball.x, this.ball.y, this.ball.width, this.ball.height);
         this.ctx.drawImage(this.sprites.platform, this.platform.x, this.platform.y);
@@ -108,7 +111,10 @@ game.ball = {
     velocity: 1,
     width: 20,
     height: 20,
-
+    start(velocity) {
+        this.dy = this.velocity;
+        this.dx = velocity
+    },
     move() {
         this.y -= this.dy;
         this.x += this.dx;
@@ -123,7 +129,7 @@ game.platform = {
     y: 300,
     ball: game.ball,
     fire() {
-        this.ball.dy = this.ball.velocity;
+        this.ball.start(this.dx);
         this.ball = null;
     },
     push(direction) {
