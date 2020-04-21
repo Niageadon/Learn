@@ -13,6 +13,10 @@ let game = {
     blocks: [],
     rows: 4,
     cols: 8,
+    block: {
+        width: 60,
+        height: 20
+    },
     sprites: {
         background: null,
         ball: null,
@@ -76,6 +80,13 @@ let game = {
     },
     run() {
         window.requestAnimationFrame(() => {
+            this.blocks.some((block, index) => {
+                if(this.ball.collide(block)) {
+                    this.ball.bumpBlock()
+                    this.blocks.splice(index, 1)
+                }
+            })
+            
             this.updatePos();
             this.render()
             this.run();
@@ -113,11 +124,35 @@ game.ball = {
     height: 20,
     start(velocity) {
         this.dy = this.velocity;
-        this.dx = velocity
+        this.dx = velocity / 4
     },
     move() {
         this.y -= this.dy;
         this.x += this.dx;
+    },
+    collide({x, y}) {
+        const left = x;
+        const top = y;
+        const bot = y + game.block.height;
+        const right = x + game.block.width;
+        
+        const ballLeft = this.x;
+        const ballTop = this.y;
+        const ballBot = this.y + this.height;
+        const ballRight = this.x + this.width;
+        
+        if(
+            ballRight > left &&
+            ballLeft < right &&
+            ballBot > top &&
+            ballTop < bot) {
+            return true
+        }
+        return false
+    },
+    bumpBlock() {
+        this.dx = -this.dx;
+        this.dy = -this.dy;
     }
 };
 game.platform = {
