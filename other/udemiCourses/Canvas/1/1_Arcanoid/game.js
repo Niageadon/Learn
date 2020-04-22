@@ -89,6 +89,7 @@ let game = {
                 this.ball.bumpPlatform();
             }
             
+            this.ball.collideBorders();
             this.updatePos();
             this.render()
             this.run();
@@ -121,7 +122,7 @@ game.ball = {
     y: 280,
     dx: 0,
     dy: 0,
-    velocity: 1,
+    velocity: 3,
     width: 20,
     height: 20,
     start(velocity) {
@@ -152,9 +153,15 @@ game.ball = {
         }
         return false
     },
+    collideBorders() {
+        if( this.x <= 0 || this.x >= game.width) {
+            this.dx *= -1;
+        } else if(this.y <= 0) {
+            this.dy *= -1;
+        }
+    },
     bumpBlock() {
-        this.dx = -this.dx;
-        this.dy = -this.dy;
+        this.dy *= -1;
     },
     bumpPlatform() {
         this.dx = this.dx + game.platform.dx;
@@ -165,7 +172,7 @@ game.platform = {
     width: 100,
     height: 14,
     step: 1,
-    velocity: 3,
+    velocity: 5,
     dx:  0,
     x: 280,
     y: 300,
