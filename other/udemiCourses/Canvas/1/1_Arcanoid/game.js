@@ -5,6 +5,7 @@ const Key = {
 }
 
 let game = {
+    lose: false,
     width: 640,
     height: 360,
     stx: null,
@@ -91,7 +92,8 @@ let game = {
             
             this.ball.collideBorders();
             this.updatePos();
-            this.render()
+            this.render();
+
             this.run();
         });
     },
@@ -158,6 +160,10 @@ game.ball = {
             this.dx *= -1;
         } else if(this.y <= 0) {
             this.dy *= -1;
+        } else if(this.y > game.height) {
+	        alert('you lose')
+            this.y = -100;
+	        document.location.reload();
         }
     },
     bumpBlock() {
