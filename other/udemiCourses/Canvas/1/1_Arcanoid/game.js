@@ -82,7 +82,11 @@ let game = {
             this.blocks.some((block, index) => {
                 if(this.ball.collide(block)) {
                     this.ball.bumpBlock()
-                    this.blocks.splice(index, 1)
+                    this.blocks.splice(index, 1);
+                    if(!this.blocks.length) {
+                        alert('you win!');
+                        window.location.reload();
+                    }
                 }
             })
             if(this.ball.collide(this.platform)) {
@@ -101,7 +105,7 @@ let game = {
         this.ctx.clearRect(0, 0, this.width, this.height);
         
         this.ctx.drawImage(this.sprites.background, 0, 0);
-        this.ctx.drawImage(this.sprites.ball, 0, 0, this.ball.width, this.ball.height, this.ball.x, this.ball.y, this.ball.width, this.ball.height);
+        this.ctx.drawImage(this.sprites.ball, this.ball.frame * 20, 0, this.ball.width, this.ball.height, this.ball.x, this.ball.y, this.ball.width, this.ball.height);
         this.ctx.drawImage(this.sprites.platform, this.platform.x, this.platform.y);
         this.renderBlocks()
     },
@@ -120,6 +124,7 @@ let game = {
 
 
 game.ball = {
+    frame: 0,
     x: 320,
     y: 280,
     dx: 0,
@@ -129,7 +134,14 @@ game.ball = {
     height: 20,
     start(velocity) {
         this.dy = this.velocity;
-        this.dx = velocity / 4
+        this.dx = velocity / 4;
+        setInterval(() => {
+            ++this.frame
+            if(this.frame > 3) {
+                this.frame = 0;
+            }
+            console.log(123)
+        }, 200)
     },
     move() {
         this.y -= this.dy;
