@@ -13,10 +13,6 @@ let game = {
     blocks: [],
     rows: 4,
     cols: 8,
-    block: {
-        width: 60,
-        height: 20
-    },
     sprites: {
         background: null,
         ball: null,
@@ -69,7 +65,9 @@ let game = {
             for(let col = 0; col < this.cols; col ++) {
                 this.blocks.push({
                     x: (60 + blockMargin) * col + 65,
-                    y: (20 + blockMargin) * row + 35
+                    y: (20 + blockMargin) * row + 35,
+                    width: 60,
+                    height: 20
                 })
             }
         }
@@ -86,6 +84,10 @@ let game = {
                     this.blocks.splice(index, 1)
                 }
             })
+            if(this.ball.collide(this.platform)) {
+                console.log(22)
+                this.ball.bumpPlatform();
+            }
             
             this.updatePos();
             this.render()
@@ -130,11 +132,11 @@ game.ball = {
         this.y -= this.dy;
         this.x += this.dx;
     },
-    collide({x, y}) {
+    collide({x, y, height, width}) {
         const left = x;
         const top = y;
-        const bot = y + game.block.height;
-        const right = x + game.block.width;
+        const bot = y + height;
+        const right = x + width;
         
         const ballLeft = this.x;
         const ballTop = this.y;
@@ -153,10 +155,15 @@ game.ball = {
     bumpBlock() {
         this.dx = -this.dx;
         this.dy = -this.dy;
+    },
+    bumpPlatform() {
+        this.dx = this.dx + game.platform.dx;
+        this.dy = -this.dy;
     }
 };
 game.platform = {
     width: 100,
+    height: 14,
     step: 1,
     velocity: 3,
     dx:  0,
