@@ -54,9 +54,8 @@ let game = {
         this.ctx.clearRect(0, 0, this.width, this.height);
     
         this.ctx.drawImage(this.sprites.background, 0, 0);
-        this.board.cells.forEach(el => {
+        board.cells.forEach(el => {
             this.ctx.drawImage(this.sprites.cell, el.x, el.y);
-    
         })
     }
     
