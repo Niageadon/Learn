@@ -1,4 +1,6 @@
 export {board}
+import {game} from './game';
+
 let board = {
 	size: 15,
 	cells: [],
@@ -13,8 +15,15 @@ let board = {
 				this.cells.push({
 					x: (18 + margin) * i + pl,
 					y: (18 + margin) * j + pt,
+					row: i,
+					col: j
 				})
 			}
 		}
+	},
+	render() {
+		this.cells.forEach(el => {
+			game.ctx.drawImage(game.sprites.cell, el.x, el.y);
+		})
 	}
 }

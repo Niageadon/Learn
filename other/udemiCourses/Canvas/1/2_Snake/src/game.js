@@ -1,6 +1,7 @@
 export {game}
 
 import {board} from './board'
+import {snake} from './snake'
 let game = {
     ctx: null,
     sprites: {
@@ -15,8 +16,7 @@ let game = {
         return new Promise(resolve => {
             this.ctx = document.getElementById('mycanvas').getContext('2d');
             board.create();
-            console.log(33)
-            //this.setEvents();
+            snake.create();
             resolve()
         })
     },
@@ -54,9 +54,8 @@ let game = {
         this.ctx.clearRect(0, 0, this.width, this.height);
     
         this.ctx.drawImage(this.sprites.background, 0, 0);
-        board.cells.forEach(el => {
-            this.ctx.drawImage(this.sprites.cell, el.x, el.y);
-        })
+        board.render();
+        snake.render();
     }
     
     
