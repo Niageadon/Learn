@@ -1,29 +1,23 @@
 <html>
 <head>
 <title>HTML5 Arkanoid</title>
-<style>
-body {
-	padding: 0;
-	margin: 0;
-}
-canvas {
-	width: 100%;
-}
-</style>
-</head>
-<body>
-<canvas id="mycanvas" width="640" height="360" ></canvas>
-<script src="./public/bundle.js" type="module"></script>
-</body>
+	</head>
+	<body>
+		<canvas id="mycanvas"></canvas>
+		<script src="./public/bundle.js" type="module"></script>
+	</body>
 </html>
 
 <style>
-	canvas{
-		width: 100%;
-		position: absolute;
-		top: 50%;
-		left: 50%;
+	canvas {
+		position:absolute;
+		top:50%;
+		left:50%;
 		transform: translate(-50%, -50%);
+		-o-transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+		-moz-transform: translate(-50%, -50%);
+		-webkit-transform: translate(-50%, -50%);
 	}
 	body{
 		background-color: chocolate;

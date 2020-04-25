@@ -2,19 +2,20 @@ export {board}
 import {game} from './game';
 
 let board = {
-	size: 15,
+	cellsCount: 15,
+	size: 285,
 	cells: [],
 	
 	create() {
-		console.log(this.cells)
-		const margin = 1;
-		const pt = 40;
-		const pl = 170;
-		for(let i = 0; i < this.size; i++) {
-			for(let j = 0; j < this.size; j++) {
+		let cellSize = 18 + 1;
+		let offsetX = (game.width - cellSize * this.cellsCount) / 2;
+		let offsetY = (game.height - cellSize * this.cellsCount) / 2;
+		console.log(offsetX)
+		for(let i = 0; i < this.cellsCount; i++) {
+			for(let j = 0; j < this.cellsCount; j++) {
 				this.cells.push({
-					x: (18 + margin) * i + pl,
-					y: (18 + margin) * j + pt,
+					x: cellSize * i + offsetX,
+					y: cellSize * j + offsetY,
 					row: i,
 					col: j
 				})
