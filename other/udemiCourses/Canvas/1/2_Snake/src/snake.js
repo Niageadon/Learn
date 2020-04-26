@@ -1,6 +1,7 @@
 export {snake}
 import {game} from './game';
 import {board} from './board';
+import {food} from './food';
 
 let snake = {
     cells: [],
@@ -56,18 +57,30 @@ let snake = {
         this.moving = true;
     },
     move() {
+        const cheForFood = () => {
+            if(this.cells.includes(food.cell) && cell) {
+                return true
+            }
+        }
+        
         if (!this.moving) {
             return;
         }
         // получить следующую ячейку
         let cell = this.getNextCell();
         // если такая ячейка есть
-        if (cell) {
+        if(cheForFood()) {
+            // Если пересекли еду
+            this.cells.unshift(cell);
+            this.eatFood();
+        } else if (cell) {
             // добавить новую ячейку в snake.cells
             this.cells.unshift(cell);
             // удалить последнюю ячейку из snake.cells
             this.cells.pop();
         }
+        
+
     },
     getNextCell() {
         let head = this.cells[0];
@@ -76,5 +89,8 @@ let snake = {
         let col = head.col + this.direction.col;
 
         return board.getCell(row, col);
+    },
+    eatFood() {
+        food.create()
     }
 };
