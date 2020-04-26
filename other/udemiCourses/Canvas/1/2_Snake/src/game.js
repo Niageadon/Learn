@@ -2,6 +2,8 @@ export {game}
 
 import {board} from './board'
 import {snake} from './snake'
+
+
 let game = {
     dimensions: {
         max: {
@@ -34,6 +36,7 @@ let game = {
     
             board.create();
             snake.create();
+            snake.setEvents();
             resolve()
         })
     },
@@ -55,7 +58,7 @@ let game = {
 	        this.height = Math.floor(this.width * data.currentHeight / data.currentWidth);
         }
         calcWidth(dimensions);
-        calcWidth(dimensions);
+        calcHeight(dimensions);
         this.canvas.width = this.width;
         this.canvas.height = this.height;
         this.canvas.style.height = '100%';
@@ -81,14 +84,14 @@ let game = {
         await this.init();
         await this.preload();
         //await this.create();
-        this.run();
+        const game = setInterval(() => {
+            this.run();
+        }, 3000)
     },
     run() {
         window.requestAnimationFrame(() => {
-            
             this.render();
-            
-            this.run();
+            //this.run();
         });
     },
     render() {
@@ -97,6 +100,7 @@ let game = {
         this.ctx.drawImage(this.sprites.background, 0, 0);
         board.render();
         snake.render();
+        
     }
     
     
