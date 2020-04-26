@@ -50,9 +50,11 @@ let game = {
             this.width = Math.floor(data.currentWidth * data.maxHeight / data.currentHeight);
             this.width = Math.min(this.width, data.maxWidth);
             this.width = Math.max(this.width, data.minWidth);
-            this.height = Math.floor(this.width * data.currentHeight / data.currentWidth);
-            console.log(22, this.width, this.height, data.currentWidth)
         }
+        const calcHeight = (data) => {
+	        this.height = Math.floor(this.width * data.currentHeight / data.currentWidth);
+        }
+        calcWidth(dimensions);
         calcWidth(dimensions);
         this.canvas.width = this.width;
         this.canvas.height = this.height;
