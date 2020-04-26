@@ -11,14 +11,15 @@ const key = {
 
 let snake = {
 	cells: [],
-	direction: key.top,
+	direction: null,
 	move() {
 		const getNextCell = () => {
 			const firstCell = this.cells[0];
 			switch (this.direction) {
-				case key.top: {
-					return this.getCell({row: firstCell.row, col: firstCell.col - 1});
-				}
+				case key.top: return this.getCell({row: firstCell.row, col: firstCell.col - 1});
+				case key.bot: return this.getCell({row: firstCell.row, col: firstCell.col + 1});
+				case key.right: return this.getCell({row: firstCell.row + 1, col: firstCell.col});
+				case key.left: return this.getCell({row: firstCell.row - 1, col: firstCell.col + 1});
 			}
 		}
 		const cell = getNextCell();
@@ -35,8 +36,10 @@ let snake = {
 	setEvents() {
 		window.addEventListener('keydown', event => {
 			const keyCode = event.keyCode;
-			console.log(keyCode)
-
+			if(Object.values(key).includes(keyCode)) {
+				this.direction = keyCode
+				
+			}
 		})
 	},
 	getCell({row, col}) {
