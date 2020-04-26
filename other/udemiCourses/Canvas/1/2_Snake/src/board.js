@@ -16,8 +16,8 @@ let board = {
 				this.cells.push({
 					x: cellSize * i + offsetX,
 					y: cellSize * j + offsetY,
-					row: i,
-					col: j
+					col: i,
+					row: j
 				})
 			}
 		}
@@ -26,5 +26,8 @@ let board = {
 		this.cells.forEach(el => {
 			game.ctx.drawImage(game.sprites.cell, el.x, el.y);
 		})
-	}
+	},
+	getCell(row, col) {
+		return this.cells.find(cell => cell.row === row && cell.col === col);
+	},
 }

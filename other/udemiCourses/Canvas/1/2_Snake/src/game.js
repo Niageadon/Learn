@@ -36,7 +36,9 @@ let game = {
     
             board.create();
             snake.create();
-            snake.setEvents();
+            window.addEventListener("keydown", e => {
+                snake.start(e.keyCode);
+            });
             resolve()
         })
     },
@@ -85,11 +87,13 @@ let game = {
         await this.preload();
         //await this.create();
         const game = setInterval(() => {
-            this.run();
-        }, 3000)
+            this.update();
+        }, 300)
     },
-    run() {
+    update() {
         window.requestAnimationFrame(() => {
+            snake.move();
+    
             this.render();
             //this.run();
         });
@@ -97,7 +101,7 @@ let game = {
     render() {
         this.ctx.clearRect(0, 0, this.width, this.height);
     
-        this.ctx.drawImage(this.sprites.background, 0, 0);
+        this.ctx.drawImage(this.sprites.background, (this.width - this.sprites.background.width) / 2, (this.height - this.sprites.background.height) / 2);
         board.render();
         snake.render();
         
