@@ -11,18 +11,23 @@ let snake = {
         up: {
             row: -1,
             col: 0,
+            angle: 0,
         },
         down: {
             row: 1,
             col: 0,
+            angle: 180,
         },
         left: {
             row: 0,
             col: -1,
+            angle: 270,
+    
         },
         right: {
             row: 0,
             col: 1,
+            angle: 90,
         }
     },
     create() {
@@ -33,11 +38,34 @@ let snake = {
             this.cells.push(board.getCell(startCell.row, startCell.col));
         }
     },
-    render() {
-        game.ctx.drawImage(game.sprites.head, this.cells[0].x, this.cells[0].y);
+    renderHead() {
+        const {x, y} = this.cells[0];
+        const degree = this.direction.angle;
+        const halfSize = game.sprites.head.width / 2;
+        // Сохранение контекста перед редактирование
+        game.ctx.save();
+        turnHead();
+        game.ctx.drawImage(game.sprites.head, - halfSize, - halfSize);
+        // Возвращаем контекст
+        game.ctx.restore();
+        
+        function turnHead() {
+            // Перемещение точку начала координат к левому верхнему краю head
+            game.ctx.translate(x, y)
+            // Перемещаем точку отсчёта в её центр
+            game.ctx.translate(halfSize, halfSize);
+            // Вращяем изображение
+            game.ctx.rotate(degree * Math.PI / 180);
+        }
+    },
+    renderBody() {
         this.cells.slice(1).forEach(cell => {
             game.ctx.drawImage(game.sprites.body, cell.x, cell.y);
         });
+    },
+    render() {
+        this.renderHead();
+        this.renderBody();
     },
     start(keyCode) {
         switch (keyCode) {
