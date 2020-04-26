@@ -34,8 +34,7 @@ let game = {
         return new Promise(resolve => {
             this.ctx = this.canvas.getContext('2d');
             this.initDimensions();
-    
-    
+            
             board.create();
             snake.create();
             food.create();
@@ -95,10 +94,14 @@ let game = {
     },
     update() {
         window.requestAnimationFrame(() => {
+
             snake.move();
-    
             this.render();
             //this.run();
+            if(snake.dead) {
+                alert('gave over')
+                window.location.reload();
+            }
         });
     },
     render() {
@@ -109,7 +112,6 @@ let game = {
         snake.render();
         poops.render();
         food.render();
-        
     }
     
     

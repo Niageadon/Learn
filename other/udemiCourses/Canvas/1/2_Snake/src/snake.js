@@ -5,6 +5,7 @@ import {food} from './food';
 import {poops} from './poops';
 
 let snake = {
+    dead: false,
     cells: [],
     moving: false,
     direction: false,
@@ -87,12 +88,16 @@ let snake = {
         this.moving = true;
     },
     move() {
+        if(poops.stain(this.cells[0]) || this.suicide()) {
+            // если змея поехала или съела сама себя
+            this.dead = true
+        }
+        
         const cheForFood = () => {
             if(this.cells.includes(food.cell) && cell) {
                 return true
             }
         }
-        
         if (!this.moving) {
             return;
         }
@@ -108,9 +113,9 @@ let snake = {
             this.cells.unshift(cell);
             // удалить последнюю ячейку из snake.cells
             this.cells.pop();
+        } else {
+            this.dead = true
         }
-        
-
     },
     getNextCell() {
         let head = this.cells[0];
@@ -125,8 +130,12 @@ let snake = {
         food.create();
     },
     shit() {
-        const tail = this.cells[this.cells.length - 1];
-        poops.cells.push(tail)
-        console.log(poops.cells)
+        if(Math.random() > 0.8) {
+            const tail = this.cells[this.cells.length - 1];
+            poops.cells.push(tail)
+        }
+    },
+    suicide() {
+        return this.cells.slice(1).includes(this.cells[0])
     }
 };
