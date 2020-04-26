@@ -38,7 +38,6 @@ let snake = {
         });
     },
     start(keyCode) {
-        console.log(keyCode)
         switch (keyCode) {
             case 38:
                 this.direction = this.directions.up;

@@ -2,6 +2,7 @@ export {game}
 
 import {board} from './board'
 import {snake} from './snake'
+import {food} from './food'
 
 
 let game = {
@@ -36,6 +37,7 @@ let game = {
     
             board.create();
             snake.create();
+            food.create();
             window.addEventListener("keydown", e => {
                 snake.start(e.keyCode);
             });
@@ -88,7 +90,7 @@ let game = {
         //await this.create();
         const game = setInterval(() => {
             this.update();
-        }, 300)
+        }, 200)
     },
     update() {
         window.requestAnimationFrame(() => {
@@ -104,6 +106,7 @@ let game = {
         this.ctx.drawImage(this.sprites.background, (this.width - this.sprites.background.width) / 2, (this.height - this.sprites.background.height) / 2);
         board.render();
         snake.render();
+        food.render();
         
     }
     

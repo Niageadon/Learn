@@ -8,7 +8,7 @@ let board = {
 	
 	create() {
 		let cellSize = 18 + 1;
-		let offsetX = (game.width - cellSize * this.cellsCount) / 2;
+		let offsetX = Math.floor((game.width - cellSize * this.cellsCount) / 2);
 		let offsetY = (game.height - cellSize * this.cellsCount) / 2;
 		console.log(offsetX)
 		for(let i = 0; i < this.cellsCount; i++) {
