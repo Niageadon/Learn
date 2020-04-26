@@ -34,7 +34,8 @@ let snake = {
         }
     },
     render() {
-        this.cells.forEach(cell => {
+        game.ctx.drawImage(game.sprites.head, this.cells[0].x, this.cells[0].y);
+        this.cells.slice(1).forEach(cell => {
             game.ctx.drawImage(game.sprites.body, cell.x, cell.y);
         });
     },
