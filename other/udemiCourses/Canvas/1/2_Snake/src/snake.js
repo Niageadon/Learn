@@ -2,6 +2,7 @@ export {snake}
 import {game} from './game';
 import {board} from './board';
 import {food} from './food';
+import {poops} from './poops';
 
 let snake = {
     cells: [],
@@ -120,6 +121,12 @@ let snake = {
         return board.getCell(row, col);
     },
     eatFood() {
-        food.create()
+        this.shit();
+        food.create();
+    },
+    shit() {
+        const tail = this.cells[this.cells.length - 1];
+        poops.cells.push(tail)
+        console.log(poops.cells)
     }
 };

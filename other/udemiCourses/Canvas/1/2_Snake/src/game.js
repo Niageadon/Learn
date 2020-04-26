@@ -3,7 +3,7 @@ export {game}
 import {board} from './board'
 import {snake} from './snake'
 import {food} from './food'
-
+import {poops} from './poops'
 
 let game = {
     dimensions: {
@@ -27,6 +27,7 @@ let game = {
         cell: null,
         food: null,
         head: null,
+        poop: null,
     },
 
     init() {
@@ -106,6 +107,7 @@ let game = {
         this.ctx.drawImage(this.sprites.background, (this.width - this.sprites.background.width) / 2, (this.height - this.sprites.background.height) / 2);
         board.render();
         snake.render();
+        poops.render();
         food.render();
         
     }
