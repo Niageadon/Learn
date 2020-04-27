@@ -74,7 +74,7 @@ let game = {
     preload() {
         return new Promise(resolve => {
             let index = 0;
-            const count = Object.keys(this.sprites).length + Object.keys(this.sounds)
+            const count = Object.keys(this.sprites).length
             
             const onLoad = () => {
 	            index++;
@@ -89,7 +89,7 @@ let game = {
             }
             for(let sound in this.sounds) {
             	this.sounds[sound] = new Audio();
-            	this.sounds[sound].src = `./sounds/${soun}.mp3`;
+            	this.sounds[sound].src = `./sounds/${sound}.mp3`;
             	this.sounds[sound].addEventListener('canplaythrough', onLoad, {once: true})
             }
         })
@@ -98,6 +98,8 @@ let game = {
         await this.init();
         await this.preload();
         //await this.create();
+	    this.sounds.theme.loop = true;
+	    this.sounds.theme.play();
         window.interval = setInterval(() => {
             this.update();
         }, 130)

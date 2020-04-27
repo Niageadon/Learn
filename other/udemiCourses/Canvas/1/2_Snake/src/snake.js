@@ -126,6 +126,7 @@ let snake = {
         return board.getCell(row, col);
     },
     eatFood() {
+    	game.sounds.food.play();
         this.shit();
         food.create();
     },
