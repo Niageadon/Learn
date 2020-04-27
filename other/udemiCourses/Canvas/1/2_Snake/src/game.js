@@ -29,6 +29,10 @@ let game = {
         head: null,
         poop: null,
     },
+	sounds: {
+		food: null,
+		theme: null
+	},
 
     init() {
         return new Promise(resolve => {
@@ -70,17 +74,23 @@ let game = {
     preload() {
         return new Promise(resolve => {
             let index = 0;
+            const count = Object.keys(this.sprites).length + Object.keys(this.sounds)
             
-            const onImageLoad = () => {
-                index++;
-                if(index >= Object.keys(this.sprites).length) {
-                    resolve();
-                }
+            const onLoad = () => {
+	            index++;
+	            if(index >= count) {
+		            resolve();
+	            }
             }
             for(let sprite in this.sprites) {
                 this.sprites[sprite] = new Image();
                 this.sprites[sprite].src = `./img/${sprite}.png`;
-                this.sprites[sprite].addEventListener('load', onImageLoad)
+                this.sprites[sprite].addEventListener('load', onLoad)
+            }
+            for(let sound in this.sounds) {
+            	this.sounds[sound] = new Audio();
+            	this.sounds[sound].src = `./sounds/${soun}.mp3`;
+            	this.sounds[sound].addEventListener('canplaythrough', onLoad, {once: true})
             }
         })
     },
@@ -88,9 +98,9 @@ let game = {
         await this.init();
         await this.preload();
         //await this.create();
-        const game = setInterval(() => {
+        window.interval = setInterval(() => {
             this.update();
-        }, 200)
+        }, 130)
     },
     update() {
         window.requestAnimationFrame(() => {
@@ -99,6 +109,7 @@ let game = {
             this.render();
             //this.run();
             if(snake.dead) {
+                clearInterval(interval);
                 alert('gave over')
                 window.location.reload();
             }
