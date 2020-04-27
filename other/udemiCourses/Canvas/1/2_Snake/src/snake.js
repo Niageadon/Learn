@@ -126,9 +126,8 @@ let snake = {
         return board.getCell(row, col);
     },
     eatFood() {
-    	game.sounds.food.play();
+    	game.updateScore();
         this.shit();
-        food.create();
     },
     shit() {
         if(Math.random() > 0.8) {

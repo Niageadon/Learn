@@ -20,6 +20,7 @@ let game = {
     height: 0,
     canvas: document.getElementById('mycanvas'),
     ctx: null,
+    score: 0,
     sprites: {
         background: null,
         body: null,
@@ -117,6 +118,11 @@ let game = {
             }
         });
     },
+    updateScore() {
+        this.score++;
+        game.sounds.food.play();
+        food.create();
+    },
     render() {
         this.ctx.clearRect(0, 0, this.width, this.height);
     
@@ -125,8 +131,10 @@ let game = {
         snake.render();
         poops.render();
         food.render();
+        
+        this.ctx.font = '20px Arial';
+        this.ctx.fillStyle = '#FFFF';
+        this.ctx.fillText(`Score: ${this.score}`, 30, 30)
     }
-    
-    
 }
 
