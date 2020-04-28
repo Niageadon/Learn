@@ -1,16 +1,16 @@
 import React from 'react'
 import Header from '../header'
-import List from '../list'
-import Person from '../person'
+import List from '../person-page/list'
+import Person from '../person-page/person'
 import Planet from '../planet'
 import Starship from '../starship'
 import RandomPlanet from '../planet/random-planet'
 import ErrorIndicator from '../error/index'
+import PersonPage from '../person-page/index'
 import './index.scss'
 
 export default class App extends React.Component{
 	state = {
-		itemId: 1,
 		error: false
 	}
 	
@@ -31,10 +31,11 @@ export default class App extends React.Component{
 			<div className="app">
 				<Header/>
 				<RandomPlanet/>
-				<div className="row">
+				<PersonPage/>
+				{/*<div className="row">
 					<List onItemSelected={this.onItemSelected}/>
 					<Person personId={this.state.itemId}/>
-				</div>
+				</div>*/}
 				
 			</div>
 		)

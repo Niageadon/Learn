@@ -1,6 +1,6 @@
 import React from 'react'
-import Swapi from '../../services/Swapi'
-import Preloader from '../preloader'
+import Swapi from '../../../services/Swapi'
+import Preloader from '../../preloader'
 import './index.scss'
 export default class List extends React.Component{
 
@@ -17,7 +17,7 @@ export default class List extends React.Component{
 	}
 	
 	render() {
-		const {onItemSelected} = this.props
+		const {onPersonSelected} = this.props
 		const {list} = this.state;
 		if(!list) {
 			return <Preloader/>
@@ -25,7 +25,7 @@ export default class List extends React.Component{
 		
 		const items = list.map(({name, id}) => {
 			return (
-				<li onClick={() => onItemSelected(id)} className="list-group-item" key={id}>{name}</li>
+				<li onClick={() => onPersonSelected(id)} className="list-group-item" key={id}>{name}</li>
 			)
 		})
 		

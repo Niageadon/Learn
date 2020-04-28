@@ -1,5 +1,5 @@
 import React from 'react'
-import swapi from '../../services/Swapi'
+import swapi from '../../../services/Swapi'
 import './index.scss'
 export default class Person extends React.Component{
 	
