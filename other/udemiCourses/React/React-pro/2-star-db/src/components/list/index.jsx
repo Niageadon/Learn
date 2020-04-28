@@ -25,7 +25,7 @@ export default class List extends React.Component{
 		
 		const items = list.map(({name, id}) => {
 			return (
-				<li onClick={() => onItemSelected()} className="list-group-item" key={id}>{name}</li>
+				<li onClick={() => onItemSelected(id)} className="list-group-item" key={id}>{name}</li>
 			)
 		})
 		

@@ -9,20 +9,23 @@ import './index.scss'
 
 export default class App extends React.Component{
 	state = {
-		item: null
+		itemId: 1,
+		
 	}
-	onItemSelected(item) {
-		console.log(item)
-		this.setState({item})
+	onItemSelected = (itemId) => {
+		this.setState({itemId})
 	}
-	
 	
 	render() {
 		return (
 			<div className="app">
 				<Header/>
 				<RandomPlanet/>
-				<List onItemSelected={this.onItemSelected}/>
+				<div className="row">
+					<List onItemSelected={this.onItemSelected}/>
+					<Person personId={this.state.itemId}/>
+				</div>
+				
 			</div>
 		)
 	}

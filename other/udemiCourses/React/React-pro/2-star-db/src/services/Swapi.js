@@ -5,12 +5,12 @@ class Planet {
 			this.population = planet.population;
 			this.rotationPeriod = planet.rotation_period;
 			this.diameter =  planet.diameter;
+			this.id = getIdFromLink(planet.url)
 		}
 	}
 }
 class Person {
 	constructor(person) {
-		console.log(person)
 		this.name = person.name;
 		this.gender = person.gender;
 		this.birthYear = person.birth_year;
@@ -32,7 +32,7 @@ class Starship {
 }
 
 class Swapi {
-	baseUrl = 'https://swapi.co/api'
+	baseUrl = 'https://swapi.dev/api'
 	fetchData = async(url) => {
 		try {
 			const resp = await fetch(this.baseUrl + url)
@@ -47,7 +47,6 @@ class Swapi {
 	}
 	async getAllPeople() {
 		const res = await this.fetchData('/people');
-		console.log(res)
 		return res.results.map(el => new Person(el));
 	}
 	async getPerson(id) {
@@ -55,7 +54,6 @@ class Swapi {
 	}
 	async getAllPlanets() {
 		const res = await this.fetchData('/planets');
-		console.log(res)
 		return res.results.map(el => new Planet(el));
 	}
 	async getPlanet(id) {
@@ -63,7 +61,6 @@ class Swapi {
 	}
 	async getAllStarships() {
 		const res = await this.fetchData('/starships');
-		console.log(res)
 		return res.results.map(el => new Starship(el));
 	}
 	async getStarship(id) {

@@ -16,7 +16,6 @@ export default class RandomPlanet extends React.Component{
 	}
 
 	onPlanetLoaded(planet, planetId) {
-		console.log(planet)
 		this.setState({planetId, planet, loading: false})
 	}
 	onLoadError(err) {
