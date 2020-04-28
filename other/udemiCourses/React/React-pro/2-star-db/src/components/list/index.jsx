@@ -1,6 +1,5 @@
 import React from 'react'
-import Swapi from '../../../services/Swapi'
-import Preloader from '../../preloader'
+import Preloader from '../preloader'
 import './index.scss'
 export default class List extends React.Component{
 
@@ -9,8 +8,10 @@ export default class List extends React.Component{
 		type: null
 	}
 	
+	
 	componentDidMount() {
-		Swapi.getAllPeople()
+		const { getListData } = this.props;
+		getListData()
 			.then(list => {
 				this.setState({list})
 			})

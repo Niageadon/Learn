@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../header'
-import List from '../person-page/list'
+import List from '../list'
 import Person from '../person-page/person'
 import Planet from '../planet'
 import Starship from '../starship'

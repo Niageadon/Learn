@@ -1,7 +1,9 @@
 import React from 'react'
-import List from '../person-page/list'
+import List from '../list'
 import Person from '../person-page/person'
 import ErrorIndicator from '../error/index'
+import Swapi from '../../services/Swapi'
+
 
 export default class App extends React.Component{
 	state = {
@@ -26,7 +28,7 @@ export default class App extends React.Component{
 		
 		return (
 			<div className='row'>
-				<List onPersonSelected={this.onPersonSelected}/>
+				<List onPersonSelected={this.onPersonSelected} getListData={Swapi.getAllPeople}/>
 				<Person personId={this.state.personId}/>
 			</div>
 		)

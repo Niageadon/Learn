@@ -45,25 +45,25 @@ class Swapi {
 			throw e
 		}
 	}
-	async getAllPeople() {
+	getAllPeople = async () => {
 		const res = await this.fetchData('/people');
 		return res.results.map(el => new Person(el));
 	}
-	async getPerson(id) {
+	getPerson = async (id) => {
 		return new Person(await this.fetchData(`/people/${id}`))
 	}
-	async getAllPlanets() {
+	getAllPlanets = async () => {
 		const res = await this.fetchData('/planets');
 		return res.results.map(el => new Planet(el));
 	}
-	async getPlanet(id) {
+	getPlanet = async (id) => {
 		return new Planet(await this.fetchData(`/planets/${id}`))
 	}
-	async getAllStarships() {
+	getAllStarships = async () => {
 		const res = await this.fetchData('/starships');
 		return res.results.map(el => new Starship(el));
 	}
-	async getStarship(id) {
+	getStarship = async (id) => {
 		return await this.fetchData(`/starships/${id}`)
 	}
 }
