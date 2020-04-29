@@ -28,7 +28,11 @@ export default class App extends React.Component{
 		
 		return (
 			<div className='row'>
-				<List onPersonSelected={this.onPersonSelected} getListData={Swapi.getAllPeople}/>
+				<List
+					onPersonSelected={this.onPersonSelected}
+					getListData={Swapi.getAllPeople}
+					renderItem={({name, gender, birthYear}) => `${name} (${gender}, ${birthYear})`}
+				/>
 				<Person personId={this.state.personId}/>
 			</div>
 		)

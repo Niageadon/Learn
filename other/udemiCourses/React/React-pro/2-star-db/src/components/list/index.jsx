@@ -18,15 +18,15 @@ export default class List extends React.Component{
 	}
 	
 	render() {
-		const {onPersonSelected} = this.props
+		const {onPersonSelected, renderItem} = this.props
 		const {list} = this.state;
 		if(!list) {
 			return <Preloader/>
 		}
 		
-		const items = list.map(({name, id}) => {
+		const items = list.map((item) => {
 			return (
-				<li onClick={() => onPersonSelected(id)} className="list-group-item" key={id}>{name}</li>
+				<li onClick={() => onPersonSelected(item.id)} className="list-group-item" key={item.id}>{renderItem(item)}</li>
 			)
 		})
 		
