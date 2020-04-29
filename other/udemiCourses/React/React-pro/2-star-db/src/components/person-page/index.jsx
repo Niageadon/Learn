@@ -4,6 +4,14 @@ import Person from '../person-page/person'
 import ErrorIndicator from '../error/index'
 import Swapi from '../../services/Swapi'
 
+const Row = ({left, right}) => {
+	return (
+		<div className='row'>
+			{left}
+			{right}
+		</div>
+	);
+}
 
 export default class App extends React.Component{
 	state = {
@@ -22,19 +30,20 @@ export default class App extends React.Component{
 	}
 	
 	render() {
+		const person = <Person personId={this.state.personId}/>;
+		const list = (<List
+			onPersonSelected={this.onPersonSelected}
+			getListData={Swapi.getAllPeople}
+			renderItem={({name, gender, birthYear}) => `${name} (${gender}, ${birthYear})`}
+		/>);
+		
+		
 		if(this.state.hasError) {
 			return <ErrorIndicator/>
 		}
 		
 		return (
-			<div className='row'>
-				<List
-					onPersonSelected={this.onPersonSelected}
-					getListData={Swapi.getAllPeople}
-					renderItem={({name, gender, birthYear}) => `${name} (${gender}, ${birthYear})`}
-				/>
-				<Person personId={this.state.personId}/>
-			</div>
+			<Row left={list} right={person}/>
 		)
 	}
 }
