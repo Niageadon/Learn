@@ -1,6 +1,6 @@
 const getDelay = require('../../timeDecorator');
 function swap(arr, n, m) {
-	const temp = arr[n]
+	const temp = arr[m]
 	arr[m] = arr[n];
 	arr[n] = temp;
 }
