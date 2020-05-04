@@ -29,7 +29,6 @@ function bubbleSort1(arr) {
 	return arr
 }
 
-// O(N**2)
 const arr = new Array(5000).fill(1).map(el => Math.floor(Math.random() * 5000));
 const arr1 = new Array(5000).fill(1).map(el => Math.floor(Math.random() * 5000));
 getDelay(() => bubbleSort(arr), false)

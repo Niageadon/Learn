@@ -1,6 +1,6 @@
 const getDelay = require('../../timeDecorator');
 
-function insertionSort(arr) {
+function insertionSort(arr) {   //O(N**3)
 	let temp = [arr[0]];
 	for (let i = 1; i < arr.length; i++) {
 		let currentVal = arr[i];
@@ -24,7 +24,7 @@ function insertionSort(arr) {
 	}
 }
 
-function insertionSort1(nums) {
+function insertionSort1(nums) { //O(N**2)
 	for (let i = 1; i < nums.length; i++) {
 		let j = i - 1
 		let temp = nums[i]
@@ -37,8 +37,8 @@ function insertionSort1(nums) {
 	return nums
 }
 
-const arr = new Array(100000).fill(1).map((el, index) => Math.floor(Math.random() * 5000 / index));
-const arr1 = new Array(100000).fill(1).map((el, index) => Math.floor(Math.random() * 5000 / index));
+const arr = new Array(100000).fill(1).map((el, index) => Math.floor(Math.random() * 5000 / (index + 1)));
+const arr1 = new Array(100000).fill(1).map((el, index) => Math.floor(Math.random() * 5000 / (index + 1)));
 
 
 getDelay(() => insertionSort(arr), false);
