@@ -1,5 +1,8 @@
 const getDelay = require('../../timeDecorator');
-
+/*
+Бежим по всему массиву в поиске наименьшего
+В конце обхода меняем местами элемент с которого начался поиск и наименьшее найденное
+* */
 function selectionSort(arr) {
 	let len = arr.length;
 	for (let i = 0; i < len; i++) {

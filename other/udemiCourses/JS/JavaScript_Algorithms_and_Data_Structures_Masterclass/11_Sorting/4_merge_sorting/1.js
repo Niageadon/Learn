@@ -1,5 +1,10 @@
 const getDelay = require('../../timeDecorator');
 
+/*
+Массив делится пополам до тех пор, пока не будет состоять из одного элемента
+Затем эти элементы соеденияхтся обратно, при это сортируясь
+* */
+
 function mergeSort(arr) {
 	if(arr.length === 1) {
 		return arr

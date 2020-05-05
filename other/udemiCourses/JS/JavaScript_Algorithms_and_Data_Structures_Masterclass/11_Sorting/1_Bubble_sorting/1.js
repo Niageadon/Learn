@@ -1,4 +1,9 @@
 const getDelay = require('../../timeDecorator');
+
+/*
+Проходим по всем элементам массива
+на каждой итареции сравненивем элемент i и i+1, если i+1 окажется меньше - меняем их местами
+* */
 function swap(arr, n, m) {
 	const temp = arr[m]
 	arr[m] = arr[n];
