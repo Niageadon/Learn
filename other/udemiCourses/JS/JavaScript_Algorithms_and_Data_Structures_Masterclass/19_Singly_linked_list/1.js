@@ -12,15 +12,10 @@ class Node {
 		if(!temp) {
 			return this
 		}
-		let last = null;
-		while(!last) {
-			if(temp.next) {
-				temp = temp.next
-			} else {
-				last = temp
-			}
+		while(temp.next) {
+			temp = temp.next
 		}
-		return last
+		return temp
 	}
 }
 class SingleLinkedList {
@@ -39,17 +34,25 @@ class SingleLinkedList {
 		return this
 	}
 	pop() {
-		if(this.tail) {
-			this.tail = null;
-			this.tail = this.head.getLast();
-		} else if(this.head) {
-			this.head = new Node();
+		if(!this.head) return this
+		let current = this.head;
+		let tail = current;
+		while (current.next) {
+			tail = current
+			current = current.next
 		}
+		this.tail = tail;
+		this.tail.next = null;
+		this.length--;
+		if(this.length === 1) {
+			this.head.next = null
+		}
+		return this
 	}
+	
 }
 
-console.log(22)
 const boba = new SingleLinkedList();
-boba.push('1').push('2').push(3).push(4);
-
+boba.push('1').push('2').push(3)//.push(3).push(4);
+boba.pop()
 console.log(boba)
