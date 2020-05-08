@@ -95,11 +95,24 @@ class SingleLinkedList {
 		this.length++;
 		return this
 	}
-	
-	
+	remove(index, value) {
+		let prevNode = this.get(index - 1);
+		let nextNode = this.get(index + 1);
+		if(prevNode && nextNode) {
+			prevNode.next = nextNode;
+			this.length--;
+		} else if(index === 0) {
+			this.shift()
+		} else if(index === this.length - 1) {
+			this.pop();
+		}
+		return this
+	}
+	log() {
+		console.log(this)
+	}
 }
 
 const boba = new SingleLinkedList();
 boba.push('1').push('2')//.push(3).push(4);
-boba.insert(0, 33)
-console.log(boba)
+boba.insert(0, 33).remove(0).remove(0).log()//.remove(0)
