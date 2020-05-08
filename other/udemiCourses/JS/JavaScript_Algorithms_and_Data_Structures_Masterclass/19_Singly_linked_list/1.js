@@ -49,10 +49,20 @@ class SingleLinkedList {
 		}
 		return this
 	}
+	shift() {
+		if (!this.head) return this
+		this.head = this.head.next;
+		this.length--;
+		if(this.length === 1) {
+			this.tail = null
+		}
+		return this
+	}
+	
 	
 }
 
 const boba = new SingleLinkedList();
 boba.push('1').push('2').push(3)//.push(3).push(4);
-boba.pop()
+boba.shift().shift().shift().push(22)
 console.log(boba)
