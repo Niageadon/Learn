@@ -108,11 +108,25 @@ class SingleLinkedList {
 		}
 		return this
 	}
+	reverse() {
+		if(this.length <= 1) return this
+		const head = this.tail;
+		let temp = head;
+		for(let i = this.length - 1; i > -1; i--) {
+			temp.next = this.get(i);
+			temp = temp.next;
+		}
+		this.head = head;
+		this.tail = temp;
+		this.tail.next = null;
+		
+		return this
+	}
 	log() {
 		console.log(this)
 	}
 }
 
 const boba = new SingleLinkedList();
-boba.push('1').push('2')//.push(3).push(4);
-boba.insert(0, 33).remove(0).remove(0).log()//.remove(0)
+boba.push('1').push('2').push(3).push(4);
+boba.insert(0, 33).reverse().log()//.remove(0)
