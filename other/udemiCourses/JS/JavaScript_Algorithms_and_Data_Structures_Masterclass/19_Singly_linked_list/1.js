@@ -58,11 +58,18 @@ class SingleLinkedList {
 		}
 		return this
 	}
+	unshift(val) {
+		let head = new Node(val);
+		head.next = this.head;
+		this.head = head;
+		this.length++;
+		return this
+	}
 	
 	
 }
 
 const boba = new SingleLinkedList();
 boba.push('1').push('2').push(3)//.push(3).push(4);
-boba.shift().shift().shift().push(22)
+boba.unshift(22)
 console.log(boba)
