@@ -25,6 +25,7 @@ class SingleLinkedList {
 		this.length = 0;
 	}
 	push(val) {
+		// O(1)
 		if(!this.head) {
 			this.head = new Node(val)
 		} else {
@@ -34,6 +35,7 @@ class SingleLinkedList {
 		return this
 	}
 	pop() {
+		// O(N)
 		if(!this.head) return this
 		let current = this.head;
 		let tail = current;
@@ -50,6 +52,7 @@ class SingleLinkedList {
 		return this
 	}
 	shift() {
+		// O(N)
 		if (!this.head) return this
 		this.head = this.head.next;
 		this.length--;
@@ -66,6 +69,7 @@ class SingleLinkedList {
 		return this
 	}
 	get(index) {
+		// O(1) - O(N)
 		if(index < 0 || index > this.length) return null
 		let temp = this.head
 		for(let i = 0; i < index; i++) {
@@ -74,6 +78,7 @@ class SingleLinkedList {
 		return temp
 	}
 	set(index, value) {
+		// O(1) - O(N)
 		let node = this.get(index);
 		if(node) {
 			node.val = value
@@ -81,6 +86,7 @@ class SingleLinkedList {
 		return this
 	}
 	insert(index, value) {
+		// O(1)
 		let prevNode = this.get(index - 1);
 		let nextNode = this.get(index);
 		let node = new Node(value)
@@ -96,6 +102,7 @@ class SingleLinkedList {
 		return this
 	}
 	remove(index, value) {
+		// O(1) - O(N)
 		let prevNode = this.get(index - 1);
 		let nextNode = this.get(index + 1);
 		if(prevNode && nextNode) {
@@ -109,6 +116,7 @@ class SingleLinkedList {
 		return this
 	}
 	reverse() {
+		// O(N)
 		if(this.length <= 1) return this
 		const head = this.tail;
 		let temp = head;
