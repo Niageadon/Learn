@@ -66,7 +66,7 @@ class SingleLinkedList {
 		return this
 	}
 	get(index) {
-		if(index < 0 || index > this.length) return this
+		if(index < 0 || index > this.length) return null
 		let temp = this.head
 		for(let i = 0; i < index; i++) {
 			temp = temp.next
@@ -80,12 +80,26 @@ class SingleLinkedList {
 		}
 		return this
 	}
+	insert(index, value) {
+		let prevNode = this.get(index - 1);
+		let nextNode = this.get(index);
+		let node = new Node(value)
+		if(nextNode) {
+			node.next = nextNode
+		}
+		if(prevNode) {
+			prevNode.next = node;
+		} else {
+			this.head = node
+		}
+		this.length++;
+		return this
+	}
 	
 	
 }
 
 const boba = new SingleLinkedList();
-boba.push('1').push('2').push(3)//.push(3).push(4);
-boba.unshift(22)
-boba.set(0, 11)
+boba.push('1').push('2')//.push(3).push(4);
+boba.insert(0, 33)
 console.log(boba)
