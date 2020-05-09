@@ -52,7 +52,7 @@ class SingleLinkedList {
 		return this
 	}
 	shift() {
-		// O(N)
+		// O(1)
 		if (!this.head) return this
 		this.head = this.head.next;
 		this.length--;
