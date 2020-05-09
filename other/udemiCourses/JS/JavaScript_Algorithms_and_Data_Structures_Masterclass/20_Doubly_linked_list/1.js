@@ -126,7 +126,23 @@ class DoublyLinkedList {
 		}
 		return this
 	}
-	remove(index, value) {
+	remove(index) {
+		// O(1)
+		let node = this.get(index);
+		if(node) {
+			if(!index) {
+				this.shift();
+			} else if(index === this.length) {
+				this.pop()
+			} else {
+				let prev = node.prev;
+				let next = node.next;
+				if(prev) prev.next = next;
+				if(next) next.prev = prev;
+				this.length--;
+			}
+			return this
+		}
 	}
 	reverse() {
 	}
@@ -136,4 +152,4 @@ class DoublyLinkedList {
 }
 
 const boba = new DoublyLinkedList();
-boba.push('1').push(4).set(1, 11).log()
+boba.push('1').push(2).push(3).remove(1).log()
