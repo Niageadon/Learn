@@ -38,6 +38,7 @@ class DoublyLinkedList {
 		return this
 	}
 	pop() {
+		// O(1)
 		switch (this.length) {
 			case 0: {
 				return this
@@ -61,6 +62,7 @@ class DoublyLinkedList {
 	}
 	
 	shift() {
+		// O(1)
 		if (!this.length) return this
 		this.head = this.head.next;
 		this.head.prev = null;
@@ -68,6 +70,7 @@ class DoublyLinkedList {
 	}
 	
 	unshift(val) {
+		// O(1)
 		if(!this.length) {
 			this.push(val)
 		}
@@ -79,6 +82,21 @@ class DoublyLinkedList {
 		return this
 	}
 	get(index) {
+		// O(1) - O(N/2)
+		if((index < 0) || (index >= this.length)) return null
+		if(index < Math.floor(this.length / 2)) {
+			let temp = this.head;
+			for(let i = 0; i < index; i++) {
+				temp = temp.next;
+			}
+			return temp
+		} else {
+			let temp = this.tail;
+			for(let i = this.length - 1; i > index; i--) {
+				temp = temp.prev;
+			}
+			return temp
+		}
 	}
 	set(index, value) {
 	}
@@ -94,4 +112,5 @@ class DoublyLinkedList {
 }
 
 const boba = new DoublyLinkedList();
-boba.push('1').unshift(3).log()
+boba.push('1').push(2).push(3).push(4)
+	console.log(boba.get(0))
