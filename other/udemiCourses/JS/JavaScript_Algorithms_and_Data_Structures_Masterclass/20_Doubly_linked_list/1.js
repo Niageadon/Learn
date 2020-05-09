@@ -29,7 +29,8 @@ class DoublyLinkedList {
 	push(val) {
 		// O(1)
 		if(!this.head) {
-			this.head = new Node(val)
+			this.head = new Node(val);
+			this.tail = this.head;
 		} else {
 			this.tail = this.head.getLast().setNext(val)
 		}
@@ -37,7 +38,28 @@ class DoublyLinkedList {
 		return this
 	}
 	pop() {
+		switch (this.length) {
+			case 0: {
+				return this
+			}
+			case 1: {
+				this.tail = this.tail.prev;
+				this.head = this.tail;
+				break;
+			}
+			case 2: {
+				this.tail = this.tail.prev;
+				this.head.next = null;
+				break;
+			}
+			default: {
+				this.tail = this.tail.prev;
+			}
+		}
+		this.length--;
+		return this;
 	}
+	
 	shift() {
 	}
 	unshift(val) {
@@ -58,4 +80,4 @@ class DoublyLinkedList {
 }
 
 const boba = new DoublyLinkedList();
-boba.push('1').push(2).log()
+boba.push('1').pop().push(2).log()
