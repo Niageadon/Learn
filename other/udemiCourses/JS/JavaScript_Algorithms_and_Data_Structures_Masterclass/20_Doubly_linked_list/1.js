@@ -107,7 +107,7 @@ class DoublyLinkedList {
 		return this
 	}
 	insert(index, value) {
-		// O(1)
+		// O(1) - O(N/2)
 		let node = this.get(index);
 		if(node) {
 			if(!index) {
@@ -127,7 +127,7 @@ class DoublyLinkedList {
 		return this
 	}
 	remove(index) {
-		// O(1)
+		// O(1) - O(N/2)
 		let node = this.get(index);
 		if(node) {
 			if(!index) {
@@ -145,6 +145,21 @@ class DoublyLinkedList {
 		}
 	}
 	reverse() {
+		this.head = this.tail;
+		let temp = this.head;
+		temp.next = temp.prev;
+		temp.prev = null;
+		temp = temp.next;
+		for(let i = 0; i < this.length - 1; i++) {
+			const prev = temp.next;
+			temp.next = temp.prev? temp.prev: null
+			temp.prev = prev? prev: null;
+			if(i === this.length - 2) {
+				this.tail = temp
+			}
+			temp = temp.next;
+		}
+		return this
 	}
 	log() {
 		console.log(this)
@@ -152,4 +167,4 @@ class DoublyLinkedList {
 }
 
 const boba = new DoublyLinkedList();
-boba.push('1').push(2).push(3).remove(1).log()
+boba.push('1').push(2).push(3).push(4).reverse().log()
