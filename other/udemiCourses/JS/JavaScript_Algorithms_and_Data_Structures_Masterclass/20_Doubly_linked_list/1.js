@@ -68,6 +68,15 @@ class DoublyLinkedList {
 	}
 	
 	unshift(val) {
+		if(!this.length) {
+			this.push(val)
+		}
+		let node = new Node(val);
+		node.next = this.head;
+		this.head.prev = node;
+		this.head = node;
+		this.length++;
+		return this
 	}
 	get(index) {
 	}
@@ -85,4 +94,4 @@ class DoublyLinkedList {
 }
 
 const boba = new DoublyLinkedList();
-boba.push('1').push(2).shift().log()
+boba.push('1').unshift(3).log()
