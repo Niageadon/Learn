@@ -18,13 +18,10 @@ export default {
         }
     },
     created() {
-        this.content = new Array(30).fill(null).map((value, index) => {
-            let title = 'lorem';
+        this.content = new Array(50).fill(null).map((value, index) => {
+            let title = index;
             let text = 'lorem';
-            while (Math.random() < 0.8) {
-                title += ' lorem'
-            }
-            while (Math.random() < 0.97) {
+                while (Math.random() < 0.98 ) {
                 text += ' lorem'
             }
             return {title, text, id: index}
