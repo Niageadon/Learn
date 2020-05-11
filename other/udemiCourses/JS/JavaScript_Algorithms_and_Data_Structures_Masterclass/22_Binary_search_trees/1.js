@@ -4,6 +4,9 @@ class Node {
 		this.left = null;
 		this.right = null;
 	}
+	log() {
+		console.log(this)
+	}
 }
 class BinarySearchTree {
 	constructor(value) {
@@ -34,10 +37,21 @@ class BinarySearchTree {
 		searchPlace();
 		return this;
 	}
+	find(value) {
+		let temp = this.root;
+		while(1) {
+			if(!temp) return null
+			if(value === temp.value) {
+				return temp
+			} else {
+				temp = value > temp.value? temp.right: temp.left;
+			}
+		}
+	}
 	log() {
 		console.log(this)
 	}
 }
 
 const tree = new BinarySearchTree(10);
-tree.insert(5).insert(7).insert(11).log()
+tree.insert(5).insert(7).insert(11).find(7).log()
