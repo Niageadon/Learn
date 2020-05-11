@@ -73,7 +73,31 @@ class BinarySearchTree {
 		traverse(node || this.root);
 		return data;
 	}
+	DFSPostOrder(node) {
+		let data = [];
+		function traverse(node) {
+			if(node.left) traverse(node.left)
+			if(node.right) traverse(node.right)
+			data.push(node);
+		}
+		traverse(node || this.root)
+		return data
+	}
+	DFSInOrder(node) {
+		let data = [];
+		function traverse(node) {
+			if(node.left) traverse(node.left)
+			if(node.left) {
+				traverse(node.left)
+			}
+			node.left && traverse(node.left)
+			data.push(node);
+			if(node.right) traverse(node.right)
+		}
+		traverse(node || this.root)
+		return data
+	}
 }
 
 const tree = new BinarySearchTree(10);
-console.log(tree.insert(5).insert(7).insert(11).DFSPreOrder())
+console.log(tree.insert(10).insert(6).insert(3).insert(8).insert(15).insert(20).DFSInOrder())
