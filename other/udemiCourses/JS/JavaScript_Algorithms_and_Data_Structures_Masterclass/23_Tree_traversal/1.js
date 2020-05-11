@@ -63,7 +63,17 @@ class BinarySearchTree {
 		}
 		return data
 	}
+	DFSPreOrder(node) {
+		let data = [];
+		function traverse(node) {
+			data.push(node);
+			if(node.left) traverse(node.left)
+			if(node.right) traverse(node.right)
+		}
+		traverse(node || this.root);
+		return data;
+	}
 }
 
 const tree = new BinarySearchTree(10);
-console.log(tree.insert(5).insert(7).insert(11).BFS())
+console.log(tree.insert(5).insert(7).insert(11).DFSPreOrder())
