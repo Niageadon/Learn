@@ -1,15 +1,17 @@
-/*
-insert - O(log(N))
-remove - O(log(N))
-search - O(N)
-* */
-
-class MaxBinaryHeap {
-	constructor(values) {
-		this.values = values;
+class Node {
+	constructor({value, priority}) {
+		this.value = value;
+		this.priority = priority;
 	}
-	insert(value) {
-		this.values.push(value);
+}
+
+class PriorityQueue {
+	constructor(values) {
+		this.values = values.map(el => new Node({value: el.value, priority: el.priority}));
+	}
+	insert({value, priority}) {
+		const node = new Node({value, priority});
+		this.values.push(node);
 		this.bubbleUp();
 		return this
 	}
@@ -22,12 +24,12 @@ class MaxBinaryHeap {
 	bubbleUp() {
 		let parentIndex, parent;
 		let index = this.values.length - 1;
-		let value = this.values[index];
+		let node = this.values[index];
 		while(index > 0) {
 			parentIndex = Math.floor((index - 1) / 2);
 			parent = this.values[parentIndex];
-			if (value > parent) {
-				this.values[parentIndex] = value;
+			if (node.priority < parent.priority) {
+				this.values[parentIndex] = node;
 				this.values[index] = parent;
 				index = parentIndex;
 			} else break
@@ -47,12 +49,12 @@ class MaxBinaryHeap {
 		while(1) {
 			let leftChildIndex = 2 * index + 1;
 			let rightChildIndex = 2 * index + 2;
-			if(leftChildIndex < length && value < this.values[leftChildIndex]) {
+			if(leftChildIndex < length && value.priority > this.values[leftChildIndex].priority) {
 				this.swap(this.values, leftChildIndex, index)
 				index = leftChildIndex;
 				continue;
 			}
-			if(rightChildIndex < length && value < this.values[rightChildIndex]) {
+			if(rightChildIndex < length && value.priority > this.values[rightChildIndex].priority) {
 				this.swap(this.values, rightChildIndex, index);
 				index = rightChildIndex;
 				continue;
@@ -71,5 +73,5 @@ class MaxBinaryHeap {
 	}
 }
 
-const heap = new MaxBinaryHeap([100,60,50])
-console.log(heap.insert(55).insert(39).insert(41).insert(18).insert(27).insert(12).insert(33).extractMax().extractMax())
+const heap = new PriorityQueue([{value:1, priority:2}, {value:2, priority:3}])
+console.log(heap.insert({value:55, priority:2}).extractMax())
