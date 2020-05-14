@@ -9,6 +9,18 @@ class HashTable {
 			this.keyMap[index] = [];
 		}
 		this.keyMap[index].push([key, value])
+		return this
+	}
+	get(key) {
+		let index = this._hash(key);
+		console.log(this.keyMap[index])
+		if(this.keyMap[index].length) {
+			if(this.keyMap[index][0] instanceof Array) {
+				return this.keyMap[index].find(el => el[0] == key)[1];
+			}
+			return this.keyMap[index][1]
+		}
+		return undefined
 	}
 	_hash(key) {
 		let total = 0;
@@ -27,4 +39,7 @@ function log() {
 }
 
 const ht = new HashTable();
-console.log(value.set('hello', 'bb'))
+ht.set('hello', 'bb').set('pov', 'tii').set('cae', 'sdgs').set('dsd', 'ssdgf')
+console.log(ht.get('cae'))
+
+console.log(ht.keyMap)
