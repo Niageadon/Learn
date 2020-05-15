@@ -1,3 +1,10 @@
+/*
+Insert - O(1)
+Delete - O(1)
+Access - O(1)
+* */
+
+
 class HashTable {
 	constructor(size = 3) {
 		this.keyMap = new Array(size)
