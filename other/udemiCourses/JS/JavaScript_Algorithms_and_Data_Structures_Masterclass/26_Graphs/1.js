@@ -23,6 +23,9 @@ class Graph {
 	removeEdge(a, b) {
 		const firstNode = this.adjacencyList[a];
 		const secondNode = this.adjacencyList[b];
+		if(!firstNode || !secondNode) {
+			return this
+		}
 		let index;
 		if(firstNode.includes(b)) {
 			index = firstNode.findIndex(el => el === 'b')
@@ -34,8 +37,19 @@ class Graph {
 		}
 		return this
 	}
+	removeVertex(vertex) {
+		const connections = this.adjacencyList[vertex];
+		connections.forEach(el => {
+			this.adjacencyList[el] = this.adjacencyList[el].filter(el => el !== vertex)
+		})
+		delete this.adjacencyList[vertex];
+		return this
+	}
+	log() {
+		console.log(this)
+	}
 }
 
 let g = new Graph();
-console.log(g.addEdge('boba', 'biba'))
-console.log(g.removeEdge('boba', 'biba'))
+g.addEdge('home', 'wrk').addEdge('home', 'shp').addEdge('wrk', 'rst')
+g.removeVertex('home').log()
