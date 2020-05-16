@@ -63,6 +63,25 @@ class Graph {
 			})
 		}
 	}
+	depthFirstIterative(start) {
+		const stack = [start];
+		const result = [];
+		const visited = {[start]: true};
+		const adjacencyList = this.adjacencyList;
+		let currentVertex;
+		
+		while (stack.length) {
+			currentVertex = stack.pop();
+			result.push(currentVertex);
+			adjacencyList[currentVertex].forEach(neighbor => {
+				if(!visited[neighbor]) {
+					visited[neighbor] = true;
+					stack.push(neighbor);
+				}
+			})
+		}
+		return result;
+	}
 	log() {
 		console.log(this)
 	}
@@ -83,4 +102,4 @@ g.addEdge("C","E")
 g.addEdge("D","E")
 g.addEdge("D","F")
 g.addEdge("E","F")
-console.log(g.depthFirstRecursive('C'))
+console.log(g.depthFirstIterative('A'))
