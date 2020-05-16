@@ -82,6 +82,36 @@ class Graph {
 		}
 		return result;
 	}
+	breadthFirstTraversal(start) {
+		const result = [];
+		const queue = [start];
+		const visited = {[start]: true};
+		const adjacencyList = this.adjacencyList;
+		let currentVertex;
+		
+		while(queue.length) {
+			currentVertex = queue.shift();
+			result.push(currentVertex);
+			adjacencyList[currentVertex].forEach(neighbor => {
+				if(!visited[neighbor]) {
+					visited[neighbor] = true;
+					queue.push(neighbor);
+				}
+			})
+		}
+		
+		function bft(vertex) {
+			adjacencyList[vertex].forEach(neighbor => {
+				if(!routes[neighbor] && typeof routes[neighbor] !== 'number') {
+					routes[neighbor] = k;
+				} else if(routes[neighbor] < k) {
+					routes[neighbor] = k;
+				}
+			})
+			k++;
+		}
+		return result
+	}
 	log() {
 		console.log(this)
 	}
@@ -102,4 +132,4 @@ g.addEdge("C","E")
 g.addEdge("D","E")
 g.addEdge("D","F")
 g.addEdge("E","F")
-console.log(g.depthFirstIterative('A'))
+console.log(g.breadthFirstTraversal('A'))
