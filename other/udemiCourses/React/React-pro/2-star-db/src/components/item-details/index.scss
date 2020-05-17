@@ -1,14 +1,5 @@
 .item-details {
     margin-left: 24px;
-    &-label{
-        margin-left: 16px;
-        border-top: 1px solid white;
-        list-style-type: none;
-        span{
-            margin-right: 8px;
-        }
-    }
-
     &_container {
         display: flex;
         flex-direction: row;
@@ -19,6 +10,15 @@
         min-height: 200px;
         min-width: 300px;
     }
+    &-label{
+        margin-left: 16px;
+        border-top: 1px solid white;
+        list-style-type: none;
+        span{
+            margin-right: 8px;
+        }
+    }
+
     &__avatar{
         max-width: 260px;
         border-radius: 8px;

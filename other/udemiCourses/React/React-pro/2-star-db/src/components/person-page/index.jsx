@@ -13,35 +13,33 @@ const Row = ({left, right}) => {
 	);
 }
 
+
+
 export default class App extends React.Component{
 	state = {
 		personId: null,
-		hasError: false
 	}
-	
-	componentDidCatch(error, errorInfo) {
-		this.setState({
-			hasError: true
-		})
-	}
-	
+
 	onPersonSelected = (personId) => {
 		this.setState({personId})
 	}
 	
 	render() {
-		const person = <Person personId={this.state.personId}/>;
-		const list = (<List
-			onPersonSelected={this.onPersonSelected}
-			getListData={Swapi.getAllPeople}
-			renderItem={({name, gender, birthYear}) => `${name} (${gender}, ${birthYear})`}
-		/>);
-		
-		
-		if(this.state.hasError) {
-			return <ErrorIndicator/>
-		}
-		
+		const person = (
+			<ErrorBoundary>
+				<Person personId={this.state.personId}/>
+			</ErrorBoundary>
+		)
+		const list = (
+			<ErrorBoundary>
+				<List
+				onPersonSelected={this.onPersonSelected}
+				getListData={Swapi.getAllPeople}
+				renderItem={({name, gender, birthYear}) => `${name} (${gender}, ${birthYear})`}
+				/>
+			</ErrorBoundary>
+		);
+
 		return (
 			<Row left={list} right={person}/>
 		)

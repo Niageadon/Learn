@@ -5,10 +5,15 @@ export default class Person extends React.Component{
 	}
 	
 	render() {
-		const {left, right} = this.props
+		const {left, right} = this.props;
 		return (
-			<div className="item-details">
-			
+			<div className="item-details_container card">
+				<div className="item-details__avatar">
+					{left}
+				</div>
+				<div className="item-details">
+					{right}
+				</div>
 			</div>
 		)
 	}
