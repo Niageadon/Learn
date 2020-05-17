@@ -19,3 +19,10 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
+/other/udemiCourses/Canvas/1_Create_games_on_canvas/2_Snake/public/bundle.js
+/other/VladilenGuides/TS/TS_anvanced/dist/app.js
+/other/VladilenGuides/TS/TS_anvanced/dist/app.js.map
+/other/VladilenGuides/TS/TS_anvanced/dist/decorators.js
+/other/VladilenGuides/TS/TS_anvanced/dist/decorators.js.map
+/other/VladilenGuides/TS/TS_anvanced/dist/generic.js
+/other/VladilenGuides/TS/TS_anvanced/dist/generic.js.map
