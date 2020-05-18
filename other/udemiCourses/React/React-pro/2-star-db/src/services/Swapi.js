@@ -52,6 +52,9 @@ class Swapi {
 	getPerson = async (id) => {
 		return new Person(await this.fetchData(`/people/${id}`))
 	}
+	getPersonImgUrl = (id) => {
+		return `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`
+	}
 	getAllPlanets = async () => {
 		const res = await this.fetchData('/planets');
 		return res.results.map(el => new Planet(el));
@@ -59,12 +62,18 @@ class Swapi {
 	getPlanet = async (id) => {
 		return new Planet(await this.fetchData(`/planets/${id}`))
 	}
+	getPlanetImgUrl = (id) => {
+		return `https://starwars-visualguide.com/assets/img/planets/${id}.jpg`
+	}
 	getAllStarships = async () => {
 		const res = await this.fetchData('/starships');
 		return res.results.map(el => new Starship(el));
 	}
 	getStarship = async (id) => {
 		return await this.fetchData(`/starships/${id}`)
+	}
+	getStarshipImgUrl = (id) => {
+		return `https://starwars-visualguide.com/assets/img/starships/${id}.jpg`
 	}
 }
 

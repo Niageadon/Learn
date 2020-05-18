@@ -7,6 +7,10 @@ import Starship from '../starship'
 import RandomPlanet from '../planet/random-planet'
 import ErrorIndicator from '../error/index'
 import PersonPage from '../person-page/index'
+import ErrorBoundary from '../error/ErrorBoundary'
+import Row from '../Row'
+import ItemDetail from '../item-details'
+import Swapi from '../../services/Swapi'
 import './index.scss'
 
 export default class App extends React.Component{
@@ -27,17 +31,28 @@ export default class App extends React.Component{
 			return <ErrorIndicator/>
 		}
 		
+		const left = (
+			<ItemDetail itemId={2} fetch={Swapi.getStarship} imageUrl={Swapi.getStarshipImgUrl(2)}></ItemDetail>
+		)
+		const right = (
+			<ItemDetail itemId={2} fetch={Swapi.getPerson} imageUrl={Swapi.getPersonImgUrl(2)}></ItemDetail>
+		)
 		return (
-			<div className="app">
-				<Header/>
-				<RandomPlanet/>
-				<PersonPage/>
-				{/*<div className="row">
-					<List onItemSelected={this.onItemSelected}/>
-					<Person personId={this.state.itemId}/>
-				</div>*/}
-				
-			</div>
+			<ErrorBoundary>
+				<div className="app">
+					<Header/>
+					{/*<RandomPlanet/>
+					<PersonPage/>
+					*/}
+					<Row left={left} right={right}>
+					</Row>
+					{/*<div className="row">
+						<List onItemSelected={this.onItemSelected}/>
+						<Person personId={this.state.itemId}/>
+					</div>*/}
+					
+				</div>
+			</ErrorBoundary>
 		)
 	}
 }

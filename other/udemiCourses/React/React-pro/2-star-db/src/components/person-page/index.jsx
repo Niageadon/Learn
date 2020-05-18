@@ -2,16 +2,10 @@ import React from 'react'
 import List from '../list'
 import Person from '../person-page/person'
 import ErrorIndicator from '../error/index'
+import ErrorBoundary from '../error/ErrorBoundary'
 import Swapi from '../../services/Swapi'
+import Row from '../Row'
 
-const Row = ({left, right}) => {
-	return (
-		<div className='row'>
-			{left}
-			{right}
-		</div>
-	);
-}
 
 
 

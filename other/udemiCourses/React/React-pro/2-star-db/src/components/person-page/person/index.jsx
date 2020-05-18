@@ -54,9 +54,7 @@ export default class Person extends React.Component{
 			</div>
 		)
 		return(
-
-			<ItemDetails left={left} right={right}>
-			</ItemDetails>
+			<ItemDetails left={left} right={right}/>
 		)
 	}
 }

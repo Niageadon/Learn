@@ -4,11 +4,10 @@ export default class Person extends React.Component{
 	
 	state = {
 	}
-	
 	render() {
 		return(
-			<div className="item-details">
-			
+			<div className="error">
+				<img src='https://helpdeskgeek.com/wp-content/pictures/2019/10/Title-Image.png'/>
 			</div>
 		)
 	}
