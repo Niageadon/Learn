@@ -32,26 +32,25 @@ export default class App extends React.Component{
 		}
 		
 		const left = (
-			<ItemDetail itemId={2} fetch={Swapi.getStarship} imageUrl={Swapi.getStarshipImgUrl(2)}></ItemDetail>
+			<ItemDetail itemId={2} fetch={Swapi.getStarship} imageUrl={Swapi.getStarshipImgUrl(2)}/>
 		)
 		const right = (
-			<ItemDetail itemId={2} fetch={Swapi.getPerson} imageUrl={Swapi.getPersonImgUrl(2)}></ItemDetail>
+			<ItemDetail itemId={2} fetch={Swapi.getPerson} imageUrl={Swapi.getPersonImgUrl(2)}/>
 		)
 		return (
 			<ErrorBoundary>
-				<div className="app">
-					<Header/>
-					{/*<RandomPlanet/>
-					<PersonPage/>
-					*/}
-					<Row left={left} right={right}>
-					</Row>
-					{/*<div className="row">
-						<List onItemSelected={this.onItemSelected}/>
-						<Person personId={this.state.itemId}/>
-					</div>*/}
-					
-				</div>
+					<div className="app">
+						<Header/>
+						<RandomPlanet/>
+						<PersonPage/>
+						
+						<Row left={left} right={right}>
+						</Row>
+						{/*<div className="row">
+							<List onItemSelected={this.onItemSelected}/>
+							<Person personId={this.state.itemId}/>
+ы						</div>*/}
+					</div>
 			</ErrorBoundary>
 		)
 	}

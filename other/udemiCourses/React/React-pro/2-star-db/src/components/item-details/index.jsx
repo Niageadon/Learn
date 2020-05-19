@@ -45,7 +45,7 @@ export default class ItemDetail extends React.Component{
 			<div className="item-details_container card">
 				<div className="item-details__avatar">
 					<ErrorBoundary>
-						<img className="person__avatar" src={imageUrl}/>
+						<img className="person__avatar" src={imageUrl} alt='no-image'/>
 					</ErrorBoundary>
 				
 				</div>
