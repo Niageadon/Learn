@@ -1,21 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
+import {Parent} from './use-effect'
 
-const MyContext = React.createContext();
 const App = () => {
+    
     return (
-        <MyContext.Provider value="Hello boba">
-            <Child/>
-        </MyContext.Provider>
-    )
-}
-
-const Child = () => {
-    const value = useContext(MyContext);
-    return (
-        <span>{value}</span>
-    )
-}
+        <div>
+            <Parent/>
+        </div>
+)}
 
 ReactDOM.render(<App/>, document.getElementById('root'));
 
