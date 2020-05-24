@@ -52,25 +52,25 @@ const HookCounter = ({value, visible}) => {
     )
 }
 
-const PlanetInfo = ({id}) => {
+const usePlanetInfo = id => {
 	const [planetName, setPlanetName] = useState('');
+	
 	useEffect(() => {
 		let cancelled = false;
-		fetch(`swapi.dev/api/planets/${id}`)
-			.then((response) => {
-				return response.json();
-			})
+		fetch(`https://swapi.dev/api/planets/${id}/`)
+			.then((response) => response.json())
 			.then(re => !cancelled && setPlanetName(re.name));
 		return () => cancelled = true
 	}, [id]);
 	
-	
-	function getPlanetName(id) {
-	
-	}
+	return planetName
+}
+
+const PlanetInfo = ({id}) => {
+	const name = usePlanetInfo(id)
 	
 	return (
-		<div>{id} --- {planetName}</div>
+		<div>{id} --- {name}</div>
 	)
 }
 
