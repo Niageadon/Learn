@@ -7,11 +7,12 @@ const Parent = () => {
     const [visible, setVisible] = useState(true);
     
     return (
-        <div>
+        <div >
             <button onClick={() => setValue(v => v + 1)}>+</button>
             <button onClick={() => setVisible(v => !v)}>visible</button>
             <ClassCounter value={value}/>
-            <HookCounter value={value}/>
+            <HookCounter value={value} visible={visible}/>
+            <Notification notification={"hello boba"}/>
         </div>
     )
 }
@@ -32,15 +33,44 @@ class ClassCounter extends React.Component{
     }
 }
 
-const HookCounter = ({value}) => {
-    useEffect(() => {
-        console.log('use-effect')
-        return console.log('clear')
-    }, [value])
-    
+const HookCounter = ({value, visible}) => {
+	/*useEffect(() => {
+		console.log('use-effect')
+		return console.log('clear')
+	}, [value])*/
+	
+	/*useEffect(() => {
+		console.log('mount')
+		return console.log('unmount')
+	}, [])*/
+    //useEffect(() => () => console.log('update'));
+    useEffect(() => console.log('mount'), []);
+    useEffect(() => () => console.log('unmount'), []);
+	
     return (
-        <p>{value}</p>
+	    visible? (<p>{value}</p>): ''
     )
+}
+
+const Notification = ({notification}) => {
+	const [message, setMessage] = useState(notification);
+	
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			setMessage('')
+		}, 3000);
+		return () => clearTimeout(timer);
+	}, []);
+	
+	
+	const notify = (
+		<div>
+			<p>
+				{message}
+			</p>
+		</div>
+	)
+	return message? notify: <div></div>
 }
 
 
