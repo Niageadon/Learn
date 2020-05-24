@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 export {Parent}
 
 const Parent = () => {
-    const [value, setValue] = useState(0);
+    const [value, setValue] = useState(1);
     const [visible, setVisible] = useState(true);
     
     return (
@@ -12,7 +12,7 @@ const Parent = () => {
             <button onClick={() => setVisible(v => !v)}>visible</button>
             <ClassCounter value={value}/>
             <HookCounter value={value} visible={visible}/>
-            <Notification notification={"hello boba"}/>
+            <PlanetInfo id={value}/>
         </div>
     )
 }
@@ -50,6 +50,28 @@ const HookCounter = ({value, visible}) => {
     return (
 	    visible? (<p>{value}</p>): ''
     )
+}
+
+const PlanetInfo = ({id}) => {
+	const [planetName, setPlanetName] = useState('');
+	useEffect(() => {
+		let cancelled = false;
+		fetch(`swapi.dev/api/planets/${id}`)
+			.then((response) => {
+				return response.json();
+			})
+			.then(re => !cancelled && setPlanetName(re.name));
+		return () => cancelled = true
+	}, [id]);
+	
+	
+	function getPlanetName(id) {
+	
+	}
+	
+	return (
+		<div>{id} --- {planetName}</div>
+	)
 }
 
 const Notification = ({notification}) => {
