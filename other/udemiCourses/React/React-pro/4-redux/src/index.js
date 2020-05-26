@@ -16,14 +16,16 @@ const reducer = (state = 0, action) => {
 }
 
 let state = reducer(initState, {type: 'inc'})
+const inc = () => { type: 'inc' };
+const dec = () => { type: 'dec' };
 
 
 const store = createStore(reducer);
 document.getElementById('inc').addEventListener('click', () => {
-    store.dispatch({type: 'inc'})
+    store.dispatch(inc())
 })
 document.getElementById('dec').addEventListener('click', () => {
-    store.dispatch({type: 'dec'})
+    store.dispatch(dec())
 })
 const update = () => {
     document.getElementById('counter').innerHTML = store.getState()
