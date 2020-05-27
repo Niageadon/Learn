@@ -1,23 +1,9 @@
 import { createStore } from 'redux'
-
+import reducer from './reducer'
+import {inc, dec} from './actions'
 const initState = 0;
-const reducer = (state = 0, action) => {
-    switch(action?.type) {
-        case 'inc': {
-            return state + 1
-        }
-        case 'dec': {
-            return state - 1
-        }
-        default: {
-            return state
-        }
-    }
-}
 
 let state = reducer(initState, {type: 'inc'})
-const inc = () => { type: 'inc' };
-const dec = () => { type: 'dec' };
 
 
 const store = createStore(reducer);
