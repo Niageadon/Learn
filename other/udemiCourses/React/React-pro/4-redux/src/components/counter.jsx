@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 const Counter = ({counter, inc, dec}) => {
     return (
         <div>
@@ -9,4 +10,10 @@ const Counter = ({counter, inc, dec}) => {
     )
 };
 
-export default Counter
+const mapStateToProps = (state) => {
+    return {
+        counter: state
+    }
+}
+
+export default connect(mapStateToProps)(Counter)
