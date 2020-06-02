@@ -1,10 +1,5 @@
 const initialState = {
 	books: [
-		{
-			id: 1,
-			title: '123',
-			author: 'boba'
-		}
 	]
 }
 
