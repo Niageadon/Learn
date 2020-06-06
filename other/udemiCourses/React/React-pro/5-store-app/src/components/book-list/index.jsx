@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react'
-import BookListItem from './item'
 import './index.scss'
 import WithBookStoreService from '../hoc/with-bookStore-service'
 import {connect} from 'react-redux'
 import compose from '../../utils'
 import {fetchBooks} from '../../store/actions/index'
 import ErrorIndicator from '../error-boundary/error-indicator'
+import BookListContainer from './book-list-container'
 
 const BookList = (props) => {
 	useEffect( () => {
@@ -23,8 +23,7 @@ const BookList = (props) => {
 	}
 	
 	return (
-		
-		<ul>{props?.books.map(book => <li key={book.id}> <BookListItem  book={book}/> </li>)}</ul>
+		<BookListContainer books={props.books}/>
 	)
 }
 
