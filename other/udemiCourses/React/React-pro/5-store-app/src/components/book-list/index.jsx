@@ -8,7 +8,8 @@ import compose from '../../utils'
 const BookList = (props) => {
 	useEffect( () => {
 		const fetchBooks = async () => {
-			const {bookStoreService, booksLoaded} = props;
+			const {bookStoreService, booksLoaded, booksRequested} = props;
+			booksRequested();
 			const data = await bookStoreService.getBooks();
 			booksLoaded(data);
 		}
@@ -34,7 +35,8 @@ const mapStateToProps = ({books, loading}) => {
 }
 const mapDispatchToProps = (dispatch) => {
 	return {
-		booksLoaded: (newBooks) => dispatch({type: 'BOOKS_LOADED', payload: newBooks})
+		booksLoaded: (newBooks) => dispatch({type: 'BOOKS_LOADED', payload: newBooks}),
+		booksRequested: () => dispatch({type: 'BOOKS_REQUESTED'})
 	}
 }
 
