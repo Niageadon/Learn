@@ -6,21 +6,30 @@ import {connect} from 'react-redux'
 import compose from '../../utils'
 
 const BookList = (props) => {
-	useEffect(() => {
-		const {bookStoreService} = props;
-		const data = bookStoreService.getBooks();
-		props.booksLoaded(data);
-		console.log(data)
+	useEffect( () => {
+		const fetchBooks = async () => {
+			const {bookStoreService, booksLoaded} = props;
+			const data = await bookStoreService.getBooks();
+			booksLoaded(data);
+		}
+		fetchBooks();
 	}, [])
 	
+	const {loading} = props;
+	if(loading) {
+		return <span>loading...</span>
+	}
+	
 	return (
+		
 		<ul>{props?.books.map(book => <li key={book.id}> <BookListItem  book={book}/> </li>)}</ul>
 	)
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({books, loading}) => {
 	return {
-		books: state.books
+		books,
+		loading
 	}
 }
 const mapDispatchToProps = (dispatch) => {

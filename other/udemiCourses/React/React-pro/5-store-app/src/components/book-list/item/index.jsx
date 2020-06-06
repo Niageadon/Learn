@@ -2,11 +2,11 @@ import React from 'react'
 import './index.scss'
 
 const BookListItem = ({ book }) => {
-	const {title, autor} = book;
+	const {title, author} = book;
 	return (
 		<React.Fragment>
 			<span>title: {title}</span>
-			<span>autor: {autor}</span>
+			<span> author: {author}</span>
 		</React.Fragment>
 	)
 }
