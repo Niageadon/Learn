@@ -4,7 +4,7 @@ import './index.scss'
 import WithBookStoreService from '../hoc/with-bookStore-service'
 import {connect} from 'react-redux'
 import compose from '../../utils'
-import {booksLoaded, booksRequested,booksError} from '../../store/actions/index'
+import {fetchBooks} from '../../store/actions/index'
 import ErrorIndicator from '../error-boundary/error-indicator'
 
 const BookList = (props) => {
@@ -36,21 +36,9 @@ const mapStateToProps = ({books, loading, error}) => {
 	}
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
+	const {bookStoreService} = dispatch;
 	return {
-		booksLoaded,
-		booksRequested,
-		booksError,
-		fetchBooks: () => {
-			const {bookStoreService} = ownProps;
-			dispatch(booksRequested());
-			bookStoreService.getBooks()
-				.then(data => {
-					dispatch(booksLoaded(data));
-				})
-				.catch(e => {
-					dispatch(booksError(e))
-				})
-		}
+		fetchBooks: fetchBooks(ownProps?.bookStoreService, dispatch)
 	}
 }
 
