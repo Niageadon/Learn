@@ -4,21 +4,31 @@ import './index.scss'
 import WithBookStoreService from '../hoc/with-bookStore-service'
 import {connect} from 'react-redux'
 import compose from '../../utils'
+import ErrorIndicator from '../error-boundary/error-indicator'
 
 const BookList = (props) => {
 	useEffect( () => {
 		const fetchBooks = async () => {
-			const {bookStoreService, booksLoaded, booksRequested} = props;
+			const {bookStoreService, booksLoaded, booksRequested, booksError} = props;
 			booksRequested();
-			const data = await bookStoreService.getBooks();
-			booksLoaded(data);
+			bookStoreService.getBooks()
+				.then(data => {
+					booksLoaded(data);
+				})
+				.catch(e => {
+					booksError(e)
+				})
 		}
+		
 		fetchBooks();
 	}, [])
 	
-	const {loading} = props;
+	const {loading, error} = props;
 	if(loading) {
 		return <span>loading...</span>
+	}
+	if(error) {
+		return <ErrorIndicator/>
 	}
 	
 	return (
@@ -27,16 +37,18 @@ const BookList = (props) => {
 	)
 }
 
-const mapStateToProps = ({books, loading}) => {
+const mapStateToProps = ({books, loading, error}) => {
 	return {
 		books,
-		loading
+		loading,
+		error
 	}
 }
 const mapDispatchToProps = (dispatch) => {
 	return {
 		booksLoaded: (newBooks) => dispatch({type: 'BOOKS_LOADED', payload: newBooks}),
-		booksRequested: () => dispatch({type: 'BOOKS_REQUESTED'})
+		booksRequested: () => dispatch({type: 'BOOKS_REQUESTED'}),
+		booksError: (error) => dispatch({type: 'BOOKS_ERROR', payload: error})
 	}
 }
 
