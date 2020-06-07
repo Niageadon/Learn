@@ -26,6 +26,14 @@ const fetchBooks = (bookStoreService, dispatch) => () => {
 		})
 }
 
+const bookAddedToCard = (bookId) => {
+	return {
+		type: 'BOOK_ADDED_TO_CARD',
+		payload: bookId
+	}
+}
+
 export {
-	fetchBooks
+	fetchBooks,
+	bookAddedToCard
 }

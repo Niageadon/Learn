@@ -16,7 +16,7 @@ export default class BookStoreService {
 			if(Math.random() > 0.98) {
 				reject('error-on-loading');
 			}
-			setTimeout(() => resolve(this.books), 4500);
+			setTimeout(() => resolve(this.books), 500);
 		})
 	}
 	

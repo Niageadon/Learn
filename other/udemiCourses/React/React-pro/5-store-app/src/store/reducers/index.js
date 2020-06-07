@@ -40,6 +40,21 @@ const reducer = (state = initialState, action) => {
 				error: action.payload
 			}
 		}
+		case 'BOOK_ADDED_TO_CARD': {
+			const bookId = action.payload;
+			const book = state.books.find(el => el.id === bookId);
+			const newItem = {
+				id: bookId,
+				name: book.title,
+				count: 1,
+				total: book.price
+			}
+			
+			return {
+				...state,
+				cardItems: [...state.cardItems, newItem]
+			}
+		}
 		default: {
 			return state;
 		}

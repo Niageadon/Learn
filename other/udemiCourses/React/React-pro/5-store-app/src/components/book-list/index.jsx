@@ -3,7 +3,7 @@ import './index.scss'
 import WithBookStoreService from '../hoc/with-bookStore-service'
 import {connect} from 'react-redux'
 import compose from '../../utils'
-import {fetchBooks} from '../../store/actions/index'
+import {fetchBooks, bookAddedToCard} from '../../store/actions/index'
 import ErrorIndicator from '../error-boundary/error-indicator'
 import BookListContainer from './book-list-container'
 
@@ -14,7 +14,7 @@ const BookList = (props) => {
 		fetchBooks();
 	}, [])
 	
-	const {loading, error} = props;
+	const {loading, error, addToCard} = props;
 	if(loading) {
 		return <span>loading...</span>
 	}
@@ -23,7 +23,7 @@ const BookList = (props) => {
 	}
 	
 	return (
-		<BookListContainer books={props.books}/>
+		<BookListContainer books={props.books} addToCard={addToCard}/>
 	)
 }
 
@@ -37,7 +37,8 @@ const mapStateToProps = ({books, loading, error}) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
 	const {bookStoreService} = dispatch;
 	return {
-		fetchBooks: fetchBooks(ownProps?.bookStoreService, dispatch)
+		fetchBooks: fetchBooks(ownProps?.bookStoreService, dispatch),
+		addToCard: (id) => dispatch(bookAddedToCard(id))
 	}
 }
 
