@@ -13,7 +13,7 @@ export default class BookStoreService {
 	
 	getBooks() {
 		return new Promise((resolve, reject) => {
-			if(Math.random() > 0.38) {
+			if(Math.random() > 0.98) {
 				reject('error-on-loading');
 			}
 			setTimeout(() => resolve(this.books), 4500);

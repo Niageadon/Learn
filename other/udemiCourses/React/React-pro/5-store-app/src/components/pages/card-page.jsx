@@ -1,7 +1,8 @@
 import React from 'react'
+import BooksCard from '../shopping-card/books-table/index'
 const CardPage = () => {
 	return (
-		<div>Card page</div>
+		<BooksCard/>
 	)
 }
 
