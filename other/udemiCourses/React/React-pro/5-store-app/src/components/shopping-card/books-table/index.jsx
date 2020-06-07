@@ -3,11 +3,11 @@ import './index.scss'
 import {connect} from 'react-redux'
 const ShoppingBooksTable = ({items, total, onInc, onDec, onDelete}) => {
 	const tableRow = (item, index) => {
-		const {id, name, count, total} = item;
+		const {id, title, count, total} = item;
 		return(
 			<tr key={index}>
 				<td>{index}</td>
-				<td>{name}</td>
+				<td>{title}</td>
 				<td>{count}</td>
 				<td>{total}</td>
 				<td>

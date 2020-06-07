@@ -5,13 +5,27 @@ const initialState = {
 	
 	cardItems: [
 		{
-			id: 1,
-			name: 'book 1',
+			id: 3,
+			title: 'book 1',
 			count: 3,
 			total: 150
 		}
 	],
 	orderTotal: 200
+}
+
+const updateCardItems = (cardItems, item, index) => {
+	if(index === -1) {
+		return [
+			...cardItems,
+			item
+		]
+	}
+	return  [
+		...cardItems.slice(0, index),
+		item,
+		...cardItems.slice(index + 1)
+	]
 }
 
 const reducer = (state = initialState, action) => {
@@ -42,18 +56,14 @@ const reducer = (state = initialState, action) => {
 		}
 		case 'BOOK_ADDED_TO_CARD': {
 			const bookId = action.payload;
-			const book = state.books.find(el => el.id === bookId);
-			const newItem = {
-				id: bookId,
-				name: book.title,
-				count: 1,
-				total: book.price
-			}
-			
+			const index = state.cardItems.findIndex(el => el.id === bookId);
+			const item = {...state.cardItems[index], count: state.cardItems[index]?.count ?? 0 + 1 };
+
 			return {
 				...state,
-				cardItems: [...state.cardItems, newItem]
+				cardItems: updateCardItems(state.cardItems, item, index)
 			}
+			
 		}
 		default: {
 			return state;
