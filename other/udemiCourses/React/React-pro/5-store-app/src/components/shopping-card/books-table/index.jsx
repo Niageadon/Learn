@@ -1,18 +1,19 @@
 import React from 'react'
 import './index.scss'
 import {connect} from 'react-redux'
+import {booksRemovedFromCard, bookRemovedFromCard, bookAddedToCard} from '../../../store/actions'
 const ShoppingBooksTable = ({items, total, onInc, onDec, onDelete}) => {
 	const tableRow = (item, index) => {
 		const {id, title, count, total} = item;
 		return(
 			<tr key={index}>
-				<td>{index}</td>
+				<td>{id}</td>
 				<td>{title}</td>
 				<td>{count}</td>
 				<td>{total}</td>
 				<td>
-					<button onClick={() => onInc(id)}>deq</button>
-					<button onClick={() => onDec(id)}>inc</button>
+					<button onClick={() => onInc(id)}>inc</button>
+					<button onClick={() => onDec(id)}>dec</button>
 					<button onClick={() => onDelete(id)}>del</button>
 				</td>
 			</tr>
@@ -25,6 +26,13 @@ const ShoppingBooksTable = ({items, total, onInc, onDec, onDelete}) => {
 			<table className="table">
 				<thead/>
 				<tbody>
+					<tr>
+						<td>id</td>
+						<td>title</td>
+						<td>count</td>
+						<td>total</td>
+						<td>actions</td>
+					</tr>
 					{items.map(tableRow)}
 				</tbody>
 			</table>
@@ -38,11 +46,11 @@ const mapStateToProps = ({cardItems, orderTotal}) => {
 		total: orderTotal
 	}
 }
-const mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch) => {
 	return {
-		onInc: () => {console.log('inc')},
-		onDec: () => {console.log('dec')},
-		onDelete: () => {console.log('del')},
+		onDelete: id => dispatch(booksRemovedFromCard(id)),
+		onDec: id => dispatch(bookRemovedFromCard(id)),
+		onInc: id => dispatch(bookAddedToCard(id)),
 	}
 }
 

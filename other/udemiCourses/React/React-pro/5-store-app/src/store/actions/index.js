@@ -32,9 +32,23 @@ const bookAddedToCard = (bookId) => {
 		payload: bookId
 	}
 }
+const booksRemovedFromCard = (bookId) => {
+	return {
+		type: 'BOOKS_REMOVED_FROM_CARD',
+		payload: bookId
+	}
+}
+const bookRemovedFromCard = (bookId) => {
+	return {
+		type: 'BOOK_REMOVED_FROM_CARD',
+		payload: bookId
+	}
+}
 
 
 export {
 	fetchBooks,
-	bookAddedToCard
+	bookAddedToCard,
+	booksRemovedFromCard,
+	bookRemovedFromCard
 }
