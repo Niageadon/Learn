@@ -40,7 +40,7 @@ const ShoppingBooksTable = ({items, total, onInc, onDec, onDelete}) => {
 	)
 }
 
-const mapStateToProps = ({cardItems, orderTotal}) => {
+const mapStateToProps = ({shoppingCard: {cardItems, orderTotal}}) => {
 	return {
 		items: cardItems,
 		total: orderTotal
