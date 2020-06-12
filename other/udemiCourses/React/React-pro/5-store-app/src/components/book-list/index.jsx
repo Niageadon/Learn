@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import './index.scss'
 import WithBookStoreService from '../hoc/with-bookStore-service'
 import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 import compose from '../../utils'
 import {fetchBooks, bookAddedToCard, bookRemovedFromCard} from '../../store/actions/index'
 import ErrorIndicator from '../error-boundary/error-indicator'
@@ -34,12 +35,12 @@ const mapStateToProps = ({bookList: {books, loading, error}}) => {
 		error
 	}
 }
-const mapDispatchToProps = (dispatch, ownProps) => {
-	const {bookStoreService} = dispatch;
-	return {
-		fetchBooks: fetchBooks(ownProps?.bookStoreService, dispatch),
-		addToCard: id => dispatch(bookAddedToCard(id)),
-	}
+const mapDispatchToProps = (dispatch, {bookStoreService}) => {
+	//const {bookStoreService} = dispatch;
+	return bindActionCreators({
+		fetchBooks: fetchBooks(bookStoreService),//fetchBooks(ownProps?.bookStoreService, dispatch),
+		addToCard: id => bookAddedToCard(id),
+	}, dispatch)
 }
 
 export default compose(

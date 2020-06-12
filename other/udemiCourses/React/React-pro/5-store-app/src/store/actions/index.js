@@ -15,7 +15,17 @@ const booksError = (error) => {
 		payload: error
 	}
 }
-const fetchBooks = (bookStoreService, dispatch) => () => {
+const fetchBooksOld = (bookStoreService, dispatch) => () => {
+	dispatch(booksRequested());
+	bookStoreService.getBooks()
+		.then(data => {
+			dispatch(booksLoaded(data));
+		})
+		.catch(e => {
+			dispatch(booksError(e))
+		})
+}
+const fetchBooks = (bookStoreService) => () => (dispatch) => {
 	dispatch(booksRequested());
 	bookStoreService.getBooks()
 		.then(data => {
