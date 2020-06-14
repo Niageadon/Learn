@@ -1,0 +1,27 @@
+{
+  "name": "exel",
+  "version": "1.0.0",
+  "description": "learn",
+  "main": "index.js",
+  "browserslist": [
+    "last 1 version",
+    "> 0.25%",
+    "IE 9"
+  ],
+  "dependencies": {
+    "clean-webpack-plugin": "^3.0.0"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^6.0.1",
+    "html-webpack-plugin": "^4.3.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "scripts": {
+    "start": "webpack --config webpack.config.js",
+    "build": "webpack --mode profuction --config webpack.config.js"
+  },
+  "author": "Niageadon",
+  "license": "MIT"
+}
