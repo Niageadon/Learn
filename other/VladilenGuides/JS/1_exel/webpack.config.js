@@ -16,7 +16,7 @@ const jsLoaders = () => {
 		}
 	]
 	console.log(222, isDev)
-	if(isDev) loaders.push({loader: 'eslint-loader'})
+	if(isDev) loaders.push('eslint-loader')
 	
 	return loaders
 }

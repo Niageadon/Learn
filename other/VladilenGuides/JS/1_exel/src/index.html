@@ -3,15 +3,26 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="shortcut ucin" href="favicon.ico">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<title>Exel</title>
 </head>
 <body>
 	<div id="app" class="container">
 		<div class="excel">
-			<div class="excel__header"></div>header
-			<div class="excel__toolbar"></div>header
-			<div class="excel__formula"></div>header
-			<div class="excel__table"></div>header
+			<header class="excel__header">
+				<input type="text" class="excel__header-input" value="new table"/>
+				<div class="row">
+					<div class="excel__header-button">
+						<i class="material-icons">exit_to_app</i>
+					</div>
+					<div class="excel__header-button">
+						<i class="material-icons">delete</i>
+					</div>
+				</div>
+			</header>
+			<div class="excel__toolbar"></div>
+			<div class="excel__formula"></div>
+			<div class="excel__table"></div>
 		</div>
 	</div>
 </body>

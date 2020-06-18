@@ -1,20 +1,24 @@
 @import "~normalize.css";
-@import url("https://fonts.google.com/css?family=Roboto&display=swap");
+//@import url("https://fonts.google.com/css?family=Roboto&display=swap");
 @import "header";
 @import "toolbar";
 @import "formula";
 @import "table";
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     font-family: 'Roboto', sans-serif;
     font-size: 12px;
 }
 .excel {
     position: relative;
+}
+.row {
+    display: flex;
+    flex-direction: row;
 }
