@@ -8,7 +8,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    height: 34px;
+    height: $header-height;
     padding: 8px;
     width: 100%;
 
@@ -30,7 +30,7 @@
 
 
         &:hover{
-            border-color: $border-color;
+            border-color: $header-border-color;
         }
         &:focus{
             border-color: blue;
