@@ -2,15 +2,44 @@
 
 <script>
 	function h(tag, props, children) {
-
+		return {
+			tag,
+			props,
+			children
+		}
 	}
 
 	function mount(vNode, container) {
-
+		const el = vNode.el = document.createElement(vNode.tag)
+		if(vNode.props) {
+			for(const key in vNode.props) {
+				const value = vNode.props[key]
+				el.setAttribute(key, value)
+			}
+		}
+		if(vNode.children) {
+			if(typeof vNode.children === 'string') {
+				el.textContent = vNode.children
+			} else {
+				vNode.children.forEach(child => {
+					mount(child, el)
+				})
+			}
+		}
+		container.appendChild(el)
 	}
 
 	const vDom = h('div', { class: 'red' }, [
-		h('span', null, ['hello'])
+		h('span', null, 'hello')
 	])
+
+	const patch(n1, n2) {
+
+	}
+	const vDom2 = h('div', { class: 'blue' }, [
+		h('span', null, 'changed')
+	])
+	patch(vDom, vDom2)
+
 	mount(vDom, document.getElementById('app'))
 </script>
