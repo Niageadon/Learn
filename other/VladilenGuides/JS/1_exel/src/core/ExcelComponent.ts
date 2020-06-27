@@ -1,4 +1,4 @@
-import DOMListener from './DOMListener'
+import DOMListener from '@core/DOMListener.ts'
 
 export default class ExcelComponent extends DOMListener {
 	toHTML(): string {

@@ -26,7 +26,7 @@ module.exports = {
 	mode: 'development',
 	entry: [
 		'@babel/polyfill',
-		'./index.js'
+		'./index.ts'
 	],
 	devtool: isDev? 'source-map': false,
 	output: {
