@@ -1,25 +1,20 @@
 import ExcelComponent from "@core/ExcelComponent";
+import {$} from "@core/dom.ts";
 
 export default class Excel {
 	$el: HTMLElement
-	components: ExcelComponent[]
-
+	components: Array<any>//ExcelComponent[]
 	constructor(selector: string, options: Options) {
 		this.$el = document.querySelector(selector)
-		this.components = (options?.components ?? []).map(el => {
-			const $el = document.createElement('div')
-			const component = new el($el)
-			$el.innerHTML = el.getClassName()
-			return new el($el)
-		})
+		this.components = options?.components ?? []
 	}
 	getRoot(): HTMLElement {
-		const $root: HTMLElement = document.createElement('div')
-		$root.classList.add('excel')
+		const $root: HTMLElement = $.create('div', 'excel')
 		this.components.forEach(Component => {
-			console.log(Component.getClassName())
-
-			$root.insertAdjacentHTML('afterbegin', Component.toHTML())
+			const $el: HTMLElement = $.create('div', Component.className)
+			const component = new Component($el)
+			$el.innerHTML = component.toHTML()
+			$root.append($el)
 		})
 
 		const node = document.createElement('h1')

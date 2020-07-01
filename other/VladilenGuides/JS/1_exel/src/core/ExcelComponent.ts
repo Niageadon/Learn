@@ -2,9 +2,10 @@ import DOMListener from '@core/DOMListener.ts'
 
 export default class ExcelComponent extends DOMListener {
 	className: string
-	constructor() {
-		super();
+	constructor($root) {
+		super($root);
 	}
+	static className = ''
 
 	toHTML(): string {
 		return ''
