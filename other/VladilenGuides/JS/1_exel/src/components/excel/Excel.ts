@@ -1,9 +1,10 @@
-import ExcelComponent from "@core/ExcelComponent";
+import ExcelComponent from "@core/ExcelComponent.ts";
 import {$} from "@core/dom.ts";
-
+type componentType = typeof ExcelComponent
+console.log(22, typeof ExcelComponent, ExcelComponent)
 export default class Excel {
 	$el: HTMLElement
-	components: Array<any>//ExcelComponent[]
+	components: Array<componentType>//ExcelComponent[]
 	constructor(selector: string, options: Options) {
 		this.$el = document.querySelector(selector)
 		this.components = options?.components ?? []
@@ -27,5 +28,5 @@ export default class Excel {
 }
 
 interface Options {
-	components: any[]
+	components: componentType[]
 }

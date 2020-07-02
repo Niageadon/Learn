@@ -1,5 +1,5 @@
 {
-    "parser": "babel-eslint",
+    "parser": "@typescript-eslint/parser",
     "env": {
         "es6": true,
         "browser": true,
@@ -10,7 +10,19 @@
         "arrow-parens": "off",
         "require-jsdoc": "off"
     },
+    "plugins": [
+        "@typescript-eslint"
+    ],
     "extends": [
-        ""
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "overrides": [
+        {
+            "files": ["*.js"],
+            "rules": {
+                "@typescript-eslint/no-var-requires": "off"
+            }
+        }
     ]
 }
