@@ -9,7 +9,8 @@
         "semi": "off",
         "arrow-parens": "off",
         "require-jsdoc": "off",
-        "no-debugger": "off"
+        "no-debugger": "off",
+        "@typescript-eslint/ban-types": "off"
     },
     "plugins": [
         "@typescript-eslint"

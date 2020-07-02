@@ -25,6 +25,9 @@ export class Dom {
 		}
 		return this
 	}
+	on(eventType: string, cb: Function): void {
+		this.$el.addEventListener(eventType, cb)
+	}
 }
 
 export function $(selector: string|HTMLElement): Dom {

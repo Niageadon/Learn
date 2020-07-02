@@ -3,8 +3,10 @@ import {Dom} from "@core/dom";
 
 export default class ExcelComponent extends DOMListener {
 	className: string
+	name: string
 	constructor($root: Dom, options?: ComponentOptions) {
 		super($root, options.listeners);
+		this.name = options.name
 	}
 	static className = ''
 
