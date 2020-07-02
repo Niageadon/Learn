@@ -3,7 +3,10 @@ import ExcelComponent from "@core/ExcelComponent.ts";
 export default class Header extends ExcelComponent {
 
 	constructor(props) {
-		super(props);
+		super(props, {
+			name: 'Formula',
+			listeners: ['input'],
+		});
 	}
 	static className = 'excel__header'
 

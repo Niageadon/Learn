@@ -1,8 +1,12 @@
 import ExcelComponent from "@core/ExcelComponent.ts";
+import {Dom} from "@core/dom";
 
 export default class Formula extends ExcelComponent {
-	constructor(props) {
-		super(props);
+	constructor($root: Dom) {
+		super($root, {
+			name: 'Formula',
+			listeners: ['input'],
+		});
 	}
 	static className = 'excel__formula'
 	getClassName(): string {
@@ -15,5 +19,8 @@ export default class Formula extends ExcelComponent {
 			     contenteditable spellcheck="false"
 			>ff</div>
 		`
+	}
+	onInput(event) {
+		console.log('formula-on-input', event)
 	}
 }

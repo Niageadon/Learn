@@ -4,7 +4,6 @@ export class Dom {
 		this.$el = typeof selector === "string"
 			? document.querySelector(selector)
 			: selector
-
 	}
 	html(html?: string): string|Dom {
 		if(typeof html === 'string') {
@@ -28,7 +27,7 @@ export class Dom {
 	}
 }
 
-export function $(selector: string|HTMLElement|undefined): Dom {
+export function $(selector: string|HTMLElement): Dom {
 	return new Dom(selector)
 }
 

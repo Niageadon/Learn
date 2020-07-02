@@ -2,7 +2,10 @@ import ExcelComponent from "@core/ExcelComponent.ts";
 
 export default class Toolbar extends ExcelComponent{
 	constructor(props) {
-		super(props);
+		super(props, {
+			name: 'Formula',
+			listeners: ['input'],
+		});
 	}
 	static className = 'excel__toolbar'
 

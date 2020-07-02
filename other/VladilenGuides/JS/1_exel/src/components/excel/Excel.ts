@@ -4,18 +4,22 @@ type componentType = typeof ExcelComponent
 console.log(22, typeof ExcelComponent, ExcelComponent)
 export default class Excel {
 	$el: Dom
-	components: Array<componentType>//ExcelComponent[]
+	components: ExcelComponent[]
+	componentsConstructors: Array<componentType>
+
 	constructor(selector: string, options: Options) {
 		this.$el = $(selector)
-		this.components = options?.components ?? []
+		this.componentsConstructors = options?.components ?? []
+		this.components = []
 	}
 	getRoot(): Dom {
 		const $root: Dom = $.create('div', 'excel')
-		this.components.forEach(Component => {
+		this.components = this.componentsConstructors.map(Component => {
 			const $el: Dom = $.create('div', Component.className)
 			const component = new Component($el)
 			$el.html(component.toHTML())
 			$root.append($el)
+			return component
 		})
 
 		const node = document.createElement('h1')
@@ -24,6 +28,7 @@ export default class Excel {
 	}
 	render(): void {
 		this.$el.append(this.getRoot())
+		this.components.forEach(component => component.init())
 	}
 }
 
