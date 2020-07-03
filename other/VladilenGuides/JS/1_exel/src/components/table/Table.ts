@@ -3,8 +3,8 @@ import ExcelComponent from "@core/ExcelComponent.ts";
 export default class Table extends ExcelComponent{
 	constructor(props) {
 		super(props, {
-			name: 'Formula',
-			listeners: ['input'],
+			name: 'Table',
+			listeners: [],
 		});
 	}
 	static className = 'excel__table'

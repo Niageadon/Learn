@@ -20,7 +20,7 @@ export default class Formula extends ExcelComponent {
 			>ff</div>
 		`
 	}
-	onInput(event) {
+	onInput(event: Event): void {
 		console.log('formula-on-input', event)
 	}
 }

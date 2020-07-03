@@ -4,8 +4,8 @@ export default class Header extends ExcelComponent {
 
 	constructor(props) {
 		super(props, {
-			name: 'Formula',
-			listeners: ['input'],
+			name: 'Header',
+			listeners: [],
 		});
 	}
 	static className = 'excel__header'

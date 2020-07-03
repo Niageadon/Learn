@@ -15,12 +15,15 @@ export default class DOMListener {
 			if(!this[method]) {
 				throw new Error(`Method ${method} not exist in ${this.name}`)
 			}
-			console.log(321, this)
-			this.$root.on(listener, this[method].bind(this))
+			this[method] = this[method].bind(this)
+			this.$root.on(listener, this[method])
 		})
 	}
-	removeDomListeners() {
-
+	removeDomListeners(): void {
+		this.listeners.forEach(listener => {
+			const method: string = getMethodName(listener)
+			this.$root.off(listener, this[method])
+		})
 	}
 }
 function getMethodName(eventName: string): string {

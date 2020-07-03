@@ -1,10 +1,11 @@
 import ExcelComponent from "@core/ExcelComponent.ts";
+import {Dom} from "@core/dom.ts";
 
 export default class Toolbar extends ExcelComponent{
-	constructor(props) {
-		super(props, {
-			name: 'Formula',
-			listeners: ['input'],
+	constructor($root: Dom) {
+		super($root, {
+			name: 'Toolbar',
+			listeners: ['click'],
 		});
 	}
 	static className = 'excel__toolbar'
@@ -12,6 +13,10 @@ export default class Toolbar extends ExcelComponent{
 	getClassName(): string {
 		return 'excel__toolbar'
 	}
+	onClick(event: Event): void {
+		console.log(event.target)
+	}
+
 	toHTML(): string {
 		return `<div class="excel__header-button">
 			<i class="material-icons">format_align_left</i>

@@ -1,5 +1,9 @@
+type callback = () => void
+
 export class Dom {
 	$el: HTMLElement
+	$$listeners: Object = {}
+
 	constructor(selector: string|HTMLElement) {
 		this.$el = typeof selector === "string"
 			? document.querySelector(selector)
@@ -25,8 +29,12 @@ export class Dom {
 		}
 		return this
 	}
-	on(eventType: string, cb: Function): void {
+	on(eventType: string, cb: callback): void {
+		this.$$listeners[eventType] = cb
 		this.$el.addEventListener(eventType, cb)
+	}
+	off(eventType: string, cb: callback): void {
+		this.$el.removeEventListener(eventType, cb)
 	}
 }
 

@@ -10,8 +10,11 @@ export default class ExcelComponent extends DOMListener {
 	}
 	static className = ''
 
-	init() {
+	init(): void {
 		this.initDomListeners()
+	}
+	destroy(): void {
+		this.removeDomListeners()
 	}
 	toHTML(): string {
 		return ''

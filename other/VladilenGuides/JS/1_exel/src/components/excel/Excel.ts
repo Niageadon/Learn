@@ -19,6 +19,7 @@ export default class Excel {
 			const component = new Component($el)
 			$el.html(component.toHTML())
 			$root.append($el)
+			window['qq' + component.name] = component
 			return component
 		})
 
