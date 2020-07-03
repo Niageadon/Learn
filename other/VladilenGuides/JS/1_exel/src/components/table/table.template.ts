@@ -15,17 +15,17 @@ export function createTable(rowsCount: number, ): string {
 	const rows = [createRow(cols)]
 
 
-	const row = new Array(colsCount).fill('').map(toCell).join('')
+	const cells = new Array(colsCount).fill('').map(toCell).join('')
 	for(let i = 0; i < rowsCount; i++) {
-		rows.push(createRow(row))
+		rows.push(createRow(cells, i + 1))
 	}
 	return rows.join('')
 }
 
-function createRow(content: string) {
+function createRow(content: string, index?: number) {
 	return `
 	<div class="excel__table-row">
-		<div class="excel__table-row-info"></div>
+		<div class="excel__table-row-info">${index? index: ''}</div>
 		<div class="excel__table-row-data">
 			${content}
 		</div>
