@@ -15,6 +15,7 @@
         height: $row-height;
 
         &-info {
+            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -28,8 +29,15 @@
         &-data {
             display: flex;
         }
+        &-resize {
+            bottom: -2px;
+            height: 4px;
+            cursor: n-resize;
+            width: 100%;
+        }
     }
     &-column {
+        position: relative;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -40,7 +48,12 @@
         border-top: none;
         border-left: none;
         height: 100%;
-
+        &-resize {
+            right: -2px;
+            width: 4px;
+            height: 100%;
+            cursor: e-resize;
+        }
     }
     &-cell {
         min-width: 40px;
@@ -58,7 +71,15 @@
             border: none;
             outline: 2px solid darkblue;
             z-index: 2;
+        }
+    }
 
+    &-column-resize, &-row-resize {
+        position: absolute;
+        background: $primary-color;
+        opacity: 0;
+        &:hover {
+            opacity: 1;
         }
     }
 }

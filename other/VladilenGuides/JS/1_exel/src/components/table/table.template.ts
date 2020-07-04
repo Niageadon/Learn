@@ -3,7 +3,11 @@ enum borders {
 	end = 90
 }
 const toChar = (_, index) => String.fromCharCode(borders.start + index)
-const toCol = (col) => `<div class="excel__table-column">${col}</div>`
+const toCol = (col) => (`<div class="excel__table-column">
+	${col}
+	<div class="excel__table-column-resize" data-resize="col"></div>
+	</div>
+`)
 const toCell = (data: string): string => `<div class="excel__table-cell" contenteditable>${data}</div>`
 
 export function createTable(rowsCount: number, ): string {
@@ -23,9 +27,13 @@ export function createTable(rowsCount: number, ): string {
 }
 
 function createRow(content: string, index?: number) {
+	const resizer = index? '<div class="excel__table-row-resize" data-resize="row"></div>': ''
 	return `
 	<div class="excel__table-row">
-		<div class="excel__table-row-info">${index? index: ''}</div>
+		<div class="excel__table-row-info">
+			${index? index: ''}
+			${resizer}
+		</div>
 		<div class="excel__table-row-data">
 			${content}
 		</div>

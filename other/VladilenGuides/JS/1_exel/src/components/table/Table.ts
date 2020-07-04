@@ -7,10 +7,7 @@ export default class Table extends ExcelComponent{
 		super($root, {
 			name: 'Table',
 			listeners: [
-				'click',
 				'mousedown',
-				'mousemove',
-				'mouseup',
 			],
 		});
 	}
@@ -22,17 +19,11 @@ export default class Table extends ExcelComponent{
 	toHTML(): string {
 		return createTable(100)
 	}
-	onClick() {
-		console.log('table-click')
-	}
-	onMousedown(event: Event) {
-		console.log('table-mousedown', event.target)
-	}
-	onMousemove() {
-		console.log('table-mousemove')
-	}
-	onMouseup() {
-		console.log('table-mouseup')
+	onMousedown(event: any) {
+		console.log('table-mousedown', event.target.getAttribute('data-resize'))
+		if(event.target.dataset.resize) {
+			
+		}
 	}
 
 }
