@@ -1,4 +1,4 @@
-const btn = document.querySelector('#btn')!
-btn.addEventListener('click', () => {
+//const btn = document.querySelector('#btn')!
+/*btn.addEventListener('click', () => {
 	console.log('bib')
-})
+})*/

@@ -31,7 +31,7 @@ console.log(getKey(element, 'res'));
 //console.log(getKey(element, 'ind'));
 //_______________________________________________________________________________
 
-class Collestion<T extends string | number | boolean> {
+class Collection<T extends string | number | boolean> {
 	constructor(private _items: T[] = []) {
 	}
 	add(item: T) {
@@ -46,7 +46,7 @@ class Collestion<T extends string | number | boolean> {
 		return this._items
 	}
 }
-const bibs = new Collestion<number>([1, 2, 3, 4]);
+const bibs = new Collection<number>([1, 2, 3, 4]);
 bibs.add(1).add(2).add(5).remove(1);
 console.log(bibs.getCollection())
 //_______________________________________________________________________________
