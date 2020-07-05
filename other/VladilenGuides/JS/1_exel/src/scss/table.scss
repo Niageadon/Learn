@@ -37,6 +37,8 @@
             &-strip{
                 position: absolute;
                 min-width: 4px;
+                z-index: 1;
+                top: 0;
                 height: 100%;
                 min-height: 100vh;
                 background: $primary-color;
@@ -85,6 +87,7 @@
         position: absolute;
         background: $primary-color;
         opacity: 0;
+        z-index: 2;
         &:hover {
             opacity: 1;
         }

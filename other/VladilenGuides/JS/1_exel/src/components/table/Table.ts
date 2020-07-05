@@ -24,7 +24,10 @@ export default class Table extends ExcelComponent{
 		const target = $(event.target);
 		const type = event.target.dataset.resize
 		//console.log('table-mousedown', $el.getAttribute('data-resize'))
-		const border: CellBorder = {el: target.$el}
+		const border: CellBorder = {
+			el: target.$el,
+			position: target.$el.getClientRects()[0].x
+		}
 		const resizeStrip: CellBorder = {}
 
 		if(type) {
@@ -35,14 +38,17 @@ export default class Table extends ExcelComponent{
 
 
 		function addResizeStrip() {
+			const table = document.querySelector('.excel__table')
 			resizeStrip.el = document.createElement('div')
 			resizeStrip.el.classList.add('excel__table-row-resize-strip')
-			border.el.append(resizeStrip.el)
+			resizeStrip.el.style.left = `${border.position}px`
+
+			table.append(resizeStrip.el)
 		}
 		function clear() {
 			document.removeEventListener('mouseup', mouseUp)
 			document.removeEventListener('mousemove', mousemove)
-			border.el.removeChild(resizeStrip.el)
+			//border.el.removeChild(resizeStrip.el)
 		}
 		function mouseUp() {
 			clear()
