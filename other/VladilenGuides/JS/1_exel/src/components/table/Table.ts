@@ -23,10 +23,12 @@ export default class Table extends ExcelComponent{
 	onMousedown(event: any) {
 		const target = $(event.target);
 		const type = event.target.dataset.resize
+		const table = document.querySelector('.excel__table')
 		//console.log('table-mousedown', $el.getAttribute('data-resize'))
 		const border: CellBorder = {
 			el: target.$el,
-			position: target.$el.getClientRects()[0].x
+			//position: target.$el.getClientRects()[0].x,
+			info: target.$el.getClientRects()[0],
 		}
 		const resizeStrip: CellBorder = {}
 
@@ -37,24 +39,30 @@ export default class Table extends ExcelComponent{
 		}
 
 
+		function calcNewSize(targetBorder: CellBorder, newPos: number): void {
+			const target = targetBorder.el.parentElement
+			const targetInfo: DOMRect = target.getClientRects()[0]
+			const width = newPos - targetBorder.info.x + targetInfo.width
+			target.style.width = width + 'px'
+		}
 		function addResizeStrip() {
-			const table = document.querySelector('.excel__table')
 			resizeStrip.el = document.createElement('div')
 			resizeStrip.el.classList.add('excel__table-row-resize-strip')
-			resizeStrip.el.style.left = `${border.position}px`
-
+			resizeStrip.el.style.left = `${border.info.x}px`
 			table.append(resizeStrip.el)
 		}
 		function clear() {
 			document.removeEventListener('mouseup', mouseUp)
 			document.removeEventListener('mousemove', mousemove)
-			//border.el.removeChild(resizeStrip.el)
+			table.removeChild(resizeStrip.el)
 		}
 		function mouseUp() {
+			calcNewSize(border, resizeStrip.position)
 			clear()
 		}
 		function mousemove({screenX, screenY}) {
-			border.position = screenX
+			resizeStrip.el.style.left = `${screenX}px`
+			resizeStrip.position = screenX
 		}
 	}
 

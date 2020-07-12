@@ -3,7 +3,7 @@ enum borders {
 	end = 90
 }
 const toChar = (_, index) => String.fromCharCode(borders.start + index)
-const toCol = (col) => (`<div class="excel__table-column">
+const toCol = (col) => (`<div class="excel__table-column noselect">
 	${col}
 	<div class="excel__table-column-resize" data-resize="col"></div>
 	</div>
