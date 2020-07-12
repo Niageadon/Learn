@@ -5,14 +5,16 @@
         <div class="greeting">Hello {{name}}{{exclamationMarks}}</div>
         <button @click="decrement">-</button>
         <button @click="increment">+</button>
+        <button @click="parentClicked">parent click</button>
     </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
+import Parent from "./Parent";
 
 @Component
-export default class HelloDecorator extends Vue {
+export default class HelloDecorator extends Parent {
     @Prop() name!: string;
     @Prop() initialEnthusiasm!: number;
 
