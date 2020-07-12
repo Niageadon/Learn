@@ -2,7 +2,7 @@
 <!-- This is an alternative way to define the Hello component using decorators -->
 <template>
     <div>
-        <div class="greeting">Hello {{name}}{{exclamationMarks}}</div>
+        <div class="greeting">Hello {{exclamationMarks}}</div>
         <button @click="decrement">-</button>
         <button @click="increment">+</button>
         <button @click="parentClicked">parent click</button>
@@ -15,10 +15,10 @@ import Parent from "./Parent";
 
 @Component
 export default class HelloDecorator extends Parent {
-    @Prop() name!: string;
-    @Prop() initialEnthusiasm!: number;
+    @Prop() name?: string;
+    @Prop() initialEnthusiasm?: number;
 
-    enthusiasm = this.initialEnthusiasm;
+    enthusiasm = this.initialEnthusiasm || 2;
 
     increment() {
         this.enthusiasm++;
