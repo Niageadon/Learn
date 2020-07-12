@@ -8,7 +8,7 @@ export default class HelloTs extends Vue {
 	created() {
 		console.log('hello-ts created')
 	}
-	beforeRouteEnter(to, from ,next) {
+	beforeRouteEnter(to: any, from: any, next: any) {
 		console.log('before route enter')
 	}
 }

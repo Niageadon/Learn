@@ -5,15 +5,20 @@
         <div class="greeting">Hello {{exclamationMarks}}</div>
         <button @click="decrement">-</button>
         <button @click="increment">+</button>
-        <button @click="parentClicked">parent click</button>
+        <button v-color-directive="{color: 'white', background: 'red'}" @click="parentClicked">parent click</button>
     </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 import Parent from "./Parent";
+import colorDirective from '../color-directive'
 
-@Component
+@Component({
+    directives: {
+        colorDirective
+    }
+})
 export default class HelloDecorator extends Parent {
     @Prop() name?: string;
     @Prop() initialEnthusiasm?: number;
