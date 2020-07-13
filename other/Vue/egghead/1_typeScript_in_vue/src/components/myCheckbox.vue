@@ -11,13 +11,17 @@
 	</div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop, Model } from "vue-property-decorator";
+import { Vue, Component, Prop, Model, Watch } from "vue-property-decorator";
 @Component({})
 export default class MyCheckbox extends Vue {
 	@Prop() title: string | undefined
 	@Prop() value: string | undefined
 	@Prop()
 	@Model('change') checked: boolean | undefined
+	@Watch('checked'/*, {deep: true* for object fields/}*/)
+	watchCount(to, from) {
+		console.log('change value to:', to)
+	}
 	change(event: any) {
 		this.$emit('change', event.target.checked)
 	}
