@@ -13,6 +13,7 @@ let v = new Vue({
         <hello-component :name="name" :initialEnthusiasm="5" />-->
         <router-link :to="{name: 'Hello'}">to hello</router-link>
         <router-link :to="{name: 'HelloTs'}">to helloTs</router-link>
+        <router-link :to="{name: 'dependencyInjection'}">to dependencyInjection</router-link>
         <router-view></router-view>
         <!--<h1>Hello Decorator Component</h1>
         <hello-decorator-component :name="name" :initialEnthusiasm="5" />-->
@@ -21,6 +22,6 @@ let v = new Vue({
     data: { name: "World" },
     components: {
         HelloComponent,
-        HelloDecoratorComponent
+        HelloDecoratorComponent,
     }
 });

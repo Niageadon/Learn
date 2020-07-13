@@ -14,7 +14,7 @@ import { Vue, Component, Prop } from "vue-property-decorator";
 import myCheckbox from "./myCheckbox.vue";
 @Component({
 	components: {
-		myCheckbox
+		myCheckbox,
 	}
 })
 export default class HelloTs extends Vue {

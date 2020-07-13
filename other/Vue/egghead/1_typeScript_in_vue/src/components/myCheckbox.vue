@@ -19,7 +19,7 @@ export default class MyCheckbox extends Vue {
 	@Prop()
 	@Model('change') checked: boolean | undefined
 	@Watch('checked'/*, {deep: true* for object fields/}*/)
-	watchCount(to, from) {
+	watchCount(to: boolean, from: boolean) {
 		console.log('change value to:', to)
 	}
 	change(event: any) {
