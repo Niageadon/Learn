@@ -3,5 +3,6 @@
 <br>level: adv
 <br>duration: 40 m
 <br>startAt: 12.07.2020
+<br>doneAt: 16.07.2020
 
 
