@@ -1,8 +1,7 @@
 (function Home(){
 	"use strict";
-
-	var startStopBtn;
-	var fibsList;
+	
+	let startStopBtn, fibsList, worker
 
 	document.addEventListener("DOMContentLoaded",ready,false);
 
@@ -17,7 +16,7 @@
 	}
 
 	function renderFib(num,fib) {
-		var p = document.createElement("div");
+		let p = document.createElement("div");
 		p.innerText = `Fib(${num}): ${fib}`;
 		if (fibsList.childNodes.length > 0) {
 			fibsList.insertBefore(p,fibsList.childNodes[0]);
@@ -34,7 +33,8 @@
 		startStopBtn.innerText = "Stop";
 		fibsList.innerHTML = "";
 
-		// TODO
+		worker = new Worker('js/worker.js')
+		worker.addEventListener('message', onMessage)
 	}
 
 	function stopFibs() {
@@ -46,4 +46,7 @@
 		// TODO
 	}
 
+	function onMessage(event) {
+		console.log(event.data)
+	}
 })();

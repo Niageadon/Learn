@@ -1,7 +1,7 @@
 "use strict";
 
-var curFib = 0;
-
+let curFib = 0;
+self.postMessage('hello from worker')
 // TODO
 
 // **********************************
