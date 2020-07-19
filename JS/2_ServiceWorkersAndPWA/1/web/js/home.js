@@ -48,5 +48,6 @@
 
 	function onMessage(event) {
 		console.log(event.data)
+		worker.postMessage('Hello from client')
 	}
 })();
