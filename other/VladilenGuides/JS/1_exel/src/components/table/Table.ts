@@ -31,7 +31,6 @@ export default class Table extends ExcelComponent{
 			info: target.$el.getClientRects()[0],
 		}
 		const resizeStrip: CellBorder = {}
-
 		if(type) {
 			document.addEventListener('mouseup', mouseUp)
 			document.addEventListener('mousemove', mousemove)
@@ -40,9 +39,9 @@ export default class Table extends ExcelComponent{
 
 
 		function calcNewSize(targetBorder: CellBorder, newPos: number): void {
-			const target = targetBorder.el.parentElement
+			const target: HTMLElement = targetBorder.el.parentElement
 			const targetInfo: DOMRect = target.getClientRects()[0]
-			const width = newPos - targetBorder.info.x + targetInfo.width
+			const width: number = newPos - targetBorder.info.x + targetInfo.width
 			target.style.width = width + 'px'
 		}
 		function addResizeStrip() {
