@@ -35,6 +35,7 @@
 
 		worker = new Worker('js/worker.js')
 		worker.addEventListener('message', onMessage)
+		worker.postMessage({ start: true })
 	}
 
 	function stopFibs() {
@@ -42,12 +43,12 @@
 		startStopBtn.addEventListener("click",startFibs,false);
 
 		startStopBtn.innerText = "Start";
-
-		// TODO
+		worker.terminate()
 	}
 
 	function onMessage(event) {
 		console.log(event.data)
-		worker.postMessage('Hello from client')
+		//worker.postMessage('Hello from client')
+		renderFib(event.data.index, event.data.fib)
 	}
 })();
