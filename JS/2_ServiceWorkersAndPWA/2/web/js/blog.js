@@ -1,10 +1,12 @@
 (function Blog(){
 	"use strict";
 
-	let offlineIcon;
+	let offlineIcon, sw, swRegistration;
 	let isOnline = ("onLine" in navigator) ? navigator.onLine: true
 	let isLoggedIn = /isLoggedIn=1/.test(document.cookie.toString() || "");
-	let sw
+	let usingSW = ('serviceWorker' in navigator)
+	
+	
 	document.addEventListener("DOMContentLoaded",ready,false);
 	initServiceWorker()
 		.catch(console.error)
@@ -26,5 +28,10 @@
 			isOnline = false
 		})
 	}
-
+	async function initServiceWorker() {
+		swRegistration = await navigator.serviceWorker.register('/sw.js', {
+			updateViaCache: false
+		})
+		
+	}
 })();
