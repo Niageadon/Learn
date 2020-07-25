@@ -22,10 +22,12 @@
 		window.addEventListener('isOnline', function online() {
 			offlineIcon.classList.add('hidden')
 			isOnline = true
+			sendStatusUpdate()
 		})
 		window.addEventListener('offline', function offline() {
 			offlineIcon.classList.remove('hidden')
 			isOnline = false
+			sendStatusUpdate()
 		})
 	}
 	async function initServiceWorker() {
@@ -35,6 +37,31 @@
 		sw = swRegistration.installing ?? swRegistration.waiting ?? swRegistration.active
 		navigator.serviceWorker.addEventListener('controllerchange', () => {
 			sw = navigator.serviceWorker.controller
+			sendStatusUpdate(sw)
 		})
+		navigator.serviceWorker.addEventListener('message', onSWMessage)
+	}
+	
+	async function onSWMessage(event) {
+		let { data } = event
+		if (data.requestStatusUpdate) {
+			console.log('received status upd req from sw')
+			sendStatusUpdate(event.ports?.[0])
+		}
+	}
+	
+	function sendStatusUpdate(target) {
+		sendSWMessage({ statusUpdate: { isOnline, isLoggedIn }}, target)
+	}
+	
+	async function sendSWMessage(msg, target) {
+		if (target) {
+			target.postMessage(msg)
+		} else if(sw) {
+			sw.postMessage(msg)
+		} else {
+			navigator.serviceWorker.controller.postMessage(msg)
+		}
+		
 	}
 })();
