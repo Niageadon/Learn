@@ -9,11 +9,16 @@ main().catch(console.error)
 async function main() {
 	console.log('my sw is starting...')
 }
-async function onInstall() {
+async function onInstall(event) {
 	console.log('my sw installed...')
 	self.skipWaiting()
 }
-async function onActivate() {
-	console.log('my sw activated...')
+function onActivate(event) {
+	event.waitUntil(handleActivation())
+}
 
+async function handleActivation() {
+	await clients.claim()
+	console.log('my sw activated...')
+	
 }
