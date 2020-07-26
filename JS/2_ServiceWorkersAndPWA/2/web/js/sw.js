@@ -1,8 +1,25 @@
 "use strict";
 
-// version = 2
+const version = 3
 let isOnline = true
 let isLoggedIn = false
+let cacheName = `ramblings-${version}`
+const urlsToCache = {
+	loggedOut: [
+		"/",
+		"/about",
+		"/contact",
+		"/login",
+		"/404",
+		"/js/blog.js",
+		"/js/home.js",
+		"/js/login.js",
+		"/js/add-post.js",
+		"/css/styles.css",
+		"/images/logo.gif",
+		"/images/offline.png",
+	]
+}
 
 self.addEventListener('install', onInstall)
 self.addEventListener('activate', onActivate)
