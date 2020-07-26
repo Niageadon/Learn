@@ -15,7 +15,7 @@ const urlsToCache = {
 		"/js/home.js",
 		"/js/login.js",
 		"/js/add-post.js",
-		"/css/styles.css",
+		"/css/style.css",
 		"/images/logo.gif",
 		"/images/offline.png",
 	]
@@ -30,6 +30,7 @@ main().catch(console.error)
 async function main() {
 	console.log('my sw is starting...')
 	await sendMessage({ requestStatusUpdate: true })
+	await cacheLoggedOutFiles()
 }
 async function onInstall(event) {
 	console.log('my sw installed...')
@@ -42,6 +43,7 @@ function onActivate(event) {
 async function handleActivation() {
 	console.log(22, clients)
 	await clients.claim()
+	await cacheLoggedOutFiles(true)
 	console.log('my sw activated...')
 	
 }
@@ -66,7 +68,7 @@ function onMessage({ data }) {
 }
 
 async function cacheLoggedOutFiles(forceReload = false) {
-	let cache = await caches.match(cacheName)
+	let cache = await caches.open(cacheName)
 	return Promise.all(
 		urlsToCache.loggedOut.map(async url => {
 			try {
