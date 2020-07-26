@@ -64,3 +64,30 @@ function onMessage({ data }) {
 		console.log('sw status update', `is-online:${isOnline}`, `is-logged-in:${isLoggedIn}`)
 	}
 }
+
+async function cacheLoggedOutFiles(forceReload = false) {
+	let cache = await caches.match(cacheName)
+	return Promise.all(
+		urlsToCache.loggedOut.map(async url => {
+			try {
+				let res
+				if(!forceReload) {
+					res = await cache.match(url)
+					if(res) return res
+				}
+				let fetchOptions = {
+					method: 'GET',
+					credentials: 'omit',
+					cache: 'no-cache'
+				}
+				res = await fetch(url, fetchOptions)
+				if(res.ok) {
+					await cache.put(url, res.clone())
+				}
+			}
+			catch (e) {
+			
+			}
+		})
+	)
+}
