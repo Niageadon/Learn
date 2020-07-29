@@ -1,6 +1,6 @@
 "use strict";
 
-const version = 3
+const version = 4
 let isOnline = true
 let isLoggedIn = false
 let cacheName = `ramblings-${version}`
@@ -41,9 +41,9 @@ function onActivate(event) {
 }
 
 async function handleActivation() {
-	console.log(22, clients)
-	await clients.claim()
+	await clearCaches()
 	await cacheLoggedOutFiles(true)
+	await clients.claim()
 	console.log('my sw activated...')
 	
 }
@@ -92,4 +92,16 @@ async function cacheLoggedOutFiles(forceReload = false) {
 			}
 		})
 	)
+}
+
+async function clearCaches() {
+	let cacheNames = await caches.keys()
+	let oldCacheNames = cacheNames.filter(cacheName => {
+		if(/ramblings-\d+$/.test(cacheName)) {
+			let [, cacheVersion] = cacheName.match(/^ramblings-(\d+)$/)
+			cacheVersion = (cacheVersion != null) ? Number(cacheVersion) : cacheVersion
+			return (cacheVersion > 0 && cacheVersion !== version)
+		}
+	})
+	return Promise.all(oldCacheNames.map(cacheName => caches.delete(cacheName)))
 }
