@@ -24,6 +24,7 @@ const urlsToCache = {
 self.addEventListener('install', onInstall)
 self.addEventListener('activate', onActivate)
 self.addEventListener('message', onMessage)
+self.addEventListener('fetch', onFetch)
 
 main().catch(console.error)
 ///
@@ -31,6 +32,37 @@ async function main() {
 	console.log('my sw is starting...')
 	await sendMessage({ requestStatusUpdate: true })
 	await cacheLoggedOutFiles()
+}
+function onFetch(event) {
+	event.respondWith(router(event.request))
+	
+}
+async function router(req) {
+	let url = URL(req.url)
+	let reqUrl = url.pathName
+	let cache = await caches.open(cacheName)
+	if (url.origin == location.origin) {
+		let res
+		let fetchOptions = {
+			credentials: 'omit',
+			cache: 'no-store',
+			method: req.method,
+			headers: req.headers
+		}
+		try {
+			res = await fetch(req.url, fetchOptions)
+			if (res?.ok) {
+				await cache.put(reqUrl, res.clone())
+				return res
+			}
+		} catch (e) {
+			throw e
+		}
+		res = await cache.match(reqUrl)
+		if (res) {
+			return res.clone()
+		}
+	}
 }
 async function onInstall(event) {
 	console.log('my sw installed...')
