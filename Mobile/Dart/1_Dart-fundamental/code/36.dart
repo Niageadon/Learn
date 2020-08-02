@@ -2,7 +2,7 @@ class Actor {
   String name;
   var filmography = <String>[];
 
-  String toSting() {
+  String toString() {
     var actor = '$name\n';
     for(var film in filmography) {
       actor += '- $film\n';
