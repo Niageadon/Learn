@@ -1,0 +1,13 @@
+.todoList{
+    padding: .25rem .75rem;
+    &-container{
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        li{
+            width: 100%;
+        }
+
+    }
+}

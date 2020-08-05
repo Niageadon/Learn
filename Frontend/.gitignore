@@ -1,0 +1,40 @@
+.DS_Store
+node_modules
+/dist
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+/other/udemiCourses/Canvas/1_Create_games_on_canvas/2_Snake/public/bundle.js
+/other/VladilenGuides/TS/TS_anvanced/dist/app.js
+/other/VladilenGuides/TS/TS_anvanced/dist/app.js.map
+/other/VladilenGuides/TS/TS_anvanced/dist/decorators.js
+/other/VladilenGuides/TS/TS_anvanced/dist/decorators.js.map
+/other/VladilenGuides/TS/TS_anvanced/dist/generic.js
+/other/VladilenGuides/TS/TS_anvanced/dist/generic.js.map
+/other/udemiCourses/React/React-pro/3-hooks/public/favicon.ico
+/other/udemiCourses/React/React-pro/3-hooks/public/index.html
+/other/udemiCourses/React/React-pro/3-hooks/public/logo192.png
+/other/udemiCourses/React/React-pro/3-hooks/public/logo512.png
+/other/udemiCourses/React/React-pro/3-hooks/public/manifest.json
+/other/udemiCourses/React/React-pro/3-hooks/public/robots.txt
+/other/VladilenGuides/JS/1_Exel/dist/bundle..css
+/other/VladilenGuides/JS/1_Exel/dist/bundle..js
+/JS/2_ServiceWorkersAndPWA/1/package-lock.json
+/VladilenGuides/JS/2_own-promise/package-lock.json
+/Vue/egghead/1_typeScript_in_vue/
+/VladilenGuides/TS/TS_anvanced/dist/

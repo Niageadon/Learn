@@ -1,0 +1,16 @@
+@import "font.css";
+
+body{
+    font-family: 'sans-serif';
+}
+
+h1, h2, h3, h4 {
+    text-align: center;
+    margin: 32px 0 16px 0
+}
+
+.img{
+    background-image: url("../assets/google.svg");
+    height: 100px;
+    background-repeat: no-repeat;
+}

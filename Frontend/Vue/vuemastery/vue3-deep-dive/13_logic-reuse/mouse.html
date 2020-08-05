@@ -1,0 +1,87 @@
+<script src="https://unpkg.com/vue@next"></script>
+<div id="app"></div>
+<script>
+	const {reactive, watchEffect, watch, onMounted, onUnmounted, ref, computed, createApp, h} = Vue
+
+	const mouseMixin = {
+		data() {
+			return {
+				x: 0,
+				y: 0
+			}
+		},
+		methods: {
+			update(e) {
+				this.x = e.pageX
+				this.y = e.pageY
+			}
+		},
+		mounted() {
+			window.addEventListener('mousemove', this.update)
+		},
+		unmounted() {
+			window.removeEventListener('mousemove', this.update)
+		}
+	}
+
+	const Mouse = {
+		data() {
+			return {
+				x: 0,
+				y: 0
+			}
+		},
+		methods: {
+			update(e) {
+				this.x = e.pageX
+				this.y = e.pageY
+			}
+		},
+		mounted() {
+			window.addEventListener('mousemove', this.update)
+		},
+		unmounted() {
+			window.removeEventListener('mousemove', this.update)
+		},
+		template: `<slot :x="x" :y="y"></slot>`,
+		render() {
+			return this.$slots?.default({
+				x: this.x,
+				y: this.y
+			})
+		}
+	}
+	function useMouse() {
+		const x = ref(0)
+		const y = ref(0)
+		function update(e) {
+			this.x = e.pageX
+			this.y = e.pageY
+		}
+		onMounted(() => {
+			window.addEventListener('mousemove', update)
+		})
+		onUnmounted(() => {
+			window.removeEventListener('mousemove', update)
+		})
+		return {x, y}
+	}
+
+	/*const App = {
+		template: `{{x}} {{y}}`,
+		mixins: [mouseMixin]
+    }*/
+	/*const App = {
+		components: {Mouse},
+		template: `<Mouse v-slot="{x, y}">{{x}} {{y}}</Mouse>`,
+	}*/
+	const App = {
+		setup() {
+			const {x, y} = useMouse()
+			return {x, y}
+		},
+		template: `{{x}} {{y}}`,
+	}
+	createApp(App).mount('#app')
+
+</script>

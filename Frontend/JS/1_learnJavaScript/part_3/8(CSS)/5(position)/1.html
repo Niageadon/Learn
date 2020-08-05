@@ -1,0 +1,47 @@
+<!--
+Создайте при помощи HTML/CSS «модальное окно», то есть DIV, который полностью перекрывает документ и находится над ним.
+
+При этом все элементы управления на документе перестают работать, т.к. клики попадают в DIV.
+
+В примере ниже DIV'у дополнительно поставлен цвет фона и прозрачность, чтобы было видно перекрытие:
+
+ 
+Браузеры: все основные, IE8+. Должно работать при прокрутке окна (проверьте).
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+</head>
+
+<body>
+
+ <button>try to click</button>
+
+  <div class="modal">
+    <div class="modal__content">
+      boba
+    </div>
+  </div>
+
+</html>
+
+<style>
+    .modal{
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      position:absolute ;
+      text-align: center;
+      background-color: blueviolet;
+      opacity: 0.9;
+    }
+    .modal__content{
+      position: relative;
+      top: 50%;
+      
+    }
+</style>

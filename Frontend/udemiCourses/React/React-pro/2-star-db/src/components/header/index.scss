@@ -1,0 +1,12 @@
+.header{
+	padding: 20px;
+	display: flex;
+	justify-content: flex-end;
+	ul{
+		margin: 0;
+	}
+	li{
+		display: inline-block;
+		margin: 0 8px;
+	}
+}

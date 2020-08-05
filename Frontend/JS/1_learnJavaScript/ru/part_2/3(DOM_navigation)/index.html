@@ -1,0 +1,40 @@
+<!--Для страницы:
+
+<html>
+<body>
+  <div>Пользователи:</div>
+  <ul>
+    <li>Джон</li>
+    <li>Пит</li>
+  </ul>
+</body>
+</html>
+Как получить:
+
+Напишите код, который получит элемент <div>?
+Напишите код, который получит <ul>?
+Напишите код, который получит второй <li> (с именем Пит)?-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>Пользователи:</div>
+<ul>
+    <li>Джон</li>
+    <li>Пит</li>
+</ul>
+</body>
+</html>
+
+<script>
+  let answer = [
+      document.body.firstElementChild,
+      document.body.children[1]
+  ]
+  answer[2] = answer[1].lastElementChild
+  console.log(answer)
+</script>

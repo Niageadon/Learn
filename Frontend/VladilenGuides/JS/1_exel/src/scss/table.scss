@@ -1,0 +1,95 @@
+@import "variables";
+@import "mixins";
+
+.excel__table {
+    position: absolute;
+    top: $header-height + $toolbar-height + $formula-height;
+    left: 0;
+    right: 0;
+    overflow-x: auto;
+    padding-bottom: 2px;
+
+    &-row {
+        display: flex;
+        min-height: 20px;
+        height: $row-height;
+
+        &-info {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: $first-cell-width;
+            height: 100%;
+            border: 1px solid $border-color;
+            border-top: none;
+            border-left: none;
+            background-color: $cell-bg;
+        }
+        &-data {
+            display: flex;
+        }
+        &-resize {
+            bottom: -1px;
+            height: 4px;
+            cursor: n-resize;
+            width: 100%;
+            &-strip{
+                position: absolute;
+                min-width: 4px;
+                z-index: 1;
+                top: 0;
+                height: 100%;
+                min-height: 100vh;
+                background: $primary-color;
+            }
+        }
+    }
+    &-column {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $cell-bg;
+        min-width: 40px;
+        width: $cell-width;
+        border: 1px solid $border-color;
+        border-top: none;
+        border-left: none;
+        height: 100%;
+        &-resize {
+            right: -1px;
+            width: 4px;
+            height: 100%;
+            cursor: e-resize;
+        }
+    }
+    &-cell {
+        min-width: 40px;
+        width: $cell-width;
+        height: 100%;
+        padding: 4px;
+        border: 1px solid $border-color;
+        border-top: none;
+        border-left: none;
+        color: black;
+        white-space: nowrap;
+        outline: none;
+
+        &.selected {
+            border: none;
+            outline: 2px solid darkblue;
+            z-index: 2;
+        }
+    }
+
+    &-column-resize, &-row-resize {
+        position: absolute;
+        background: $primary-color;
+        opacity: 0;
+        z-index: 2;
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
