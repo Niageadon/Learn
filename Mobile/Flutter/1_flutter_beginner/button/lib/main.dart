@@ -11,9 +11,10 @@ import './lessons/17.dart';
 import './lessons/20.dart';
 import './lessons/21.dart';
 import './lessons/24.dart';
+import './lessons/25.dart';
 
 void main() {
   runApp(new MaterialApp(
-    home: new Lesson24(),
+    home: new Lesson25(),
   ));
 }
