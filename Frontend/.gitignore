@@ -37,3 +37,4 @@ yarn-error.log*
 /JS/2_ServiceWorkersAndPWA/1/package-lock.json
 /VladilenGuides/JS/2_own-promise/package-lock.json
 /VladilenGuides/TS/TS_anvanced/dist/
+/Vue/egghead/1_typeScript_in_vue/dist/
