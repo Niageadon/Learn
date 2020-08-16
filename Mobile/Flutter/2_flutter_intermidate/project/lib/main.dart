@@ -5,10 +5,11 @@ import './lessons/3.dart';
 import './lessons/4_popupMenu.dart';
 import './lessons/5_expandedList.dart';
 import './lessons/6_tabBarView.dart';
+import './lessons/7_stepWidget.dart';
 
 
 void main() {
   runApp(new MaterialApp(
-    home: new Lesson6(),
+    home: new Lesson7(),
   ));
 }
