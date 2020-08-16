@@ -6,10 +6,11 @@ import './lessons/4_popupMenu.dart';
 import './lessons/5_expandedList.dart';
 import './lessons/6_tabBarView.dart';
 import './lessons/7_stepWidget.dart';
+import './lessons/8_gridView.dart';
 
 
 void main() {
   runApp(new MaterialApp(
-    home: new Lesson7(),
+    home: new Lesson8(),
   ));
 }
