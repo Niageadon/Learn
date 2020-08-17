@@ -8,10 +8,11 @@ import './lessons/6_tabBarView.dart';
 import './lessons/7_stepWidget.dart';
 import './lessons/8_gridView.dart';
 import './lessons/9_charts.dart';
+import './lessons/10_charts.dart';
 
 
 void main() {
   runApp(new MaterialApp(
-    home: new Lesson9(),
+    home: new Lesson10(),
   ));
 }
