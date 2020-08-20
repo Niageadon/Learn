@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import './lessons/7.dart';
-import './lessons/6.dart';
-import './lessons/8.dart';
-import './lessons/9.dart';
-import './lessons/10.dart';
-import './lessons/14.dart';
-import './lessons/15.dart';
-import './lessons/16.dart';
-import './lessons/17.dart';
-import './lessons/20.dart';
-import './lessons/21.dart';
-import './lessons/24.dart';
-import './lessons/25.dart';
-import './lessons/28.dart';
+import './lessons/7_RaisedButton.dart';
+import './lessons/6_RaisedButton.dart';
+import './lessons/8_FlatButton.dart';
+import './lessons/9_IconButton.dart';
+import './lessons/10_Column.dart';
+import './lessons/14_Slider.dart';
+import './lessons/15_AppBar.dart';
+import './lessons/16_AppbarActions.dart';
+import './lessons/17_FloatingActionButton.dart';
+import './lessons/20_BottomNavigationBar.dart';
+import './lessons/21_showModalBottomSheet.dart';
+import './lessons/24_SimpleDialogOption.dart';
+import './lessons/25_Expanded.dart';
+import './lessons/28_http.dart';
 
 void main() {
   runApp(new MaterialApp(
