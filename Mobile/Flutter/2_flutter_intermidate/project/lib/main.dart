@@ -10,12 +10,11 @@ import './lessons/8_gridView.dart';
 import './lessons/9_charts.dart';
 import './lessons/10_charts.dart';
 import './lessons/11_charts.dart';
-
-
+import './lessons/12_ownWidget.dart';
 
 void main() {
   runApp(new MaterialApp(
-    home: new Lesson11(),
+    home: new Lesson12(),
     //home: FlutterDemo(storage: CounterStorage()),
   ));
 }
