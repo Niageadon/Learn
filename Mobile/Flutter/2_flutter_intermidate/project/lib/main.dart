@@ -11,10 +11,29 @@ import './lessons/9_charts.dart';
 import './lessons/10_charts.dart';
 import './lessons/11_charts.dart';
 import './lessons/12_ownWidget.dart';
+import './lessons/13_ownWidget.dart';
 
 void main() {
   runApp(new MaterialApp(
-    home: new Lesson12(),
+    home: new Wrapper(),
     //home: FlutterDemo(storage: CounterStorage()),
   ));
+}
+
+class Wrapper extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text('appbar-title'),
+        backgroundColor: Colors.blueGrey,
+      ),
+      body: new Container(
+        child: new Container(
+          child: new Lesson13(),
+        )
+      ),
+    );
+  }
 }
