@@ -60,10 +60,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d2a2595-e449-4a01-85df-f58778829836" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/project/lib/lessons/t1.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/lib/lessons/17/index.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/lib/lessons/17/views/home.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/lib/lessons/17/views/second.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/lib/lessons/17/views/third.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/lib/lessons/3.dart" beforeDir="false" afterPath="$PROJECT_DIR$/project/lib/lessons/3_progressIndicator.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/project/lib/main.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +88,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../flutter/lottie" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/project" />
     <property name="settings.editor.selected.configurable" value="dart.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
@@ -130,18 +131,18 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598299932550">
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599416895339">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1598299932550" />
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1599416895339" />
     <state x="372" y="130" key="#com.intellij.ide.util.TreeFileChooserDialog" timestamp="1598299798102">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="372" y="130" key="#com.intellij.ide.util.TreeFileChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1598299798102" />
-    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1598380579724">
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1599416903299">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1598380579724" />
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1599416903299" />
     <state x="142" y="0" key="SettingsEditor" timestamp="1598299770257">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
