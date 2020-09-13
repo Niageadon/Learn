@@ -60,11 +60,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1d2a2595-e449-4a01-85df-f58778829836" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/project/lib/lessons/17/index.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/lib/lessons/17/views/home.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/lib/lessons/17/views/second.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/lib/lessons/17/views/third.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/lib/lessons/22_redux/index.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/lib/lessons/22_redux/store.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/project/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/project/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/project/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,10 +141,14 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="372" y="130" key="#com.intellij.ide.util.TreeFileChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1598299798102" />
-    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1599416903299">
+    <state x="171" y="0" key="CommitChangelistDialog2" timestamp="1599994745673">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1599416903299" />
+    <state x="171" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1599994745673" />
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1599994753705">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1599994753705" />
     <state x="142" y="0" key="SettingsEditor" timestamp="1598299770257">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
