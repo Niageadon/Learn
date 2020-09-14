@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+	<div class="diamond">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>	<div class="diamond">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+</body>
+</html>
+
+<style>
+.diamond {
+	margin: auto;
+	position: relative;
+	width: 200px;
+	height: 200px;
+	transform: rotate(45deg);
+}
+.diamond span {
+	position: absolute;
+	border-top: 50px solid yellow;
+	border-right: 50px solid darkblue;
+	border-bottom: 50px solid firebrick;
+	border-left: 50px solid fuchsia;
+}
+.diamond span:nth-child(1) {
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 0;
+	border-left: 50px solid transparent;
+	border-top: 50px solid transparent;
+}
+.diamond span:nth-child(2) {
+	top: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+}
+.diamond span:nth-child(3) {
+	top: 50%;
+	left: 0;
+	width: 0;
+	height: 0;
+}
+.diamond span:nth-child(4) {
+	top: 50%;
+	left: 50%;
+	width: 0;
+	height: 0;
+}
+
+</style>
