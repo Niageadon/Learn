@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<div class="cup">
+</div>
+</body>
+</html>
+
+<style>
+	body {
+		background: black;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		overflow: hidden;
+	}
+	.cup {
+		width: 150px;
+		height: 150px;
+		background: #3F2616;
+		border-radius: 50%;
+		position: relative;
+		box-shadow: 0 0 0 10px #442918,
+			0 0 0 25px #3C2415,
+			0 0 0 65px #FEAA3A,
+			0 120px 0 -25px #3C2415,
+			0 0 0 42px #fe9407,
+			0 210px 0 -55px #3C2415,
+			100px 70px 0 -25px #3C2415,
+			80px 110px 0 -10px #3C2415,
+			20px 250px 0 -65px #3C2415;
+	}
+	.cup:before {
+		top: -85px;
+		right: -75px;
+		border-radius: 5px;
+		transform: rotate(45deg);
+		content: "";
+		position: absolute;
+		height: 75px;
+		width: 50px;
+		background: #FEAA3A;
+	}
+</style>
