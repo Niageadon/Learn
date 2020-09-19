@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<div class="camera">
+	<div class="lens">
+		<div class="inner-lens">
+			<div class="inner-lens-2"></div>
+		</div>
+	</div>
+	<div class="flash"></div>
+	<div class="button"></div>
+</div>
+</body>
+</html>
+
+<style>
+	body {
+		background: black;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		overflow: hidden;
+	}
+	.camera {
+		width: 205px;
+		height: 155px;
+		background: #D6D6D6;
+		border-radius: 15px;
+		box-shadow: 0 10px 15px -13px black;
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.flash {
+		position: absolute;
+		right: 15px;
+		top: 20px;
+		background: #888888;
+		border-radius: 50%;
+		width: 25px;
+		height: 25px;
+	}
+	.button {
+		position: absolute;
+		top: -10px;
+		left: 30px;
+		height: 10px;
+		width: 30px;
+		background: #0a7142;
+	}
+	.lens {
+		display: flex;
+		background: white;
+		width: 120px;
+		height: 120px;
+		justify-content: center;
+		align-items: center;
+		border-radius: 50%;
+		box-shadow: 0 8px 0 0 #acbab3;
+	}
+	.inner-lens {
+		background: #0a7142;
+		width: 100px;
+		height: 100px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 50%;
+	}
+	.inner-lens-2 {
+		content: "";
+		width: 0;
+		height: 0;
+		border-top: 25px solid #82b819;
+		border-right: 25px solid #9ebf27;
+		border-bottom: 25px solid #27ff00;
+		border-left: 25px solid #428214;
+		border-radius: 50%;
+
+	}
+</style>
