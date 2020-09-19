@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<div class="logo">
+</div>
+</body>
+</html>
+
+<style>
+	body {
+		background: black;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		overflow: hidden;
+	}
+	.logo {
+		margin: auto;
+		height: 300px;
+		width: 300px;
+		background: blue;
+		border-radius: 50%;
+		border: 10px solid white;
+		position: relative;
+		overflow: hidden;
+	}
+	.logo:before {
+		content: "";
+		position: absolute;
+		top: -160px;
+		left: -240px;
+		height: 400px;
+		width: 500px;
+		border-radius: 25%;
+		background: white;
+		transform: rotate(-18deg);
+	}
+	.logo:after {
+		position: absolute;
+		content: "";
+		height: 500px;
+		width: 550px;
+		border-radius: 50%;
+		background: red;
+		top: -275px;
+		left: -300px;
+
+	}
+</style>
