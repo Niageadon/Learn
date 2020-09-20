@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<div class="logo_wrapper">
+	<div class="logo">
+		<div class="o1"></div>
+		<div class="o2"></div>
+		<div class="o3"></div>
+		<div class="o4"></div>
+		<div class="o5"></div>
+		<div class="o6"></div>
+		<div class="ears"></div>
+	</div>
+</div>
+</body>
+</html>
+
+<style>
+	body {
+		background: black;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+		overflow: hidden;
+	}
+	.logo_wrapper {
+		width: 230px;
+		height: 130px;
+		background: #fdff00;
+		border-radius: 50%;
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.logo {
+		position: absolute;
+		width: 212px;
+		height: 112px;
+		background: black;
+		border-radius: 50%;
+		overflow: hidden;
+	}
+	.ears {
+		position: absolute;
+		top: 0;
+		left: 95px;
+		width: 11px;
+		border-bottom: 12px solid #fdff00;
+		border-left: 6px solid black;
+		border-right: 6px solid black;
+		transform: rotate(180deg);
+	}
+	.o1 {
+		top: 67px;
+		left: 44px;
+		transform: rotate(-41deg);
+		background: #fdff00;
+		position: absolute;
+		width: 33px;
+		height: 70px;
+		border-radius: 50%;
+	}
+	.o2 {
+		top: 67px;
+		right: 44px;
+		transform: rotate(41deg);
+		background: #fdff00;
+		position: absolute;
+		width: 33px;
+		height: 70px;
+		border-radius: 50%;
+	}
+	.o3 {
+		top: 73px;
+		left: 69px;
+		transform: rotate(-15deg);
+		background: #fdff00;
+		position: absolute;
+		width: 38px;
+		height: 70px;
+		border-radius: 50%;
+	}
+	.o4 {
+		top: 73px;
+		right: 69px;
+		transform: rotate(15deg);
+		background: #fdff00;
+		position: absolute;
+		width: 38px;
+		height: 70px;
+		border-radius: 50%;
+	}
+	.o5 {
+		top: 0;
+		left: 57px;
+		background: #fdff00;
+		position: absolute;
+		width: 37px;
+		height: 40px;
+		border-radius: 50%;
+	}
+	.o5:before {
+		position: absolute;
+		content: "";
+		width: 20px;
+		height: 20px;
+		background: #fdff00;
+		top: 0;
+		right: 0;
+	}
+	.o6 {
+		top: 0;
+		right: 57px;
+		background: #fdff00;
+		position: absolute;
+		width: 37px;
+		height: 40px;
+		border-radius: 50%;
+	}
+	.o6:before {
+		position: absolute;
+		content: "";
+		width: 20px;
+		height: 20px;
+		background: #fdff00;
+		top: 0;
+		left: 0;
+	}
+
+</style>
