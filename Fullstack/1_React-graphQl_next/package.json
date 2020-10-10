@@ -2,14 +2,19 @@
   "name": "react_graph-ql__next",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "db": "^3.1.0",
+    "mikro-orm": "^4.0.7"
+  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "ts-node src/index.ts",
+    "watch": "tsc -w",
+    "dev": "nodemon build/dist/index.js"
   },
   "devDependencies": {
-    "@types/node-fetch": "^2.5.7"
+    "@types/node-fetch": "^2.5.c7",
+    "nodemon": "^2.0.4",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3"
   }
 }
