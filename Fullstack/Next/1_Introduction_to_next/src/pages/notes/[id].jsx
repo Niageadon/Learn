@@ -2,11 +2,11 @@ import React from 'react'
 import { useRouter, withRouter } from 'next/router'
 const Page = () => {
 	const router = useRouter()
-	const { params } = router.query
-	console.log(params)
+	const { id } = router.query
+	console.log(id)
 	return (
 		<h1>
-			Note { params }
+			Note { id }
 		</h1>
 	)
 }
