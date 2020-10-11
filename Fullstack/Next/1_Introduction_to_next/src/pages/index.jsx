@@ -1,7 +1,9 @@
-import React from 'react'
+/**  @jsx jsx */
 import Link from 'next/link'
+import { jsx } from 'theme-ui'
+
 const Page = () => (
-	<div>
+	<div sx={{ height: 'calc(100vh - 50px)' }}>
 		<h1>index page</h1>
 		<Link href="/notes">
 			<a>Notes</a>

@@ -7,5 +7,13 @@ export default {
 	},
 	styles: {
 		...roboto.styles
+	},
+	containers: {
+		page: {
+			width: '100%',
+			maxWidth: '960px',
+			m: '0',
+			mx: 'auto'
+		}
 	}
 }
