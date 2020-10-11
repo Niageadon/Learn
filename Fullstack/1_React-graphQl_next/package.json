@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@theme-ui/presets": "^0.3.0",
     "db": "^3.1.0",
-    "mikro-orm": "^4.0.7"
+    "mikro-orm": "^4.0.7",
+    "theme-ui": "^0.3.1"
   },
   "scripts": {
     "start": "ts-node src/index.ts",
