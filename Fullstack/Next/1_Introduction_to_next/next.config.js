@@ -1,20 +1,6 @@
-const { PHASE_PRODUCTION_BUILD, PHASE_DEVELOPMENT_SERVER } = require('next/constants')
-module.exports = (phase, { defaultConfig }) => {
-	if(phase === PHASE_DEVELOPMENT_SERVER) {
-		console.log('is dev mode here')
-		return {
-			...defaultConfig,
-			webpack: {
-				
-			}
-		}
-	}
-	return defaultConfig
-}
+const nextEnv = require('next-env')
+const dotenvLoad = require('dotenv-load')
 
-/*module.exports = {
-	webpack: {
-		plugins: [
-		]
-	}
-}*/
+dotenvLoad()
+const withEnv = nextEnv()
+module.exports = withEnv()
