@@ -11,9 +11,9 @@ const Page = () => (
 	</div>
 )
 export default Page
-export function getStaticProps(context) {
+/*export function getStaticProps(context) {
 	console.log(11, context)
 	return {
 		props: {}
 	}
-}
+}*/
