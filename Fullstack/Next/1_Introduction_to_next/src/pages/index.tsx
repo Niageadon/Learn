@@ -1,5 +1,11 @@
 /**  @jsx jsx */
 import Link from 'next/link'
+import dynamic from 'next/dynamic';
+const Browser = dynamic(() => import('../components/browser'),
+	{
+		ssr: false,
+		loading: () => <span>loading</span>
+	})
 import { jsx } from 'theme-ui'
 
 const Page = ({ content }) => (
@@ -8,6 +14,8 @@ const Page = ({ content }) => (
 		<Link href="/note">
 			<a>Notes</a>
 		</Link>
+
+		<Browser/>
 	</div>
 )
 export default Page
