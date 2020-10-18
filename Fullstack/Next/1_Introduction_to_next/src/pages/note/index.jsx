@@ -14,7 +14,7 @@ const Page = ({ notes }) => (
 )
 export default Page
 export async function getServerSideProps() {
-	const resp = await fetch('http://localhost:3000/api/note/')
+	const resp = await fetch('${process.env.API_URL}/api/note/')
 	const {data} = await resp.json()
 	
 	return {

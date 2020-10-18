@@ -1,9 +1,12 @@
 import nc from 'next-connect'
+type req = {
+	json: Function
+}
 const handler = nc()
-	.get((req, res) => {
+	.get((req: req, res) => {
 		req.json({ message: 'kk' })
 	})
-	.post((req, res) => {
+	.post((req: req, res) => {
 		req.json({ message: 'posted' })
 	})
 export default (req, res) => {

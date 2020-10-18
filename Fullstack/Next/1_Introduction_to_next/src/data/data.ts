@@ -1,3 +1,4 @@
+// @ts-ignore
 const notes = new Array(13)
 	.fill(null)
 	.map((_, i) => ({
