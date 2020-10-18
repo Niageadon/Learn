@@ -2,9 +2,9 @@
 import Link from 'next/link'
 import { jsx } from 'theme-ui'
 
-const Page = () => (
+const Page = ({ content }) => (
 	<div sx={{ height: 'calc(100vh - 50px)' }}>
-		<h1>index page</h1>
+		<h1>{ content.title }</h1>
 		<Link href="/note">
 			<a>Notes</a>
 		</Link>
@@ -17,3 +17,12 @@ export default Page
 		props: {}
 	}
 }*/
+export function getStaticProps() {
+	return {
+		props: {
+			content: {
+				title: 'content title'
+			}
+		}
+	}
+}
