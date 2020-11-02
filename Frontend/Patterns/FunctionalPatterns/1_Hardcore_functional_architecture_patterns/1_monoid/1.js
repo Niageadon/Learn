@@ -1,3 +1,4 @@
+import { List } from 'immutable-ext'
 // monoid  = semigroup + identity
 const sum = x => ({
 	x,
@@ -20,5 +21,13 @@ const any = x => ({
 })
 any.empty = () => any(false)
 
-const res = amplify.empty().concat(amplify(10)) // w8 8
-console.log(1, res)
+const all = x => ({
+	x,
+	concat: other =>
+		any(x && other.x)
+})
+all.empty = () => all(true)
+
+const res = List([true, true])
+	.foldMap(all, all.empty())
+console.log(2, res)
