@@ -1,16 +1,24 @@
 const http = require('http')
+const fs = require('fs')
 const server = http.createServer((req, res) => {
-	console.log(req.url, req.method, req.headers)
-	switch (req.url) {
-		case '/create': {
-			res.setHeader('Content-Type', 'text/html')
-			res.write('<h1>Home</h1>')
-			res.end()
+	const url = req.url
+	const method = req.method
+	switch (url) {
+		case '/message': {
+			switch (method) {
+				case 'POST': {
+					fs.writeFileSync('message.txt', 'some text')
+					res.statusCode = 302
+					res.setHeader('Location', '/')
+					return res.end()
+				}
+			}
+
 			break
 		}
 		case '/': {
 			res.setHeader('Content-Type', 'text/html')
-			res.write('<form action="/create" method="POST">')
+			res.write('<form action="/message" method="POST">')
 			res.write('<input type="number" name="value">')
 			res.write('<button type="submit">add</button>')
 			res.write('<form/>')
