@@ -1,8 +1,8 @@
 import express = require('express')
 const router = express.Router()
 
-router.use('/shop', (req, res, next) => {
-	res.send(`<h1>hello</h1>`)
+router.use((req, res, next) => {
+	res.status(404).send(`<h1 style="color: red">404 page</h1>`)
 })
 
 export default router
