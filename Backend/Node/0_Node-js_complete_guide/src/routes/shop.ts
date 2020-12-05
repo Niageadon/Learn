@@ -1,8 +1,8 @@
 import express = require('express')
 const router = express.Router()
-
-router.use('/shop', (req, res, next) => {
-	res.send(`<h1>hello</h1>`)
+const path = require('path')
+router.use('/', (req, res, next) => {
+	res.sendFile(path.join(__dirname, '../','views', 'shop.html'))
 })
 
 export default router
