@@ -1,8 +1,9 @@
 import express = require('express')
 const router = express.Router()
+const path = require('path')
 
 router.use((req, res, next) => {
-	res.status(404).send(`<h1 style="color: red">404 page</h1>`)
+	res.sendFile(path.join(__dirname, '../','views', '404.html'))
 })
 
 export default router
