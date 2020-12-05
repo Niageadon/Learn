@@ -1,6 +1,7 @@
 import http = require('http')
 import express = require('express')
 import bodyParser = require('body-parser')
+import { adminRoutes, shopRoutes } from './routes'
 const app = express()
 
 app.use(bodyParser.urlencoded({
@@ -10,17 +11,7 @@ app.use('/', (req, res, next) => {
 	next()
 })
 
-app.use('/add-product', (req, res, next) => {
-	res.send(`<form action="/product" method="post">
-		<input type="text" name="title">
-		<button type="submit">Add product</button>
-	</form>`)
-})
-app.post('/product', (req, res, next) => {
-	console.log(req.body)
-	res.redirect('/')
-})
-app.use('/', (req, res, next) => {
-	res.send(`<h1>hello</h1>`)
-})
+app.use(adminRoutes)
+app.use(shopRoutes)
+
 app.listen(3000)
