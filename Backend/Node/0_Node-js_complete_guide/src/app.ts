@@ -11,8 +11,8 @@ app.use('/', (req, res, next) => {
 	next()
 })
 
-app.use(adminRoutes)
-app.use(shopRoutes)
+app.use('/admin', adminRoutes)
+app.use('/shop', shopRoutes)
 app.use(route404)
 
 app.listen(3000)
