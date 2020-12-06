@@ -4,8 +4,7 @@ const path = require('path')
 import { rootPath } from '../utils'
 import { product } from './'
 router.use('/', (req, res, next) => {
-	console.log(product.items)
-	res.render('shop')
+	res.render('shop', { products: product.items, docTitle: 'shop' })
 })
 
 export default router

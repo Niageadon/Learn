@@ -12,5 +12,5 @@ routes.post('/add', (req, res, next) => {
 		title: req.body.title
 	})
 	console.log(req.body)
-	res.redirect('/')
+	res.redirect('/shop')
 })
