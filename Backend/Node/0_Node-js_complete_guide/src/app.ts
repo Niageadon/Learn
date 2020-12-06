@@ -1,7 +1,6 @@
-import http = require('http')
 import express = require('express')
 import bodyParser = require('body-parser')
-import { productRoutes, shopRoutes, route404 } from './routes'
+import { product, shopRoutes, route404 } from './routes'
 const app = express()
 
 app.use(bodyParser.urlencoded({extended: false}))
@@ -11,7 +10,7 @@ app.use('/', (req, res, next) => {
 	next()
 })
 
-app.use('/product', productRoutes)
+app.use('/products', product.routes)
 app.use('/shop', shopRoutes)
 app.use(route404)
 

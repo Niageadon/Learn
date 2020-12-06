@@ -1,14 +1,16 @@
 import express = require('express')
-const router = express.Router()
-const path = require('path')
 import { rootPath } from '../utils'
+export const routes = express.Router()
+const path = require('path')
+export const items = []
 
-router.get('/add', (req, res, next) => {
+routes.get('/add', (req, res, next) => {
 	res.sendFile(path.join(rootPath,'views', 'add-product.html'))
 })
-router.post('/', (req, res, next) => {
+routes.post('/add', (req, res, next) => {
+	items.push({
+		title: req.body.title
+	})
 	console.log(req.body)
 	res.redirect('/')
 })
-
-export default router
