@@ -3,7 +3,7 @@ import bodyParser = require('body-parser')
 import { product, shopRoutes, route404 } from './routes'
 const app = express()
 
-app.set('view engine', 'pug')
+app.set('view engine', 'ejs')
 app.set('views', 'views')
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(express.static(require('path').join(__dirname, 'public')))

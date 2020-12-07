@@ -1,16 +1,7 @@
 import express = require('express')
-import { rootPath } from '../utils'
+import { product } from '../controllers'
 export const routes = express.Router()
-const path = require('path')
 export const items = []
 
-routes.get('/add', (req, res, next) => {
-	res.render('add-product', { pageTitle: 'Add products' })
-})
-routes.post('/add', (req, res, next) => {
-	items.push({
-		title: req.body.title
-	})
-	console.log(req.body)
-	res.redirect('/shop')
-})
+routes.get('/add', product.get)
+routes.post('/add', product.post)
