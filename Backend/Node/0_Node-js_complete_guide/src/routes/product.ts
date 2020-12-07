@@ -5,7 +5,7 @@ const path = require('path')
 export const items = []
 
 routes.get('/add', (req, res, next) => {
-	res.sendFile(path.join(rootPath,'views', 'add-product.html'))
+	res.render('add-product', { pageTitle: 'Add products' })
 })
 routes.post('/add', (req, res, next) => {
 	items.push({
