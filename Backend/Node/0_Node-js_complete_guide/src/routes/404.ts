@@ -1,10 +1,8 @@
 import express = require('express')
-import { rootPath } from '../utils'
+import { errorController } from '../controllers'
 const router = express.Router()
 const path = require('path')
 
-router.use((req, res, next) => {
-	res.render('404', { pageTitle: '404', path: '404' })
-})
+router.use(errorController.e404.get)
 
 export default router

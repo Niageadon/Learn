@@ -1,10 +1,6 @@
 import express = require('express')
 const router = express.Router()
-const path = require('path')
-import { rootPath } from '../utils'
-import { product } from './'
-router.use('/', (req, res, next) => {
-	res.render('shop', { products: product.items, pageTitle: 'shop', path: '/shop' })
-})
+import { shopController } from '../controllers'
+router.use('/', shopController.get)
 
 export default router

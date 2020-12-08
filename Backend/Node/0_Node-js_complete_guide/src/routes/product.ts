@@ -1,7 +1,7 @@
 import express = require('express')
-import { product } from '../controllers'
+import { productController } from '../controllers'
 export const routes = express.Router()
 export const items = []
 
-routes.get('/add', product.get)
-routes.post('/add', product.post)
+routes.get('/add', productController.get)
+routes.post('/add', productController.post)
