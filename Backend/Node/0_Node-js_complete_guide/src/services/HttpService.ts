@@ -7,7 +7,7 @@ export class HttpService<T> {
 	get(id: number) {
 		throw new Error('method get should be implemented')
 	}
-	getAll() {
+	getAll(cb: Function) {
 		throw new Error('method getAll should be implemented')
 	}
 

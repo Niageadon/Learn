@@ -1,6 +1,11 @@
-import {product} from "../routes";
-
+import { ProductService } from '../services'
+import { Product } from '../models'
 export const get = (req, res, next) => {
-	res.render('shop', { products: product.items, pageTitle: 'shop', path: '/shop' })
+	const items = new ProductService().getAll((items: Product) => {
+		res.render('shop', {
+			products: items,
+			pageTitle: 'shop',
+			path: '/shop'
+		})
+	})
 }
-

@@ -7,9 +7,9 @@ export class ProductService extends HttpService<Product> {
 	get() {
 
 	}
-	getAll() {
+	getAll(cb: Function) {
 		fs.readFile(this.path, ((err, data) => {
-			return err? [] : JSON.parse(data as unknown as string)
+			return err? cb([]) : cb(JSON.parse(data as unknown as string))
 		}))
 	}
 	add(item: Product) {
