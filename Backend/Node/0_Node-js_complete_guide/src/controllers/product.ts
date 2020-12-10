@@ -3,7 +3,7 @@ import { ProductService } from "../services";
 import { Product } from "../models";
 const service = new ProductService()
 export const get = (req, res, next) => {
-	res.render('add-product', {
+	res.render('products/add', {
 		pageTitle: 'Add products',
 		path: '/products/add'
 	})

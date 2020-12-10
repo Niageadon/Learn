@@ -25,7 +25,6 @@ export class ProductService extends HttpService<Product> {
 			})
 		}))
 	}
-
 	constructor() {
 		super();
 		this.path = path.join(path.dirname(process.mainModule.filename), 'data', 'products.json')
