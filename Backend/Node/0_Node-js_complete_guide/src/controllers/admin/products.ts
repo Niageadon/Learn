@@ -5,6 +5,7 @@ export * as add from './products.add'
 
 export const post = (req, res, next) => {
 	const product = new Product(req.body)
+	product.id = Math.random()
 	service.add(product)
 	res.redirect('/')
 }
