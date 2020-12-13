@@ -4,8 +4,8 @@ import fs = require("fs")
 import path = require("path")
 export class ProductService extends HttpService<Product> {
 	private readonly path
-	get() {
-
+	get(id: number) {
+		return new Product({})
 	}
 	getAll(cb: Function) {
 		fs.readFile(this.path, ((err, data) => {
