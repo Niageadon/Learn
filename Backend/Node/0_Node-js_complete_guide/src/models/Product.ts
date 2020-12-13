@@ -1,10 +1,23 @@
 import fs = require("fs")
 import path = require("path")
 
-export class Product {
-	title: string
+interface IProduct {
+	title?: string
+	imageUrl?: string
+	price?: number
+	description?: string
+}
 
-	constructor(title: string) {
-		this.title = title
+export class Product implements IProduct {
+	title: string
+	imageUrl: string
+	price: number
+	description: string
+
+	constructor(prop: IProduct) {
+		this.title = prop.title
+		this.imageUrl = prop.imageUrl
+		this.price = prop.price
+		this.description = prop.description
 	}
 }
