@@ -6,7 +6,7 @@ export * as add from './products.add'
 export const post = (req, res, next) => {
 	const product = new Product(req.body)
 	service.add(product)
-	res.redirect('/shop')
+	res.redirect('/')
 }
 export const get = (req, res, next) => {
 	new ProductService().getAll((items: Product) => {
