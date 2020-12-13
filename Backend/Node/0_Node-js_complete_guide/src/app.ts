@@ -1,6 +1,6 @@
 import express = require('express')
 import bodyParser = require('body-parser')
-import { product, shopRoutes, route404 } from './routes'
+import { shopRoutes, route404, adminRoutes } from './routes'
 const app = express()
 
 app.set('view engine', 'ejs')
@@ -12,8 +12,8 @@ app.use('/', (req, res, next) => {
 	next()
 })
 
-app.use('/products', product.routes)
 app.use('/shop', shopRoutes)
+app.use('/admin', adminRoutes)
 app.use(route404)
 
 app.listen(3000)

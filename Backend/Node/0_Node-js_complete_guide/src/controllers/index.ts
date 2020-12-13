@@ -1,3 +1,3 @@
-export * as productController from './product'
+export * as adminController from './admin'
 export * as errorController from './errors'
-export * as shopController from './shop'
+export * as shopController from './shop/index'
