@@ -6,7 +6,8 @@ export class ProductService extends HttpService<Product> {
 	private readonly path
 	get(id: number, cb: Function) {
 		fs.readFile(this.path, ((err, data) => {
-			return err? cb(undefined) : cb(JSON.parse(data as unknown as string).find(el => el.id === id))
+			console.log(JSON.parse(data as unknown as string), id)
+			return err? cb(undefined) : cb(JSON.parse(data as unknown as string).find(el => el.id == id))
 		}))
 	}
 	getAll(cb: Function) {
