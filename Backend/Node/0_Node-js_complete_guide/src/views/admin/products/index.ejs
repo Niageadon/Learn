@@ -1,9 +1,9 @@
-<%- include('../../includes/head.ejs') %>
+<%- include('../../components/head.ejs') %>
     <link rel="stylesheet" href="/css/product.css">
 </head>
 
 <body>
-    <%- include('../../includes/navigation.ejs') %>
+    <%- include('../../components/navigation.ejs') %>
 
     <main>
         <% if (products.length > 0) { %>
@@ -22,9 +22,7 @@
                         </div>
                         <div class="card__actions">
                             <a class="btn" href="/admin/products/edit">Edit</a>
-                            <form action="/admin/products/delete" method="post">
-                                <button class="btn" type="submit">Delete</button>
-                            </form>
+                            <%- include('../../components/add-to-card-form.ejs', {product: product}) %>
                         </div>
                     </article>
                 <% } %>
@@ -33,4 +31,4 @@
             <h1>No Products Found!11</h1>
         <% } %>
     </main>
-<%- include('../../includes/end.ejs') %>
+<%- include('../../components/end.ejs') %>
