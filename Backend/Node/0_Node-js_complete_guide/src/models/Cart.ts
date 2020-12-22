@@ -7,7 +7,7 @@ export class Cart {
 		}, 0)
 	}
 
-	constructor() {
-		this.items = []
+	constructor(items = []) {
+		this.items = items
 	}
 }

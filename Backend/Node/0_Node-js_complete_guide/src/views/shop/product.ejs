@@ -6,13 +6,12 @@
 <%- include('../components/navigation.ejs') %>
 
 <main>
-    <h1>Title: <%= product.title %></h1>
+    <h1><% product.title %></h1>
     <hr>
     <div>
-        <img src="<%= product.imageUrl %>" alt="alt">
+        <img src="<% product.imageUrl %>" alt="alt">
     </div>
-    <h2>Price:<%= product.price %></h2>
-    <p>Description: <%= product.description %></p>
-    <%- include('../components/add-to-card-form.ejs', {product: product}) %>
+    <h2><% product.price %></h2>
+    <p><% product.description %></p>
 </main>
 <%- include('../components/end.ejs') %>

@@ -21,8 +21,10 @@
                             <p class="product__description"><%= product.description %></p>
                         </div>
                         <div class="card__actions">
-                            <a class="btn" href="/admin/products/edit">Edit</a>
-                            <%- include('../../components/add-to-card-form.ejs', {product: product}) %>
+                            <a class="btn" href="/admin/products/<%= product.id %>/edit">Edit</a>
+                            <form action="/admin/products/delete" method="post">
+                                <button class="btn" type="submit">Delete</button>
+                            </form>
                         </div>
                     </article>
                 <% } %>

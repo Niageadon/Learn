@@ -1,5 +1,5 @@
 export * as products from './products'
 export * as product from './product'
-export * as card from './cart'
+export * as card from './card'
 export * as checkout from './checkout'
 export * as orders from './orders'
