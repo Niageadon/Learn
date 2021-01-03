@@ -7,7 +7,6 @@ export const get = (req, res, next) => {
 }
 export const post = (req, res, next) => {
 	const productId = req.body.productId
-	console.log(productId)
 	new ProductService().get(productId, (product) => {
 		new CartService().add(product)
 	})

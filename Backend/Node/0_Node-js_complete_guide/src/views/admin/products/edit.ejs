@@ -6,7 +6,7 @@
    <%- include('../../components/navigation.ejs') %>
 
     <main>
-        <form class="product-form" action="/admin/products" method="POST">
+        <form class="product-form" action="/admin/products/edit" method="POST">
             <div class="form-control">
                 <label for="title">Title</label>
                 <input type="text" name="title" id="title" value="<% {%><%= product.title %><%} %>">
@@ -23,6 +23,7 @@
                 <label for="description">Description</label>
                 <input type="number" name="description" id="description" value="<% {%><%= product.description %><%} %>">
             </div>
+            <input type="hidden" name="id" id="id" value="<% {%><%= product.id %><%} %>">
 
             <button class="btn" type="submit">Add Product</button>
         </form>

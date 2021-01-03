@@ -7,7 +7,6 @@ export class CartService extends HttpService<Cart> {
 	private readonly path
 	add(item: Product) {
 
-		console.log('in-add')
 		fs.readFile(this.path, ((err, data) => {
 			let cart = new Cart()
 			if (!err) {
@@ -19,7 +18,6 @@ export class CartService extends HttpService<Cart> {
 				cart.items.push({ item, count: 1})
 			}
 			fs.writeFile(this.path, JSON.stringify(cart), (err) => {
-				console.log(err)
 			})
 		}))
 	}

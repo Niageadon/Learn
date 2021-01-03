@@ -9,3 +9,8 @@ export const get = (req, res, next) => {
 	})
 	})
 }
+export const post = async (req, res, next) => {
+	const payload = req.body
+	await new ProductService().put(payload)
+	res.redirect('/admin/products')
+}

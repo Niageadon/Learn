@@ -6,7 +6,6 @@ export class ProductService extends HttpService<Product> {
 	private readonly path
 	get(id: number, cb: Function) {
 		fs.readFile(this.path, ((err, data) => {
-			console.log(JSON.parse(data as unknown as string), id)
 			return err? cb(undefined) : cb(JSON.parse(data as unknown as string).find(el => el.id == id))
 		}))
 	}
@@ -22,9 +21,19 @@ export class ProductService extends HttpService<Product> {
 				items = JSON.parse(data as unknown as string)
 			}
 			items.push(item)
-			console.log(items[0])
 			fs.writeFile(this.path, JSON.stringify(items), (err) => {
-				console.log(err)
+			})
+		}))
+	}
+	put(item: Product) {
+		fs.readFile(this.path, ((err, data) => {
+			let items = []
+			if (!err) {
+				items = JSON.parse(data as unknown as string)
+			}
+			const index = items.indexOf(el => el.id == item.id)
+			items.splice(index, 1, item)
+			fs.writeFile(this.path, JSON.stringify(items), (err) => {
 			})
 		}))
 	}
