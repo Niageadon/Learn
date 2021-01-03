@@ -37,6 +37,18 @@ export class ProductService extends HttpService<Product> {
 			})
 		}))
 	}
+	delete(itemId: number) {
+		fs.readFile(this.path, ((err, data) => {
+			let items = []
+			if (!err) {
+				items = JSON.parse(data as unknown as string)
+			}
+			const index = items.indexOf(el => el.id == itemId)
+			items.splice(index, 1)
+			fs.writeFile(this.path, JSON.stringify(items), (err) => {
+			})
+		}))
+	}
 	constructor() {
 		super();
 		this.path = path.join(path.dirname(process.mainModule.filename), 'data', 'products.json')

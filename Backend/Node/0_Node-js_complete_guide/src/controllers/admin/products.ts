@@ -3,6 +3,7 @@ import { Product } from "../../models";
 const service = new ProductService()
 export * as add from './products.add'
 export * as edit from './products.edit'
+export * as delete from './products.delete'
 
 export const post = (req, res, next) => {
 	const product = new Product(req.body)
