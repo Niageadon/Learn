@@ -6,6 +6,9 @@
 <%- include('../components/navigation.ejs') %>
 
 <main>
-
+    <% if (items.length > 0) { %>
+        <% } else { %>
+            <h1>Cart is empty</h1>
+        <% } %>
 </main>
 <%- include('../components/end.ejs') %>
