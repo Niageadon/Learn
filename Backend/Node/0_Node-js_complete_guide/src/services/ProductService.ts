@@ -9,10 +9,13 @@ export class ProductService extends HttpService<Product> {
 			return err? cb(undefined) : cb(JSON.parse(data as unknown as string).find(el => el.id == id))
 		}))
 	}
-	getAll(cb: Function) {
-		fs.readFile(this.path, ((err, data) => {
-			return err? cb([]) : cb(JSON.parse(data as unknown as string))
-		}))
+	async getAll(): Promise<Product[]> {
+		return new Promise(resolve => {
+			fs.readFile(this.path, ((err, data) => {
+				err? resolve([]) : resolve(JSON.parse(data as unknown as string))
+			}))
+		})
+
 	}
 	add(item: Product) {
 		fs.readFile(this.path, ((err, data) => {

@@ -11,12 +11,11 @@ export const post = (req, res, next) => {
 	service.add(product)
 	res.redirect('/')
 }
-export const get = (req, res, next) => {
-	new ProductService().getAll((items: Product) => {
-		res.render('admin/products/index', {
-			products: items,
-			pageTitle: 'Admin products',
-			path: '/admin/products'
-		})
+export const get = async (req, res, next) => {
+	const items: Product[] = await new ProductService().getAll()
+	res.render('admin/products/index', {
+		products: items,
+		pageTitle: 'Admin products',
+		path: '/admin/products'
 	})
 }
