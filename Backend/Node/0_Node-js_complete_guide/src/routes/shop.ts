@@ -6,6 +6,7 @@ router.use('/products/:productId', shopController.product.get)
 router.use('/products', shopController.products.get)
 //router.use('/card', shopController.card.get)
 router.use('/shop/cart', shopController.cart.get)
+router.use('/shop/add-to-cart', shopController.cart.post)
 router.use('/checkout', shopController.checkout.get)
 router.use('/orders', shopController.orders.get)
 

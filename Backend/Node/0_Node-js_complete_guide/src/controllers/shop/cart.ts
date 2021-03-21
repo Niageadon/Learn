@@ -19,11 +19,10 @@ export const get = async (req, res, next) => {
 	})
 }
 
-export const post = (req, res, next) => {
+export const post = async (req, res, next) => {
 	const productId = req.body.productId
-	new ProductService().get(productId, (product) => {
-		new CartService().add(product)
-	})
+	const product = await new ProductService().get(productId)
+	new CartService().add(product)
 
 	res.redirect('/cart')
 }

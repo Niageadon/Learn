@@ -4,10 +4,12 @@ import fs = require("fs")
 import path = require("path")
 export class ProductService extends HttpService<Product> {
 	private readonly path
-	get(id: number, cb: Function) {
-		fs.readFile(this.path, ((err, data) => {
-			return err? cb(undefined) : cb(JSON.parse(data as unknown as string).find(el => el.id == id))
-		}))
+	async get(id: number): Promise<Product> {
+		return new Promise(resolve => {
+			fs.readFile(this.path, ((err, data) => {
+				return err? resolve(undefined) : resolve(JSON.parse(data as unknown as string).find(el => el.id == id))
+			}))
+		})
 	}
 	async getAll(): Promise<Product[]> {
 		return new Promise(resolve => {

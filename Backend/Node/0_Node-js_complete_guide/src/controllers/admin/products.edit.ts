@@ -1,12 +1,11 @@
 import { ProductService } from '../../services'
-export const get = (req, res, next) => {
+export const get = async (req, res, next) => {
 	const productId = req.params.productId
-	new ProductService().get(productId, item => {
-		res.render('admin/products/edit', {
-			product: item,
-			pageTitle: 'Edit product',
-			path: `/admin/products/${productId}/edit`
-	})
+	const product = await new ProductService().get(productId)
+	res.render('admin/products/edit', {
+		product: product,
+		pageTitle: 'Edit product',
+		path: `/admin/products/${productId}/edit`
 	})
 }
 export const post = async (req, res, next) => {

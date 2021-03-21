@@ -3,11 +3,11 @@ import { Product } from '../../models'
 
 export const get = async (req, res, next) => {
 	const id = req.params.productId
-	new ProductService().get(id, item => {
-		res.render('shop/product', {
-			product: item,
-			pageTitle: 'shop',
-			path: `/products/${id}`
-		})
+	const product: Product = await new ProductService().get(id)
+
+	res.render('shop/product', {
+		product: product,
+		pageTitle: 'shop',
+		path: `/products/${id}`
 	})
 }
