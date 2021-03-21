@@ -20,9 +20,9 @@ export const get = async (req, res, next) => {
 }
 
 export const post = async (req, res, next) => {
-	const productId = req.body.productId
+	const productId = req.body.id
 	const product = await new ProductService().get(productId)
-	new CartService().add(product)
 
+	new CartService().add(product)
 	res.redirect('/cart')
 }

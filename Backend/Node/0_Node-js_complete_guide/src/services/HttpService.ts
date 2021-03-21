@@ -4,10 +4,10 @@ export interface IHttpService<T> {
 }
 export class HttpService<T> {
 	private http: (input: RequestInfo, init?: RequestInit) => Promise<Response>
-	get(id: number, cb: Function) {
+	get(id: number): Promise<T> {
 		throw new Error('method get should be implemented')
 	}
-	getAll(cb: Function) {
+	getAll(): Promise<T[] | T> {
 		throw new Error('method getAll should be implemented')
 	}
 
