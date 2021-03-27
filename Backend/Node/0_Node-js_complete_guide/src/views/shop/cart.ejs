@@ -7,8 +7,19 @@
 
 <main>
     <% if (items.length > 0) { %>
-        <% } else { %>
-            <h1>Cart is empty</h1>
-        <% } %>
+        <ul>
+            <% items.forEach(item => { %>
+                <li>
+                    <p><%= item.product.title %> (<%= item.count %>)</p>
+                    <form action="/shop/products/delete" method="post">
+                        <input type="hidden" name="id" id="id" value="<% {%><%= item.product.id %><%} %>">
+                        <button class="btn">remove</button>
+                    </form>
+                </li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <h1>Cart is empty</h1>
+    <% } %>
 </main>
 <%- include('../components/end.ejs') %>

@@ -1,28 +1,37 @@
 import { CartService, ProductService } from "../../services"
 import {Cart, Product} from "../../models";
-export const get = async (req, res, next) => {
-	const cart = await new CartService().getAll()
-	const products = await new ProductService().getAll()
+export default {
+	get: async (req, res, next) => {
+		const cart = await new CartService().getAll()
+		const products = await new ProductService().getAll()
 
-	const result: Cart = new Cart();
-	cart.items?.forEach(cartItem => {
-		console.log(cart)
-		if (products.some(el => el.id === cartItem.item.id)) {
-			result.items.push({ item: cartItem.item, count: cartItem.count})
-		}
-	})
-	res.render('shop/cart', {
-		pageTitle: 'Cart',
-		path: '/shop/cart',
-		items: result.items,
-		price: result.price
-	})
-}
+		const result: Cart = new Cart({});
+		cart.items?.forEach(cartItem => {
+			if (products.some(el => el.id === cartItem.product.id)) {
+				result.items.push({ product: cartItem.product, count: cartItem.count})
+			}
+		})
 
-export const post = async (req, res, next) => {
-	const productId = req.body.id
-	const product = await new ProductService().get(productId)
+		console.log(result)
+		res.render('shop/cart', {
+			pageTitle: 'Cart',
+			path: '/shop/cart',
+			items: result.items,
+			price: result.price
+		})
+	},
 
-	new CartService().add(product)
-	res.redirect('/cart')
+	post: async (req, res, next) => {
+		const productId = req.body.id
+		const product = await new ProductService().get(productId)
+
+		new CartService().add(product)
+		res.redirect('/shop/cart')
+	},
+
+	delete: async (req, res, next) => {
+		const productId = req.body.id
+		await new CartService().delete(productId)
+		res.redirect('/shop/cart')
+	}
 }
