@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+</body>
+</html>
+
+<script>
+	const w8 = () => new Promise(resolve => setTimeout(() => {resolve()}, 100))
+	const init = async () => {
+		performance.mark('1');
+		await w8();
+		performance.mark('2');
+		await w8();
+		performance.mark('3');
+		await w8();
+		performance.mark('4');
+		await w8();
+	}
+	init()
+	.then(() => {
+		performance.measure('Outer', '1', '4')
+		performance.measure('Inner', '2', '3')
+	})
+
+</script>
