@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+	<div id="app">
+		<span id="text">hey</span>
+		<br/>
+		<button id="btn">bold toggle</button>
+	</div>
+</body>
+</html>
+<script src="https://cdn.rawgit.com/nicjansma/usertiming-compression.js/master/src/usertiming-compression.js"></script>
+
+<script>
+	let isTextBold = false;
+	const toggleBold = () => isTextBold = !isTextBold;
+
+	const btn = document.querySelector('#btn');
+	const text = document.querySelector('#text');
+
+	btn.addEventListener('click', () => {
+		performance.mark('btn click start')
+		toggleBold();
+		text.setAttribute('style', `font-weight: ${isTextBold ? 'bold' : 'normal'};`)
+		performance.mark('btn click end')
+		performance.measure('btn click', 'btn click start', 'btn click end')
+	})
+
+</script>
