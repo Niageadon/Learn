@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+	<button id="btn">
+		Create El
+	</button>
+</body>
+</html>
+
+<script>
+	const btn = document.querySelector('#btn')
+	btn.addEventListener('click', () => {
+		const newEl = document.createElement('p')
+		newEl.innerHTML = 'boba'
+		document.body.appendChild(newEl)
+	})
+</script>
