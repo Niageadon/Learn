@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "watch": "nodemon app.ts"
+    "watch": "nodemon --inspect"
   },
   "dependencies": {
     "cors": "^2.8.5",
