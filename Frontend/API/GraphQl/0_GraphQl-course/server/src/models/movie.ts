@@ -4,7 +4,7 @@ const movieSchema = new Schema({
 	name: String,
 	genre: String,
 	directorId: String,
-	_id: Types.ObjectId
+	//_id: Types.ObjectId
 })
 
 export default model('Movie', movieSchema)

@@ -1,6 +1,13 @@
-import { GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLID, GraphQLInt, GraphQLList } from 'graphql'
-const { movieType } = require('./Movie')
-import directors from '../models/director'
+import {
+	GraphQLObjectType,
+	GraphQLString,
+	GraphQLSchema,
+	GraphQLID,
+	GraphQLInt,
+	GraphQLList,
+	GraphQLNonNull
+} from 'graphql'
+import {movieType} from './Movie'
 import movies from '../models/movie'
 
 export const directorType = new GraphQLObjectType({
@@ -12,7 +19,7 @@ export const directorType = new GraphQLObjectType({
 		movies: {
 			type: new GraphQLList(movieType),
 			resolve(parent, args) {
-				return movies.findById(parent._id)
+				return movies.find({})
 			}
 		}
 	})

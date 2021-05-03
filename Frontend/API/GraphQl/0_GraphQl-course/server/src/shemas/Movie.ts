@@ -1,4 +1,4 @@
-import { GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLID } from 'graphql'
+import {GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLID, GraphQLInt} from 'graphql'
 import { directorType } from './Director'
 import directors from '../models/director'
 
@@ -8,6 +8,7 @@ export const movieType = new GraphQLObjectType({
 		_id: { type: GraphQLID },
 		name: { type: GraphQLString },
 		genre: { type: GraphQLString },
+		directorId: { type: GraphQLInt },
 		director: {
 			type: directorType,
 			resolve(parent, args) {
