@@ -38,5 +38,56 @@ export const mutation = new GraphQLObjectType({
 				}).save()
 			}
 		},
+
+		deleteMovie: {
+			type: movieType,
+			args: {
+				id: { type: GraphQLID },
+			},
+			async resolve(parent, args) {
+				return Movie.findByIdAndDelete(args.id)
+			}
+		},
+
+		deleteDirector: {
+			type: directorType,
+			args: {
+				id: { type: GraphQLID },
+			},
+			async resolve(parent, args) {
+				return Director.findByIdAndDelete(args.id)
+			}
+		},
+
+		updateMovie: {
+			type: movieType,
+			args: {
+				id: { type: GraphQLID },
+				name: { type: GraphQLString },
+				genre: { type: GraphQLString },
+				directorId: { type: GraphQLString },
+			},
+			async resolve(parent, args) {
+				return Movie.findByIdAndUpdate(args.id,
+					{ $set: {name: args.name, genre: args.genre, directorId: args.directorId} },
+					{ new: true }
+				)
+			}
+		},
+
+		updateDirector: {
+			type: directorType,
+			args: {
+				id: { type: GraphQLID },
+				name: { type: GraphQLString },
+				age: { type: GraphQLInt },
+			},
+			async resolve(parent, args) {
+				return Director.findByIdAndUpdate(args.id,
+					{ $set: {name: args.name, age: args.age} },
+					{ new: true }
+					)
+			}
+		},
 	}
 })
