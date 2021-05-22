@@ -2,6 +2,7 @@ import * as express from 'express'
 import { graphqlHTTP }  from 'express-graphql'
 import { Schema } from './shemas'
 import {initDb} from "./initDb";
+import * as cors from 'cors'
 const mongoose = require('mongoose');
 const dbConnection = mongoose.connection;
 mongoose.set('debug', true)
@@ -17,6 +18,7 @@ mongoose.connect('mongodb+srv://admin:admin@cluster0.dzuva.azure.mongodb.net/myF
 	useUnifiedTopology: true
 })
 
+app.use(cors())
 app.use('/graphql', graphqlHTTP({
 	schema: Schema,
 	graphiql: true
