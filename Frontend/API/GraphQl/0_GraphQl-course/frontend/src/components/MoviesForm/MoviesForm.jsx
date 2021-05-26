@@ -76,7 +76,7 @@ class MoviesForm extends React.Component {
               onChange={handleSelectChange}
               input={<OutlinedInput name="directorId" id="outlined-director" labelWidth={57} />}
             >
-            {directors.map(director => <MenuItem key={director.id} value={director.id}>{director.name}</MenuItem>)}
+            {directors.map(director => <MenuItem key={director._id} value={director._id}>{director.name}</MenuItem>)}
             </Select>
           </FormControl>
           <div className={classes.wrapper}>

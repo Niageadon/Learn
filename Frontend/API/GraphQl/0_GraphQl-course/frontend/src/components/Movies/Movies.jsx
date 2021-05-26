@@ -36,7 +36,7 @@ class Movies extends React.Component {
     });
   };
 
-  handleSelectChange = ({ target }) => { this.setState({ [target.name]: target.value }); };
+  handleSelectChange = ({ target }) => { console.log(111, target);this.setState({ [target.name]: target.value }); };
   handleCheckboxChange = name => ({ target }) => { this.setState({ [name]: target.checked }); };
   handleChange = name => ({ target }) => { this.setState({ [name]: target.value }); };
 

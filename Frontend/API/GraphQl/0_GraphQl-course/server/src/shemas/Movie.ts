@@ -12,7 +12,6 @@ export const movieType = new GraphQLObjectType({
 		director: {
 			type: directorType,
 			resolve(parent, args) {
-				console.log(1122)
 				return directors.findById(parent._id)
 			}
 		},

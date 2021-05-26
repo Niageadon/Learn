@@ -15,7 +15,6 @@ export const query = new GraphQLObjectType({
 				console.log('mov by id ', args._id)
 				const _id = mongoose.Types.ObjectId(args._id)
 				const a = await Movies.findOne({_id})
-				console.log(22, a)
 				return a
 			}
 		},
@@ -32,10 +31,7 @@ export const query = new GraphQLObjectType({
 			type: GraphQLNonNull(new GraphQLList(new GraphQLNonNull(movieType))),
 			args: { _id: { type: GraphQLID } },
 			async resolve(parent, args) {
-				console.log('mov')
-				console.log(111, await Movies.find({}))
-				//const movies = await Movies.find({})
-				return [{name: 'bobo'}]
+				const movies = await Movies.find({})
 			}
 		},
 		directors: {
@@ -43,7 +39,6 @@ export const query = new GraphQLObjectType({
 			args: { _id: { type: GraphQLID } },
 			async resolve(parent, args) {
 				console.log('directors', args)
-				console.log(111, await Directors.find({}))
 				return Directors.find({})
 			}
 		},
