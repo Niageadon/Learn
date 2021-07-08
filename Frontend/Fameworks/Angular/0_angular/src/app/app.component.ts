@@ -6,13 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular';
-  inputValue = '';
+  title = '';
   constructor() {
   }
 
-  onInputChange(event: Event) {
-    console.log(11, event)
-    this.inputValue = (event?.target as HTMLInputElement).value
-  }
+
 }

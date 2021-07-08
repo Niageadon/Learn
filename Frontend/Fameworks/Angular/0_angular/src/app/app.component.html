@@ -1,7 +1,2 @@
-<h1>{{ title }}</h1>
-<input type="text" (input)="onInputChange($event)" >
-<p>
-  {{ inputValue }}
-</p>
-
-<app-post></app-post>
+<input [(ngModel)]="title">
+<p>{{ title }}</p>
