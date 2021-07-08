@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular';
+  inputValue = '';
+  constructor() {
+  }
+
+  onInputChange(event: Event) {
+    console.log(11, event)
+    this.inputValue = (event?.target as HTMLInputElement).value
+  }
 }
