@@ -1,6 +1,3 @@
-<button (click)="onButtonClick($event)" >click me</button>
-<div [ngSwitch]="toggle">
-  <p *ngSwitchCase="true" class="red">red</p>
-  <p *ngSwitchCase="false" class="blue">blue</p>
-  <p *ngSwitchDefault>default</p>
-</div>
+<ul>
+  <li *ngFor="let num of arr; let i = index">{{ num }}, {{ i }}</li>
+</ul>

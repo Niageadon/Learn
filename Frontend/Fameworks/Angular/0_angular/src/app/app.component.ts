@@ -6,12 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  toggle = false
-  constructor() {
-  }
-
-  onButtonClick(event: Event) {
-    this.toggle = !this.toggle
-  }
+  arr = [1,2,3,4,5]
 
 }
