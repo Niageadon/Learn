@@ -1,4 +1,5 @@
 <button (click)="onButtonClick($event)" >click me</button>
-<p [ngClass]="{red: toggle, blue: !toggle}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, quibusdam.</p>
-<p [class.blue]="toggle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, quibusdam.</p>
-<p [class.red]="!toggle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, quibusdam.</p>
+<p *ngIf="toggle; else blue" class="red">red</p>
+<ng-template #blue>
+  <p class="blue">blue</p>
+</ng-template>
