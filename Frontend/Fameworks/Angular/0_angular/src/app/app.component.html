@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Root</h1>
 
-  <app-post-form></app-post-form>
+  <app-post-form (onSubmit)="addPost($event)"></app-post-form>
   <hr/>
   <app-post
   *ngFor="let post of posts" [value]="post"></app-post>

@@ -1,6 +1,6 @@
 <div>
-  <input type="text" class="form-control" placeholder="title">
-  <input type="text" class="form-control" placeholder="text">
+  <input type="text" class="form-control" placeholder="title" [(ngModel)]="title">
+  <input type="text" class="form-control" placeholder="text" [(ngModel)]="text">
 
-  <button class="btn">Add post</button>
+  <button class="btn" (click)="createPost()">Add post</button>
 </div>

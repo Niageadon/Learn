@@ -14,4 +14,8 @@ export class AppComponent {
       id: 1
     }
   ]
+
+  addPost(post: IPost) {
+    this.posts.unshift(post)
+  }
 }

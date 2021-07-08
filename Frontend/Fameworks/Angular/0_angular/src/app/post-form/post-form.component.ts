@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {IPost} from "../post/post.component";
 
 @Component({
   selector: 'app-post-form',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./post-form.component.scss']
 })
 export class PostFormComponent implements OnInit {
-
-  constructor() { }
-
+  @Output() onSubmit: EventEmitter<IPost> = new EventEmitter<IPost>()
+  title = ''
+  text = ''
   ngOnInit(): void {
   }
-
+  createPost() {
+    if(this.title.trim() && this.text.trim()) {
+      const post: IPost = {
+        title: this.title,
+        text: this.text
+      }
+      this.onSubmit.emit(post)
+    }
+    this.title = this.text = ''
+  }
 }
