@@ -1,4 +1,4 @@
-<div [ngStyle]="style">
-
-</div>
-
+<button (click)="onButtonClick($event)" >click me</button>
+<p [ngClass]="{red: toggle, blue: !toggle}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, quibusdam.</p>
+<p [class.blue]="toggle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, quibusdam.</p>
+<p [class.red]="!toggle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, quibusdam.</p>

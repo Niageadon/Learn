@@ -6,14 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  style = {
-    width: '200px',
-    height: '200px',
-    borderRadius: '8px',
-    backgroundColor: 'red'
-  }
+  toggle = false
   constructor() {
   }
 
+  onButtonClick(event: Event) {
+    this.toggle = !this.toggle
+  }
 
 }
