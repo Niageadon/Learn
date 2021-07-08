@@ -3,5 +3,6 @@
 
   <app-post-form></app-post-form>
   <hr/>
-  <app-post></app-post>
+  <app-post
+  *ngFor="let post of posts" [value]="post"></app-post>
 </div>

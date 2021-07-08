@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {IPost} from "./post/post.component";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  now = new Date()
+  posts: IPost[] = [
+    {
+      title: 'title',
+      text: 'text',
+      id: 1
+    }
+  ]
 }
