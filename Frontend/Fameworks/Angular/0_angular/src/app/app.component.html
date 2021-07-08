@@ -1,5 +1,6 @@
 <button (click)="onButtonClick($event)" >click me</button>
-<p *ngIf="toggle; else blue" class="red">red</p>
-<ng-template #blue>
-  <p class="blue">blue</p>
-</ng-template>
+<div [ngSwitch]="toggle">
+  <p *ngSwitchCase="true" class="red">red</p>
+  <p *ngSwitchCase="false" class="blue">blue</p>
+  <p *ngSwitchDefault>default</p>
+</div>
