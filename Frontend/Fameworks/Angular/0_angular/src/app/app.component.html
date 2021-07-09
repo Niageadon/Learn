@@ -7,9 +7,12 @@
     *ngFor="let post of posts"
     [value]="post"
   >
-    <small *ngIf="post.text.length > 10; else shortPost">Big post</small>
-    <ng-template #shortPost>
-      <small>short post</small>
-    </ng-template>
+    <div #info>
+      <small *ngIf="post.text.length > 10; else shortPost">Big post</small>
+      <ng-template #shortPost>
+        <small>short post</small>
+      </ng-template>
+    </div>
+
   </app-post>
 </div>
