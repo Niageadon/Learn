@@ -1,4 +1,4 @@
-import {Directive, ElementRef, HostListener, Input, Renderer2} from "@angular/core";
+import {Directive, ElementRef, HostBinding, HostListener, Input, Renderer2} from "@angular/core";
 
 @Directive({
   selector: '[appStyle]'
@@ -6,6 +6,7 @@ import {Directive, ElementRef, HostListener, Input, Renderer2} from "@angular/co
 export class StyleDirective {
   @Input('appStyle') color: string = 'black'
   @Input() fontWeight: string = 'normal'
+  @HostBinding('style.color') elColor = null
   constructor(private el: ElementRef, private renderer: Renderer2) {
   }
 
