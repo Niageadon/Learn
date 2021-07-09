@@ -1,15 +1,16 @@
 import {
   Component,
-  OnInit,
-  Input,
   ContentChild,
-  ElementRef,
-  OnChanges,
-  SimpleChanges,
   DoCheck,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
   OnDestroy,
+  OnInit,
   Output,
-  EventEmitter
+  SimpleChanges,
+  ViewEncapsulation
 } from '@angular/core';
 
 export interface IPost {
@@ -20,7 +21,8 @@ export interface IPost {
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
-  styleUrls: ['./post.component.scss']
+  styleUrls: ['./post.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class PostComponent  implements
   OnInit, OnChanges, DoCheck, OnDestroy
