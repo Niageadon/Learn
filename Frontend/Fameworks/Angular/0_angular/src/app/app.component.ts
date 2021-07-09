@@ -18,4 +18,9 @@ export class AppComponent {
   addPost(post: IPost) {
     this.posts.unshift(post)
   }
+  removePost(post: IPost) {
+    console.log(11, post)
+    const index = this.posts.findIndex(el => el === post)
+    this.posts.splice(index, 1)
+  }
 }
