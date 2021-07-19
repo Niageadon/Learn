@@ -6,7 +6,9 @@ import {Directive, ElementRef, HostBinding, HostListener, Input, Renderer2} from
 export class StyleDirective {
   @Input('appStyle') color: string = 'black'
   @Input() fontWeight: string = 'normal'
-  @HostBinding('style.color') elColor = null
+  @HostBinding('style.color') get elColor() {
+    return 1
+  }
   constructor(private el: ElementRef, private renderer: Renderer2) {
   }
 
