@@ -1,3 +1,6 @@
 <div class="container">
   <p appStyle="red" fontWeight="bold">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, labore.</p>
+
+  <button (click)="toggle = !toggle">toggle</button>
+  <p *appIfNot="toggle" appStyle="red" fontWeight="bold">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, labore.</p>
 </div>
