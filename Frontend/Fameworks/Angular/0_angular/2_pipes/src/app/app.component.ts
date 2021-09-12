@@ -8,6 +8,7 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 })
 export class AppComponent implements OnInit {
   e = Math.E
+  date = new Date
 
   ngOnInit() {
   }
