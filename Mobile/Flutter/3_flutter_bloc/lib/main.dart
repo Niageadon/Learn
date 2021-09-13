@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutterblock/2_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterblock/3_cubit.dart';
+import 'package:flutterblock/childComponent.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,12 +11,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+    return BlocProvider<CounterCubit>(
+      create: (ctx) => CounterCubit(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: MyHomePage(title: 'Flutter Demo Home Page'),
+      )
     );
   }
 }
@@ -29,18 +34,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final block = new CounterBlock();
 
   @override
   void initState() {
-    final sub = block.listen(print);
-    block.add(CounterEventEnum.INCREMENT);
-    block.add(CounterEventEnum.INCREMENT);
-    block.add(CounterEventEnum.INCREMENT);
-    block.add(CounterEventEnum.INCREMENT);
-    print('222');
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -53,20 +50,12 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-
+            BlocBuilder<CounterCubit, CounterState>(builder: (_, state) {
+              return Text(state.value.toString());
+            }),
+            ChildComponent(),
             ElevatedButton(
-              onPressed: () => block.add(CounterEventEnum.INCREMENT),
-              child: Text('+'),
-            ),
-            ElevatedButton(
-              onPressed: () => block.add(CounterEventEnum.DECREMENT),
+              onPressed: () => BlocProvider.of<CounterCubit>(context).decrement(),
               child: Text('-'),
             ),
           ],
