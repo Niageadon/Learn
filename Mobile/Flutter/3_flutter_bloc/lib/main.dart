@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterblock/3_cubit.dart';
+import 'package:flutterblock/4_cubit.dart';
 import 'package:flutterblock/childComponent.dart';
 
 void main() {
@@ -46,21 +46,39 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            BlocBuilder<CounterCubit, CounterState>(builder: (_, state) {
-              return Text(state.value.toString());
-            }),
-            ChildComponent(),
-            ElevatedButton(
-              onPressed: () => BlocProvider.of<CounterCubit>(context).decrement(),
-              child: Text('-'),
-            ),
-          ],
+      body: BlocListener<CounterCubit, CounterState>(
+        listener: (ctx, state) {
+          state.wasIncremented
+            ? ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('counter was incremented')
+              )
+            )
+            : ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('counter was decremented')
+              )
+            );
+        },
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              BlocBuilder<CounterCubit, CounterState>(builder: (_, state) {
+                return Text(state.value.toString());
+              }),
+              ElevatedButton(
+                onPressed: () => BlocProvider.of<CounterCubit>(context).increment(),
+                child: Text('+'),
+              ),
+              ElevatedButton(
+                onPressed: () => BlocProvider.of<CounterCubit>(context).decrement(),
+                child: Text('-'),
+              ),
+            ],
+          ),
         ),
-      ),
+      )
     );
   }
 }
