@@ -13,34 +13,25 @@ class AppRouter {
     switch (routeSettings.name) {
       case '/': {
         return MaterialPageRoute(
-          builder: (_) => BlocProvider.value(
-            value: _counterCubit,
-            child: HomeScreen(
-              title: 'Flutter Demo Home Page',
-              color: Colors.grey,
-            ),
+          builder: (_) => HomeScreen(
+            title: 'Flutter Demo Home Page',
+            color: Colors.grey,
           ),
         );
       }
       case '/second': {
         return MaterialPageRoute(
-          builder: (_) => BlocProvider.value(
-            value: _counterCubit,
-            child: SecondScreen(
-              title: 'Flutter Demo Home Page',
-              color: Colors.grey,
-            ),
-          ),
+          builder: (_) => SecondScreen(
+            title: 'Flutter Demo Home Page',
+            color: Colors.grey,
+          )
         );
       }
       case '/third': {
         return MaterialPageRoute(
-          builder: (_) => BlocProvider.value(
-            value: _counterCubit,
-            child: ThirdScreen(
-              title: 'Flutter Demo Home Page',
-              color: Colors.grey,
-            ),
+          builder: (_) => ThirdScreen(
+            title: 'Flutter Demo Home Page',
+            color: Colors.grey,
           ),
         );
       }

@@ -12,16 +12,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final counterBloc = CounterCubit();
 
     return BlocProvider<CounterCubit>(
       create: (ctx) => CounterCubit(),
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        onGenerateRoute: _appRouter.onGenerateRoute,
+      child: BlocProvider<CounterCubit>(
+        create: (context) => CounterCubit(),
+        child: MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          onGenerateRoute: _appRouter.onGenerateRoute,
+        )
       )
     );
   }
