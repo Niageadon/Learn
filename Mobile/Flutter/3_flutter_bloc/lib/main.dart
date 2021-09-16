@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterblock/cubit/4_cubit.dart';
-import 'package:flutterblock/screens/home.screen.dart';
-import 'package:flutterblock/screens/second.screen.dart';
-import 'package:flutterblock/screens/third.screen.dart';
+import 'package:flutterblock/router/index.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  final AppRouter _appRouter = AppRouter();
+
   @override
   Widget build(BuildContext context) {
     final counterBloc = CounterCubit();
@@ -22,29 +21,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        routes: {
-          '/': (ctx) => BlocProvider.value(
-            value: counterBloc,
-            child: HomeScreen(
-              title: 'Flutter Demo Home Page',
-              color: Colors.grey,
-            ),
-          ),
-          '/second': (ctx) => BlocProvider.value(
-            value: counterBloc,
-            child: SecondScreen(
-              title: 'Flutter Demo Home Page',
-              color: Colors.grey,
-            ),
-          ),
-          '/third': (ctx) => BlocProvider.value(
-            value: counterBloc,
-            child: ThirdScreen(
-              title: 'Flutter Demo Home Page',
-              color: Colors.grey,
-            ),
-          ),
-        },
+        onGenerateRoute: _appRouter.onGenerateRoute,
       )
     );
   }
