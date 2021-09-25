@@ -2,13 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterblock/cubit/4_cubit.dart';
+import 'package:flutterblock/cubit/9_internet-connection.cubit.dart';
 import 'package:flutterblock/screens/home.screen.dart';
 import 'package:flutterblock/screens/second.screen.dart';
 import 'package:flutterblock/screens/third.screen.dart';
 
 class AppRouter {
-  final CounterCubit _counterCubit = CounterCubit();
-
   Route onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case '/': {
@@ -36,9 +35,5 @@ class AppRouter {
         );
       }
     }
-  }
-
-  void dispose() {
-    _counterCubit.close();
   }
 }
