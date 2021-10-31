@@ -5,6 +5,10 @@ describe('lengthOfLongestSubstring', () => {
 		expect(findMedianSortedArrays([1, 3], [2])).toBe(2);
 	});
 
+	test('[1, 3, 7, 8, 11], [1, 2, 5, 8, 12]', () => {
+		expect(findMedianSortedArrays([1, 3, 7, 8, 11], [1, 2, 5, 8, 12])).toBe(6);
+	});
+
 	test('[1, 2], [3, 4]', () => {
 		expect(findMedianSortedArrays([1, 2], [3, 4])).toBe(2.5);
 	});
@@ -15,6 +19,10 @@ describe('lengthOfLongestSubstring', () => {
 
 	test('[], [2]', () => {
 		expect(findMedianSortedArrays([], [2])).toBe(2);
+	});
+
+	test('[2], []', () => {
+		expect(findMedianSortedArrays([2], [])).toBe(2);
 	});
 
 	test('[1, 3], [2, 7]', () => {
