@@ -1,5 +1,5 @@
 interface IObserver {
-	next: () => void
+	next: (v?: unknown) => void
 	complete: () => void
 }
 
@@ -22,6 +22,30 @@ class Observable {
 			return {
 				unsubscribe() {
 					clearTimeout(delay);
+				}
+			}
+		})
+	}
+
+	static fromEvent(domEl, eventName: string) {
+		return new Observable((observer) => {
+			return {
+				unsubscribe() {
+
+				}
+			}
+		})
+	}
+
+	static allNumbers() {
+		return new Observable((observer) => {
+			let num = 0;
+			while (1) {
+				observer.next(num++);
+			}
+			return {
+				unsubscribe() {
+					
 				}
 			}
 		})
