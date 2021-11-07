@@ -1,0 +1,39 @@
+@import "~normalize.css";
+//@import url("https://fonts.google.com/css?family=Roboto&display=swap");
+@import "header";
+@import "toolbar";
+@import "formula";
+@import "table";
+@import "dashboard";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+}
+.excel {
+    position: relative;
+    color: #888;
+    font-size: .8rem;
+    max-width: 100%;
+    height: 100vh;
+
+}
+.row {
+    display: flex;
+    flex-direction: row;
+}
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}

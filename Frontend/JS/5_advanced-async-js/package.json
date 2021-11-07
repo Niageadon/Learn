@@ -1,0 +1,19 @@
+{
+  "name": "exel",
+  "version": "1.0.0",
+  "description": "learn",
+  "main": "index.js",
+  "browserslist": [
+    "last 1 version",
+    "> 0.25%",
+    "IE 9"
+  ],
+  "devDependencies": {
+    "@types/node": "^16.11.6",
+    "eslint": "^7.2.0",
+    "typescript": "^3.9.5"
+  },
+  "scripts": {},
+  "author": "Niageadon",
+  "license": "MIT"
+}

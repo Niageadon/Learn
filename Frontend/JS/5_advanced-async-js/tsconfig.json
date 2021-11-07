@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "outDir": "./",
+        "module": "es6",
+        "target": "esnext",
+        "baseUrl": "./",
+        "paths": {
+            "@core/*": ["src/core/*"],
+            "@/*": ["src/*"]
+        }
+    }
+}
