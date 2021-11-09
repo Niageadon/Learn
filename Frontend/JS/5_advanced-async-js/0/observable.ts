@@ -27,11 +27,16 @@ class Observable {
 		})
 	}
 
-	static fromEvent(domEl, eventName: string) {
+	static fromEvent(domEl: HTMLElement, eventName: string) {
 		return new Observable((observer) => {
+			const handler = (event) => {
+				observer.next(event)
+			}
+
+			domEl.addEventListener(eventName, handler)
 			return {
 				unsubscribe() {
-
+					domEl.removeEventListener(eventName, handler);
 				}
 			}
 		})
@@ -45,7 +50,6 @@ class Observable {
 			}
 			return {
 				unsubscribe() {
-					
 				}
 			}
 		})
