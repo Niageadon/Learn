@@ -1,6 +1,7 @@
 interface IObserver {
 	next: (v?: unknown) => void
 	complete: () => void
+	error?: (e) => void
 }
 
 interface IObservableResponse {
@@ -29,7 +30,7 @@ class Observable {
 
 	static fromEvent(domEl: HTMLElement, eventName: string) {
 		return new Observable((observer) => {
-			const handler = (event) => {
+			const handler = (event: unknown) => {
 				observer.next(event)
 			}
 
@@ -55,8 +56,48 @@ class Observable {
 		})
 	}
 
+	map(projection: (v: unknown) => unknown) {
+		return new Observable(observer => {
+			const subscription = this.subscribe({
+				next(v) {
+					try {
+						const value = projection(v);
+						observer.next(value);
+					}
+					catch (e) {
+						observer.error(e);
+						subscription.unsubscribe();
+					}
+				},
+				complete() {
+					observer.complete();
+				},
+				error(e) {
+					observer.error(e);
+					subscription.unsubscribe();
+				}
+			})
+			return({
+				unsubscribe() {
+					subscription.unsubscribe();
+				}
+			})
+		})
+	}
+
 	constructor(private _subscribe: (observer: IObserver) => IObservableResponse) {}
 }
+
+/*
+const btn = document.getElementById('btn');
+const click$ = Observable.fromEvent(btn as HTMLElement, 'click');
+click$.subscribe({
+	next() {
+		console.log('btn click next event')
+	},
+	complete() {}
+})
+*/
 
 const obs = Observable.timeout(777);
 obs.subscribe({
@@ -68,11 +109,10 @@ obs.subscribe({
 	}
 })
 
-obs.subscribe({
-	next() {
-		console.log('next', + new Date())
+const num$ = Observable.allNumbers();
+num$.map(el => el as number * 2).subscribe({
+	next(v) {
+		console.log(33, v)
 	},
-	complete() {
-		console.log('done', + new Date())
-	}
+	complete() {}
 })
