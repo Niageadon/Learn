@@ -1,7 +1,7 @@
 interface IObserver {
 	next: (v?: unknown) => void
 	complete: () => void
-	error?: (e) => void
+	error?: (e?: unknown) => void
 }
 
 interface IObservableResponse {
@@ -56,7 +56,7 @@ class Observable {
 		})
 	}
 
-	map(projection: (v: unknown) => unknown) {
+	public map(projection: (v: unknown) => unknown) {
 		return new Observable(observer => {
 			const subscription = this.subscribe({
 				next(v) {
@@ -65,7 +65,7 @@ class Observable {
 						observer.next(value);
 					}
 					catch (e) {
-						observer.error(e);
+						observer.error && observer.error(e);
 						subscription.unsubscribe();
 					}
 				},
@@ -73,7 +73,38 @@ class Observable {
 					observer.complete();
 				},
 				error(e) {
-					observer.error(e);
+					observer.error && observer?.error(e);
+					subscription.unsubscribe();
+				}
+			})
+			return({
+				unsubscribe() {
+					subscription.unsubscribe();
+				}
+			})
+		})
+	}
+
+	public filter(projection: (v: unknown) => unknown) {
+		return new Observable(observer => {
+			const subscription = this.subscribe({
+				next(v) {
+					try {
+						const condition = projection(v);
+						if (condition){
+							observer.next(v);
+						}
+					}
+					catch (e) {
+						observer.error && observer.error(e);
+						subscription.unsubscribe();
+					}
+				},
+				complete() {
+					observer.complete();
+				},
+				error(e) {
+					observer.error && observer.error(e);
 					subscription.unsubscribe();
 				}
 			})
@@ -110,7 +141,7 @@ obs.subscribe({
 })
 
 const num$ = Observable.allNumbers();
-num$.map(el => el as number * 2).subscribe({
+num$.filter((el) => (el as number) < 1000).map(el => el as number * 2).subscribe({
 	next(v) {
 		console.log(33, v)
 	},
