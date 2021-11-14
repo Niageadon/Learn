@@ -85,6 +85,40 @@ class Observable {
 		})
 	}
 
+	public concat(...observables: Observable[]): Observable {
+		return new Observable((observer) => {
+			const myObservables = [...observables];
+			let sub: IObservableResponse = null;
+
+			let processObservable = () => {
+				if (!myObservables.length) {
+					observer.complete();
+				} else {
+					let observable = observables.shift();
+					sub = observable.subscribe({
+						next(v) {
+							observer.next(v)
+						},
+						error(e) {
+							observer.error(e);
+							sub.unsubscribe();
+						},
+						complete() {
+							processObservable();
+						},
+					})
+				}
+			}
+
+			processObservable();
+			return {
+					unsubscribe() {
+						sub.unsubscribe();
+					}
+				}
+		})
+	}
+
 	public filter(projection: (v: unknown) => unknown) {
 		return new Observable(observer => {
 			const subscription = this.subscribe({
