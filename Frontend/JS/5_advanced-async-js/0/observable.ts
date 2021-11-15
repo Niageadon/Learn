@@ -1,7 +1,7 @@
 interface IObserver {
 	next: (v?: unknown) => void
 	complete: () => void
-	error?: (e?: unknown) => void
+	error: (e?: unknown) => void
 }
 
 interface IObservableResponse {
@@ -88,19 +88,20 @@ class Observable {
 	public concat(...observables: Observable[]): Observable {
 		return new Observable((observer) => {
 			const myObservables = [...observables];
-			let sub: IObservableResponse = null;
+			let sub: IObservableResponse;
 
 			let processObservable = () => {
 				if (!myObservables.length) {
 					observer.complete();
 				} else {
 					let observable = observables.shift();
+					if (!observable) return;
 					sub = observable.subscribe({
 						next(v) {
 							observer.next(v)
 						},
 						error(e) {
-							observer.error(e);
+							observer && observer.error(e);
 							sub.unsubscribe();
 						},
 						complete() {
@@ -113,9 +114,40 @@ class Observable {
 			processObservable();
 			return {
 					unsubscribe() {
-						sub.unsubscribe();
+						sub && sub.unsubscribe();
 					}
 				}
+		})
+	}
+
+	public retry(count: number): Observable {
+		return new Observable(observer => {
+			const self = this;
+			let sub: IObservableResponse;
+			const processRequest = (attempt: number) => {
+				sub = self.subscribe({
+					next(v) {
+						observer.next(v);
+					},
+					complete() {
+						observer.complete();
+					},
+					error(e) {
+						if (!attempt) {
+							observer.error(e);
+						} else {
+							processRequest(attempt - 1);
+						}
+					}
+				})
+			}
+
+			processRequest(count);
+			return {
+				unsubscribe() {
+					sub.unsubscribe();
+				}
+			}
 		})
 	}
 
@@ -138,7 +170,7 @@ class Observable {
 					observer.complete();
 				},
 				error(e) {
-					observer.error && observer.error(e);
+					observer.error(e);
 					subscription.unsubscribe();
 				}
 			})
@@ -171,6 +203,9 @@ obs.subscribe({
 	},
 	complete() {
 		console.log('done', + new Date())
+	},
+	error() {
+
 	}
 })
 
@@ -179,5 +214,8 @@ num$.filter((el) => (el as number) < 1000).map(el => el as number * 2).subscribe
 	next(v) {
 		console.log(33, v)
 	},
-	complete() {}
+	complete() {},
+	error() {
+
+	}
 })
