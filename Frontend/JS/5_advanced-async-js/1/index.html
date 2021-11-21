@@ -215,20 +215,22 @@
 	nextImgEvent$.subscribe({
 		next(event) {
 			imgIndex++;
+			imgEl.setAttribute('src', allImages[imgIndex]);
 			if (imgIndex === allImages.length - 1) {
-				nextBtn.setAttribute('disabled', true)
+				nextBtn.disabled = true;
 			} else {
-				nextBtn.setAttribute('disabled', false)
+				prevBtn.disabled = false;
 			}
 		}
 	})
 	prevImgEvent$.subscribe({
 		next(event) {
 			imgIndex--;
+			imgEl.setAttribute('src', allImages[imgIndex]);
 			if (imgIndex === 0) {
-				prevBtn.setAttribute('disabled', true)
+				prevBtn.disabled = true;
 			} else {
-				prevBtn.setAttribute('disabled', false)
+				nextBtn.disabled = false;
 			}
 		}
 	})
