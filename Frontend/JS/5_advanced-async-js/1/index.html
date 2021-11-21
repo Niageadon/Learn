@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+	<img id="img">
+	<div class="controls" style="width: 100%">
+		<button id="prev-btn">prev</button>
+		<button id="next-btn">next</button>
+	</div>
+</body>
+</html>
+<script>
+	class Observable {
+		constructor(_subscribe) {
+			this._subscribe = _subscribe;
+		}
+		subscribe(observer) {
+			return this._subscribe(observer);
+		}
+		static timeout(time) {
+			return new Observable(function subscribe(observer) {
+				const delay = setTimeout(() => {
+					observer.next();
+					observer.complete();
+				}, time);
+				return {
+					unsubscribe() {
+						clearTimeout(delay);
+					}
+				};
+			});
+		}
+		static fromEvent(domEl, eventName) {
+			return new Observable((observer) => {
+				const handler = (event) => {
+					observer.next(event);
+				};
+				domEl.addEventListener(eventName, handler);
+				return {
+					unsubscribe() {
+						domEl.removeEventListener(eventName, handler);
+					}
+				};
+			});
+		}
+		static allNumbers() {
+			return new Observable((observer) => {
+				let num = 0;
+				while (1) {
+					observer.next(num++);
+				}
+				return {
+					unsubscribe() {
+					}
+				};
+			});
+		}
+		static empty() {
+			return new Observable((observer) => {
+				return {
+					unsubscribe() {
+					}
+				};
+			});
+		}
+		static of(value) {
+			return new Observable((observer) => {
+				observer.next(value);
+				return {
+					unsubscribe() {
+					}
+				};
+			});
+		}
+		map(projection) {
+			return new Observable(observer => {
+				const subscription = this.subscribe({
+					next(v) {
+						try {
+							const value = projection(v);
+							observer.next(value);
+						}
+						catch (e) {
+							observer.error && observer.error(e);
+							subscription.unsubscribe();
+						}
+					},
+					complete() {
+						observer.complete();
+					},
+					error(e) {
+						observer.error && observer?.error(e);
+						subscription.unsubscribe();
+					}
+				});
+				return ({
+					unsubscribe() {
+						subscription.unsubscribe();
+					}
+				});
+			});
+		}
+		concat(...observables) {
+			return new Observable((observer) => {
+				const myObservables = [...observables];
+				let sub;
+				let processObservable = () => {
+					if (!myObservables.length) {
+						observer.complete();
+					}
+					else {
+						let observable = observables.shift();
+						if (!observable)
+							return;
+						sub = observable.subscribe({
+							next(v) {
+								observer.next(v);
+							},
+							error(e) {
+								observer && observer.error(e);
+								sub.unsubscribe();
+							},
+							complete() {
+								processObservable();
+							},
+						});
+					}
+				};
+				processObservable();
+				return {
+					unsubscribe() {
+						sub && sub.unsubscribe();
+					}
+				};
+			});
+		}
+		retry(count) {
+			return new Observable(observer => {
+				const self = this;
+				let sub;
+				const processRequest = (attempt) => {
+					sub = self.subscribe({
+						next(v) {
+							observer.next(v);
+						},
+						complete() {
+							observer.complete();
+						},
+						error(e) {
+							if (!attempt) {
+								observer.error(e);
+							}
+							else {
+								processRequest(attempt - 1);
+							}
+						}
+					});
+				};
+				processRequest(count);
+				return {
+					unsubscribe() {
+						sub.unsubscribe();
+					}
+				};
+			});
+		}
+		filter(projection) {
+			return new Observable(observer => {
+				const subscription = this.subscribe({
+					next(v) {
+						try {
+							const condition = projection(v);
+							if (condition) {
+								observer.next(v);
+							}
+						}
+						catch (e) {
+							observer.error && observer.error(e);
+							subscription.unsubscribe();
+						}
+					},
+					complete() {
+						observer.complete();
+					},
+					error(e) {
+						observer.error(e);
+						subscription.unsubscribe();
+					}
+				});
+				return ({
+					unsubscribe() {
+						subscription.unsubscribe();
+					}
+				});
+			});
+		}
+	}
+	const allImages = [
+		'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb6x6TczrY13i6DBAbLLZlA1vOJC3quwvtzGvL_PoNQsvtRS6aWyGLzgNCb7UbY-cXBho&usqp=CAU',
+		'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiMQ-Z_QIbTifxAal-DlTcy9KPzpvVxC5TCVL7BPPZ3_328WWusrhCWA2VP-BbvL0f1s4&usqp=CAU',
+		'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk62Snb6grD_ysaI7NrrJPDJjo0rUyK7cnY_u3JpDQdQnM6vl-lxYCqrhnuuqafEQF7cc&usqp=CAU'
+	]
+	let imgIndex = 0;
+	const imgEl = document.getElementById('img');
+	const nextBtn = document.getElementById('next-btn');
+	const prevBtn = document.getElementById('prev-btn');
+
+	const image$ = Observable.of(allImages[imgIndex]);
+	const nextImgEvent$ = Observable.fromEvent(nextBtn, 'click');
+	const prevImgEvent$ = Observable.fromEvent(prevBtn, 'click');
+
+	nextImgEvent$.subscribe({
+		next(event) {
+			imgIndex++;
+			if (imgIndex === allImages.length - 1) {
+				nextBtn.setAttribute('disabled', true)
+			} else {
+				nextBtn.setAttribute('disabled', false)
+			}
+		}
+	})
+	prevImgEvent$.subscribe({
+		next(event) {
+			imgIndex--;
+			if (imgIndex === 0) {
+				prevBtn.setAttribute('disabled', true)
+			} else {
+				prevBtn.setAttribute('disabled', false)
+			}
+		}
+	})
+	image$.subscribe({
+		next(img) {
+			imgEl.setAttribute('src', img);
+		}
+	})
+</script>
+<style>
+	body {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+	.controls {
+		padding: 16px;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+	}
+	.controls button {
+		margin: 4px;
+	}
+	body img {
+		margin: auto;
+	}
+</style>

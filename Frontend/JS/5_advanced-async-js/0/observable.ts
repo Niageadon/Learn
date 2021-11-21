@@ -56,6 +56,25 @@ class Observable {
 		})
 	}
 
+	static empty() {
+		return new Observable((observer) => {
+			return {
+				unsubscribe() {
+				}
+			}
+		})
+	}
+
+	static of(value: unknown) {
+		return new Observable((observer) => {
+			observer.next(value);
+			return {
+				unsubscribe() {
+				}
+			}
+		})
+	}
+
 	public map(projection: (v: unknown) => unknown) {
 		return new Observable(observer => {
 			const subscription = this.subscribe({

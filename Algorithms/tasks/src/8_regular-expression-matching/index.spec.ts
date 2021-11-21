@@ -21,6 +21,10 @@ describe('isMatch', () => {
 		expect(isMatch('aab', 'c*a*b')).toBe(true);
 	});
 
+	test('paab,  p*c*a*b', () => {
+		expect(isMatch('paab', 'p*c*a*b')).toBe(true);
+	});
+
 	test('mississippi,  mis*is*p*.', () => {
 		expect(isMatch('mississippi', 'mis*is*p*.')).toBe(false);
 	});
@@ -35,6 +39,22 @@ describe('isMatch', () => {
 
 	test('aaa, ab*a', () => {
 		expect(isMatch('aaa', 'ab*a')).toBe(false);
+	});
+
+	test('aaa, a*a', () => {
+		expect(isMatch('aaa', 'a*a')).toBe(true);
+	});
+
+	test('aaaaaab, a*ab', () => {
+		expect(isMatch('aaaaaab', 'a*ab')).toBe(true);
+	});
+
+	test('accbaccbaccb, accb.*accb', () => {
+		expect(isMatch('accbaccbaccb', 'accb.*accb')).toBe(true);
+	});
+
+	test('aaa, ab*a*c*a', () => {
+		expect(isMatch('aaa', 'ab*a*c*a')).toBe(true);
 	});
 })
 
