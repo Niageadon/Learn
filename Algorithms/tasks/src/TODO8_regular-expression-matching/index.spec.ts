@@ -9,6 +9,18 @@ describe('isMatch', () => {
 		expect(isMatch('aa', 'a*')).toBe(true);
 	});
 
+	test('bbbbba,  .*a*a', () => {
+		expect(isMatch('bbbbba', '.*a*a')).toBe(true);
+	});
+
+	test('a,  ab*', () => {
+		expect(isMatch('a', 'ab*')).toBe(true);
+	});
+
+	test('aaa,  aaaa', () => {
+		expect(isMatch('aaa', 'aaaa')).toBe(false);
+	});
+
 	test('ab,  .*', () => {
 		expect(isMatch('ab', '.*')).toBe(true);
 	});
@@ -35,6 +47,10 @@ describe('isMatch', () => {
 
 	test('ab, .*c', () => {
 		expect(isMatch('ab', '.*c')).toBe(false);
+	});
+
+	test('bobobom, .*bo*m', () => {
+		expect(isMatch('bobobom', '.*bo*m')).toBe(true);
 	});
 
 	test('aaa, ab*a', () => {

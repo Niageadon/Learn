@@ -1,11 +1,11 @@
 import {convert} from './index';
 
 describe('lengthOfLongestSubstring', () => {
-	test('PAYPALISHIRING, 3', () => {
+	test('PAYPALISHIRING, 3_find_median_of_sorted_arrays', () => {
 		expect(convert('PAYPALISHIRING', 3)).toBe('PAHNAPLSIIGYIR');
 	});
 
-	test('PAYPALISHIRING, 4', () => {
+	test('PAYPALISHIRING, 4_longest_palindrome', () => {
 		expect(convert('PAYPALISHIRING', 4)).toBe('PINALSIGYAHRPI');
 	});
 

@@ -1,6 +1,6 @@
 import {findMedianSortedArrays} from './index';
 
-describe('lengthOfLongestSubstring', () => {
+describe('findMedianSortedArrays', () => {
 	test('nums1 = [1, 3], nums2 = [2]', () => {
 		expect(findMedianSortedArrays([1, 3], [2])).toBe(2);
 	});

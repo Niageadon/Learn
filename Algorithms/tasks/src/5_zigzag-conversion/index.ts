@@ -1,8 +1,8 @@
-// abcd 2
+// abcd 2_length_of_the_longest_substring
 // a c
 //  b d
 //
-// abcdef 3
+// abcdef 3_find_median_of_sorted_arrays
 // a   e
 //  b d f
 //   c

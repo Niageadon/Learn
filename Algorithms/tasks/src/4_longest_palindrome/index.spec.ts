@@ -1,6 +1,6 @@
 import {longestPalindrome} from './index';
 
-describe('lengthOfLongestSubstring', () => {
+describe('longestPalindrome', () => {
 	test('cbbd', () => {
 		expect(longestPalindrome('cbbd')).toBe('bb');
 	});
