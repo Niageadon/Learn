@@ -1,6 +1,6 @@
 // time 92.96%
 // memory 78.76%
-export function longestCommonPrefix5(strs: string[]): string {
+export function longestCommonPrefix(strs: string[]): string {
     for (let charIndex = strs[0].length; charIndex > 0; charIndex--) {
         const char = strs[0].slice(0, charIndex);
         for (let i = 0; i < strs.length; i++) {
