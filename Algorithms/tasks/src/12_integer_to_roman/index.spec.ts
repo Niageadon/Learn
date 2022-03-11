@@ -29,5 +29,9 @@ describe('intToRoman', () => {
 	test('45', () => {
 		expect(intToRoman(45)).toBe('XLV'); // kakogo hera ne VL
 	})
+
+	test('21', () => {
+		expect(intToRoman(21)).toBe('XXI'); // kakogo hera ne VL
+	})
 })
 
