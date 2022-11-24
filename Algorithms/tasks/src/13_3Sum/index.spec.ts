@@ -1,5 +1,5 @@
 import {threeSum} from './index';
-import {expectInAnyOrder} from "../_utils/expectInAnyOrder";
+import {expectInAnyOrderNested} from "../_utils/expectInAnyOrder";
 
 let startAt;
 describe('threeSum', () => {
@@ -14,7 +14,7 @@ describe('threeSum', () => {
 	test('[-1,0,1,2,-1,-4]', () => {
 		const result = threeSum([-1,0,1,2,-1,-4]);
 		const answer = [[-1,0,1], [-1,-1,2]];
-		expectInAnyOrder(answer, result);
+		expectInAnyOrderNested(answer, result);
 	})
 
 	test('[]', () => {
@@ -40,6 +40,6 @@ describe('threeSum', () => {
 	test('[1, 2, 3, -1, -2, -3]', () => {
 		const result = threeSum([1, 2, 3, -1, -2, -3]);
 		const answer = [[-3, 1, 2], [-2, -1, 3]];
-		expectInAnyOrder(answer, result);
+		expectInAnyOrderNested(answer, result);
 	})
 })

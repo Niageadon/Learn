@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+  fetch('https://ssl-checker.p.rapidapi.com/check-ssl' + new URLSearchParams({
+    source: 'google.com',
+  }), {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    referrerPolicy: 'no-referrer',
+
+
+  })
+</script>
+</body>
+</html>
