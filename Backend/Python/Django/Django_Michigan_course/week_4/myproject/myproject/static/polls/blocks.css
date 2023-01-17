@@ -1,0 +1,39 @@
+#three {
+    border: 10px solid red;
+    position: absolute;
+    left:0;
+    top: 50px;
+    width: 25%;
+}
+#four {
+    border: 10px solid blue;
+    position: absolute;
+    left:0;
+    bottom: 0;
+    width: 25%;
+}
+#two {
+    border: 10px solid yellow;
+
+    position: absolute;
+    right:0;
+    top: 50px;
+    width: 25%;
+}
+#one {
+    border: 10px solid pink;
+
+    position: absolute;
+    right:0;
+    bottom: 0;
+    width: 25%;
+}
+a {
+    text-align: center;
+    background: rgb(10, 75, 51);
+    color: white;
+}
+body {
+    display: flex;
+    justify-content: center;
+}
