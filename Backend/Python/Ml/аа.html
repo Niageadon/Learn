@@ -1,0 +1,32 @@
+<StackLayout class="home-container">
+        <!-- Patient-Header -->
+        <GridLayout row="0" class="patient-header" rows="auto" columns="*,2*" style="margin: 0 0 8 0">
+            <FlexboxLayout flexDirection="column" justifyContent="space-around" alignItems="flex-start" column="0">
+                <Image *ngIf="!showDefaultLogo" [src]="imgSrc" stretch="aspectFit"
+                       ></Image>
+            </FlexboxLayout>
+            <FlexboxLayout flexDirection="column" justifyContent="space-around" alignItems="flex-end" row="0" col="1">
+                <Label  textWrap="true" fontWeight="bold"
+                       textAlignment="right"></Label>
+                <Label  textWrap="true"
+                       textAlignment="right"></Label>
+                <Label  textWrap="true"
+                       textAlignment="right"></Label>
+                <Label  textWrap="true" textAlignment="right"></Label>
+            </FlexboxLayout>
+        </GridLayout>
+
+        <ScrollView row="1">
+            <GridLayout *ngIf="!loading" [rows]="rows" columns="*,*">
+
+                <ng-template *ngIf="!loading" ngFor let-tile let-index="index" [ngForOf]="tiles">
+
+                    <home-page-navigation-tile [col]="getColumn(index)" [row]="getRow(index)" [model]="tile"></home-page-navigation-tile>
+                </ng-template>
+                <ng-template *ngIf="!loading" ngFor let-tile let-index="index" [ngForOf]="tiles">
+
+                    <home-page-navigation-tile [col]="getColumn(index) + 5" [row]="getRow(index)" [model]="tile"></home-page-navigation-tile>
+                </ng-template>
+            </GridLayout>
+        </ScrollView>
+</StackLayout>

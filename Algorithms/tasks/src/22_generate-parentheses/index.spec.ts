@@ -2,7 +2,7 @@ import {generateParenthesis} from './index';
 import {expectInAnyOrder} from "../_utils/expectInAnyOrder";
 
 let startAt;
-describe('mergeTwoLists', () => {
+describe('generateParenthesis', () => {
 	beforeAll(() => {
 		startAt = +new Date();
 	})
@@ -12,20 +12,20 @@ describe('mergeTwoLists', () => {
 	})
 
 	test('3', () => {
-		const result = generateParenthesis(3);
+		const attempt = generateParenthesis(3);
 		const answer = ["((()))","(()())","(())()","()(())","()()()"];
-		expect(result).toStrictEqual(answer)
+		expectInAnyOrder(answer, attempt)
 	})
 
 	test('1', () => {
-		const result = generateParenthesis(1);
+		const attempt = generateParenthesis(1);
 		const answer = ["()"];
-		expect(result).toStrictEqual(answer)
+		expect(attempt).toStrictEqual(answer)
 	})
 
 	test('2', () => {
-		const result = generateParenthesis(2);
+		const attempt = generateParenthesis(2);
 		const answer = ["()()",'(())'];
-		expectInAnyOrder(answer, result)
+		expectInAnyOrder(answer, attempt)
 	})
 })

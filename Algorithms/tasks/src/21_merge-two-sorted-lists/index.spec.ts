@@ -1,5 +1,4 @@
 import {mergeTwoLists, ListNode} from './index';
-import {expectInAnyOrderNested} from "../_utils/expectInAnyOrder";
 
 let startAt;
 describe('mergeTwoLists', () => {
